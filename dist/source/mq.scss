@@ -1,0 +1,21 @@
+/*
+ * Provides sass-mq's `mq` mixin with pre-filled Guardian breakpoints, so you can do (eg.)
+ *
+ * `@include mq(leftCol) ...`
+ *
+ * These breakpoints are: 
+ * - desktop: 61.25em
+ * - leftCol: 71.25em
+ * - mobile: 20em
+ * - mobileLandscape: 30em
+ * - mobileMedium: 23.4375em
+ * - phablet: 41.25em
+ * - tablet: 46.25em
+ * - wide: 81.25em
+ */
+
+@use "interactive-style-library/source/breakpoints.scss" as *;
+
+@forward "sass-mq/mq" with (
+  $breakpoints: $breakpoints
+);

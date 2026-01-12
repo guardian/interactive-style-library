@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist",
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/vite/**/*.js",
+    "src/source/constants.js",
+    "src/visuals/constants.js"
+  ]
+}

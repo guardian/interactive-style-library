@@ -1,0 +1,643 @@
+fullPalette:
+  red:
+    1:
+      color: "#FFDBD4"
+    2:
+      color: "#FF9081"
+      isBrand: true
+    3:
+      color: "#FF5943"
+      isBrand: true
+      rating: 2
+    4:
+      color: "#E33824"
+      isBrand: true
+      rating: 2
+    5:
+      color: "#C70000"
+      isBrand: true
+      rating: 3
+    6:
+      color: "#AB0613"
+      isBrand: true
+    7:
+      color: "#8B0000"
+      isBrand: true
+    8:
+      color: "#660505"
+  blue:
+    1:
+      color: "#D4EDFF"
+    2:
+      color: "#90DCFF"
+      isBrand: true
+    3:
+      color: "#00B2FF"
+      isBrand: true
+    4:
+      color: "#0094DA"
+      isBrand: true
+      rating: 2
+    5:
+      color: "#0077B6"
+      isBrand: true
+      rating: 3
+    6:
+      color: "#005689"
+      isBrand: true
+    7:
+      color: "#004E7C"
+      isBrand: true
+    8:
+      color: "#003C60"
+      isBrand: true
+  purple:
+    1:
+      color: "#FFE6F4"
+    2:
+      color: "#FFABDB"
+      isBrand: true
+    3:
+      color: "#E678BB"
+    4:
+      color: "#DC559D"
+      isBrand: true
+      rating: 2
+    5:
+      color: "#BB3B80"
+      isBrand: true
+      rating: 3
+    6:
+      color: "#9C2274"
+    7:
+      color: "#7D0068"
+      isBrand: true
+    8:
+      color: "#650054"
+      isBrand: true
+  green:
+    1:
+      color: "#D3F2DE"
+    2:
+      color: "#84DBA4"
+    3:
+      color: "#4FC480"
+    4:
+      color: "#39A566"
+      rating: 2
+    5:
+      color: "#22874D"
+      isBrand: true
+      rating: 3
+    6:
+      color: "#185E36"
+      isBrand: true
+    7:
+      color: "#184B2B"
+    8:
+      color: "#133C22"
+  orange:
+    1:
+      color: "#FFE2CD"
+    2:
+      color: "#FFAD68"
+    3:
+      color: "#FF7F0F"
+      isBrand: true
+    4:
+      color: "#E05E00"
+      isBrand: true
+      rating: 2
+    5:
+      color: "#C74600"
+      isBrand: true
+      rating: 3
+    6:
+      color: "#AA3600"
+    7:
+      color: "#8D2700"
+      isBrand: true
+    8:
+      color: "#672005"
+      isBrand: true
+  gray:
+    1:
+      color: "#E7E7E7"
+    2:
+      color: "#C8C8C8"
+    3:
+      color: "#A1A1A1"
+    4:
+      color: "#848484"
+      rating: 2
+    5:
+      color: "#707070"
+      isBrand: true
+    6:
+      color: "#606060"
+      isBrand: true
+    7:
+      color: "#494949"
+    8:
+      color: "#333333"
+      isBrand: true
+  brown:
+    1:
+      color: "#F7EBDC"
+    2:
+      color: "#EACCA0"
+      isBrand: true
+    3:
+      color: "#CBA36E"
+    4:
+      color: "#A1845C"
+      isBrand: true
+      rating: 2
+    5:
+      color: "#866D50"
+      rating: 3
+      isBrand: true
+    6:
+      color: "#6B5840"
+      isBrand: true
+    7:
+      color: "#574835"
+      isBrand: true
+    8:
+      color: "#3E3323"
+      isBrand: true
+  turquoise:
+    1:
+      color: "#D9F2EF"
+    2:
+      color: "#A5E2DC"
+    3:
+      color: "#69D1CA"
+      isBrand: true
+    4:
+      color: "#23B4A9"
+    5:
+      color: "#27857E"
+      rating: 2
+    6:
+      color: "#0C7A73"
+      rating: 3
+      isBrand: true
+    7:
+      color: "#135E58"
+    8:
+      color: "#084C46"
+  yellow:
+    1:
+      color: "#FFF7C7"
+    2:
+      color: "#FFEF84"
+    3:
+      color: "#FFE500"
+      isBrand: true
+    4:
+      color: "#F3C100"
+      isBrand: true
+    5:
+      color: "#CDA500"
+    6:
+      color: "#AB8600"
+      rating: 2
+    7:
+      color: "#8A6800"
+      rating: 3
+    8:
+      color: "#6B4B00"
+
+news:
+  light:
+    main:
+      blue: "#0094DA"
+      red: "#C70000"
+      turquoise: "#23B4A9"
+      grey: "#A1A1A1"
+      brown: "#CBA36E"
+      pink: "#F678BB"
+      orange: "#FF7F0F"
+    shades:
+      blue: "#005689"
+      red: "#8B0000"
+      turquoise: "#0C7A73"
+      grey: "#494949"
+      brown: "#866D50"
+      pink: "#9C2274"
+      orange: "#C74600"
+    tints:
+      blue: "#D4EDFF"
+      red: "#FFDBD4"
+      turquoise: "#D9F2EF"
+      grey: "#E7E7E7"
+      brown: "#F7EBDC"
+      pink: "#FFE6F4"
+      orange: "#FFE2CD"
+    chart:
+      furniture: "#121212"
+      axisLabels: "#707070"
+      categorical: "#A1A1A1"
+      axisLines: "#BABABA"
+      structure1: "#DCDCDC"
+      structure2: "#F3F3F3"
+  dark:
+    main:
+      blue: "#009CE3"
+      red: "#CE0E09"
+      turquoise: "#35BBB1"
+      grey: "#A1A1A1"
+      brown: "#CBA36E"
+      pink: "#F678BB"
+      orange: "#FF8B25"
+    shades:
+      blue: "#00669D"
+      red: "#9A0000"
+      turquoise: "#128981"
+      grey: "#5F5F5F"
+      brown: "#866D50"
+      pink: "#9C2274"
+      orange: "#C74600"
+    tints:
+      blue: "#244057"
+      red: "#5f2116"
+      turquoise: "#254A46"
+      grey: "#383838"
+      brown: "#493D30"
+      pink: "#6b2251"
+      orange: "#64381a"
+    chart:
+      furniture: "#DCDCDC"
+      axisLabels: "#C8C8C8"
+      categorical: "#A1A1A1"
+      axisLines: "#707070"
+      structure1: "#494949"
+      structure2: "#383838"
+  analysis:
+    main:
+      blue: "#0094DA"
+      red: "#C70000"
+      turquoise: "#23B4A9"
+      grey: "#A1A1A1"
+      brown: "#CBA36E"
+      pink: "#F678BB"
+      orange: "#FF7F0F"
+    shades:
+      blue: "#005689"
+      red: "#8B0000"
+      turquoise: "#0C7A73"
+      grey: "#494949"
+      brown: "#866D50"
+      pink: "#9C2274"
+      orange: "#C74600"
+    tints:
+      blue: "#D4E3F2"
+      red: "#FFD2C9"
+      turquoise: "#D9E8E3"
+      grey: "#E7DDDB"
+      brown: "#F7E1D1"
+      pink: "#FFDCE8"
+      orange: "#FFD8C3"
+    chart:
+      furniture: "#121212"
+      axisLabels: "#707070"
+      categorical: "#A19A99"
+      axisLines: "#BAB2B1"
+      structure1: "#DCD3D1"
+      structure2: "#F3E8E7"
+
+categorical:
+  light:
+    gender:
+      male: "#23B4A9"
+      female: "#FF7F0F"
+      nonBinary: "#9C2274"
+    sentiment:
+      veryGood: "#004E7C"
+      good: "#0077B6"
+      slightlyGood: "#00B2FF"
+      slightlyBad: "#FF5943"
+      bad: "#C70000"
+      veryBad: "#8B0000"
+    ukParties:
+      lab: "#C70000"
+      con: "#0077B6"
+      libDem: "#FF7F0F"
+      reform: "#3DBBE2"
+      green: "#39A566"
+      snp: "#F5DC00"
+      other: "#848484"
+    usParties:
+      dem: "#093CA3"
+      rep: "#C70000"
+      kennedy: "#FF7F0F"
+      green: "#0DA498"
+      lib: "#C6B716"
+      indyDem: "#7378D8"
+      other: "#848484"
+  dark:
+    gender:
+      male: "#23B4A9"
+      female: "#FF7F0F"
+      nonBinary: "#9C2274"
+    sentiment:
+      veryGood: "#004E7C"
+      good: "#0077B6"
+      slightlyGood: "#00B2FF"
+      slightlyBad: "#FF5943"
+      bad: "#C70000"
+      veryBad: "#8B0000"
+    ukParties:
+      lab: "#E33824"
+      con: "#009AE1"
+      libDem: "#FF7F0F"
+      reform: "#3DBBE2"
+      green: "#39A566"
+      snp: "#F5DC00"
+      other: "#848484"
+    usParties:
+      dem: "#3261DB"
+      rep: "#C70000"
+      kennedy: "#FF7F0F"
+      green: "#23B4A9"
+      lib: "#C6B716"
+      indyDem: "#7378D8"
+      other: "#848484"
+
+sequential:
+  singleHue:
+    small:
+      red:
+        1: "#FFDBD4"
+        2: "#FFC1B3"
+        3: "#FFA592"
+        4: "#FE8770"
+        5: "#F66C52"
+        6: "#E94F37"
+        7: "#DA301C"
+        8: "#C70000"
+      blue:
+        1: "#D4EDFF"
+        2: "#B3DCFE"
+        3: "#92CCFA"
+        4: "#72BBF3"
+        5: "#53AAE8"
+        6: "#3499DB"
+        7: "#1588CA"
+        8: "#0077B6"
+      purple:
+        1: "#FFE6F4"
+        2: "#FECBE5"
+        3: "#F9B2D5"
+        4: "#F298C5"
+        5: "#E87FB5"
+        6: "#E87FB5"
+        7: "#CD5192"
+        8: "#BB3B80"
+      green:
+        1: "#D3F2DE"
+        2: "#B2E5C3"
+        3: "#94D7AB"
+        4: "#77C894"
+        5: "#5EB87F"
+        6: "#46A86D"
+        7: "#32985C"
+        8: "#22874D"
+      orange:
+        1: "#FFE2CD"
+        2: "#FFCBA5"
+        3: "#FFB37E"
+        4: "#FD9B5A"
+        5: "#F3843D"
+        6: "#E76F23"
+        7: "#D85A0C"
+        8: "#C74600"
+      turquoise:
+        1: "#D9F2EF"
+        2: "#B8E7E2"
+        3: "#98DBD4"
+        4: "#7ACEC6"
+        5: "#5EC1B8"
+        6: "#43B3AA"
+        7: "#2AA59C"
+        8: "#18968E"
+    large:
+      red:
+        1: "#FFDBD4"
+        2: "#FFB9AA"
+        3: "#FF957F"
+        4: "#F4735A"
+        5: "#E3523A"
+        6: "#CB321F"
+        7: "#AE1309"
+        8: "#8B0000"
+      blue:
+        1: "#D4EDFF"
+        2: "#A7D6FC"
+        3: "#7CBEF2"
+        4: "#56A6E1"
+        5: "#348ECB"
+        6: "#1776B1"
+        7: "#035F94"
+        8: "#004975"
+      purple:
+        1: "#FFE6F4"
+        2: "#FCC2DF"
+        3: "#F29FC9"
+        4: "#E37EB3"
+        5: "#CF5F9D"
+        6: "#B74289"
+        7: "#9B2577"
+        8: "#7D0068"
+      green:
+        1: "#D3F2DE"
+        2: "#A3DEB7"
+        3: "#7BC795"
+        4: "#59AF79"
+        5: "#3F9660"
+        6: "#2B7D4B"
+        7: "#1F643A"
+        8: "#184B2B"
+      orange:
+        1: "#FFE2CD"
+        2: "#FFC398"
+        3: "#FDA267"
+        4: "#EF8542"
+        5: "#DC6925"
+        6: "#C5500E"
+        7: "#AA3A02"
+        8: "#8D2700"
+      turquoise:
+        1: "#D9F2EF"
+        2: "#A8E0DA"
+        3: "#7CCCC5"
+        4: "#57B7AF"
+        5: "#39A199"
+        6: "#248B83"
+        7: "#18746D"
+        8: "#135E58"
+
+diverging:
+  small:
+    blueRed:
+      1: "#0077B6"
+      2: "#3797D7"
+      3: "#75B6EC"
+      4: "#B4D5F5"
+      5: "#F3F3F3"
+      6: "#FFC2B5"
+      7: "#FF917A"
+      8: "#F15E45"
+      9: "#D62A17"
+    blueOrange:
+      1: "#0077B6"
+      2: "#3797D7"
+      3: "#75B6EC"
+      4: "#B4D5F5"
+      5: "#F3F3F3"
+      6: "#FFC5A0"
+      7: "#FA975A"
+      8: "#E56D24"
+      9: "#C74600"
+    blueBrown:
+      1: "#0077B6"
+      2: "#3797D7"
+      3: "#75B6EC"
+      4: "#B4D5F5"
+      5: "#F3F3F3"
+      6: "#E1CEB9"
+      7: "#C8AB8A"
+      8: "#A98B67"
+      9: "#866D50"
+    blueGrey:
+      1: "#0077B6"
+      2: "#3797D7"
+      3: "#75B6EC"
+      4: "#B4D5F5"
+      5: "#F3F3F3"
+      6: "#D1D1D1"
+      7: "#AFAFAF"
+      8: "#8F8F8F"
+      9: "#707070"
+    greenOrange:
+      1: "#0E7E77"
+      2: "#359E97"
+      3: "#6ABEB6"
+      4: "#A9DAD5"
+      5: "#F3F3F3"
+      6: "#FFC5A0"
+      7: "#FA975A"
+      8: "#E56D24"
+      9: "#C74600"
+    greyRed:
+      1: "#707070"
+      2: "#8F8F8F"
+      3: "#AFAFAF"
+      4: "#D1D1D1"
+      5: "#F3F3F3"
+      6: "#FFC2B5"
+      7: "#FF917A"
+      8: "#F15E45"
+      9: "#D62A17"
+    brownPurple:
+      1: "#866D50"
+      2: "#A98B67"
+      3: "#C8AB8A"
+      4: "#E1CEB9"
+      5: "#F3F3F3"
+      6: "#F5C3DA"
+      7: "#EE95C0"
+      8: "#DC68A4"
+      9: "#C04085"
+    blueYellow:
+      1: "#0077B6"
+      2: "#3797D7"
+      3: "#75B6EC"
+      4: "#B4D5F5"
+      5: "#F3F3F3"
+      6: "#EBD168"
+      7: "#CEB032"
+      8: "#B08F10"
+      9: "#927003"
+  large:
+    blueRed:
+      1: "#004975"
+      2: "#1773AC"
+      3: "#539ED7"
+      4: "#9EC9F0"
+      5: "#F3F3F3"
+      6: "#FFB09E"
+      7: "#EF6F55"
+      8: "#C8301D"
+      9: "#8B0000"
+    blueOrange:
+      1: "#004975"
+      2: "#1773AC"
+      3: "#539ED7"
+      4: "#9EC9F0"
+      5: "#F3F3F3"
+      6: "#FFB68A"
+      7: "#EA7E3E"
+      8: "#C24D0E"
+      9: "#8D2700"
+    blueBrown:
+      1: "#004975"
+      2: "#1773AC"
+      3: "#539ED7"
+      4: "#9EC9F0"
+      5: "#F3F3F3"
+      6: "#D8C2AA"
+      7: "#B29675"
+      8: "#856D50"
+      9: "#574835"
+    blueGrey:
+      1: "#004975"
+      2: "#1773AC"
+      3: "#539ED7"
+      4: "#9EC9F0"
+      5: "#F3F3F3"
+      6: "#C5C5C5"
+      7: "#989898"
+      8: "#6E6E6E"
+      9: "#474747"
+    greenOrange:
+      1: "#004975"
+      2: "#1773AC"
+      3: "#539ED7"
+      4: "#9EC9F0"
+      5: "#F3F3F3"
+      6: "#FFB68A"
+      7: "#EA7E3E"
+      8: "#C24D0E"
+      9: "#8D2700"
+    greyRed:
+      1: "#474747"
+      2: "#6E6E6E"
+      3: "#989898"
+      4: "#C5C5C5"
+      5: "#F3F3F3"
+      6: "#FFB09E"
+      7: "#EF6F55"
+      8: "#C8301D"
+      9: "#8B0000"
+    brownPurple:
+      1: "#574835"
+      2: "#856D50"
+      3: "#B29675"
+      4: "#D8C2AA"
+      5: "#F3F3F3"
+      6: "#F1B1CF"
+      7: "#DA74A9"
+      8: "#B23C85"
+      9: "#7D0068"
+    blueYellow:
+      1: "#004975"
+      2: "#1773AC"
+      3: "#539ED7"
+      4: "#9EC9F0"
+      5: "#F3F3F3"
+      6: "#E3C657"
+      7: "#BC9B21"
+      8: "#937204"
+      9: "#6B4B00"
