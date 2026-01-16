@@ -23,6 +23,7 @@ const PREFIXES = [SOURCE_PREFIX, VISUALS_PREFIX]
  * plain HTML, CSS and JavaScript.
  *
  * @param {PurgeOptions} [options]
+ * @returns {import("vite").Plugin}
  */
 export function purgeInteractiveStylesCss(options = {}) {
   const { safelist = [] } = options
@@ -42,28 +43,6 @@ export function purgeInteractiveStylesCss(options = {}) {
         return
       }
 
-      // Scan JS and HTML chunks for CSS variable references.
-      // PurgeCSS doesn't detect variable usage in JavaScript, so we find them
-      // ourselves and add them to the safelist. CSS files are skipped - PurgeCSS
-      // handles variable references within CSS itself.
-      const usedVariables = new Set()
-      const variablePattern = new RegExp(
-        `--(${PREFIXES.join("|")})-[\\w-]+`,
-        "g",
-      )
-
-      for (const [fileName, item] of Object.entries(bundle)) {
-        if (fileName.endsWith(".map")) continue
-        if (fileName.endsWith(".css")) continue
-
-        const content = item.type === "chunk" ? item.code : item.source
-
-        if (content && typeof content === "string") {
-          const matches = content.match(variablePattern) || []
-          matches.forEach((v) => usedVariables.add(v))
-        }
-      }
-
       // Build regex patterns that match anything NOT starting with our prefixes.
       // This safelists all other classes/variables while allowing PurgeCSS to purge ours.
       const prefixPattern = PREFIXES.join("|")
@@ -74,12 +53,11 @@ export function purgeInteractiveStylesCss(options = {}) {
       // Skip vendor chunks (from node_modules) since they won't reference our styles.
       const contentFromBundle = Object.entries(bundle)
         .filter(([fileName, item]) => {
-          if (fileName.endsWith(".map")) return false
-
-          // Skip vendor chunks, ie. code from node_modules
+          // Skip vendor chunks, ie. code from node_modules, and source maps
           if (
-            item.type === "chunk" &&
-            item.moduleIds.every((id) => id.includes("node_modules"))
+            fileName.endsWith(".map") ||
+            (item.type === "chunk" &&
+              item.moduleIds.every((id) => id.includes("node_modules")))
           ) {
             return false
           }
@@ -94,6 +72,22 @@ export function purgeInteractiveStylesCss(options = {}) {
           raw: item.type === "chunk" ? item.code : item.source,
           extension: "html", // Treat as HTML so PurgeCSS extracts class names
         }))
+
+      // Scan contentFromBundle for CSS variable references.
+      // PurgeCSS doesn't detect variable usage in JavaScript, so we find them
+      // ourselves and add them to the safelist.
+      const usedVariables = new Set()
+      const variablePattern = new RegExp(
+        `--(${PREFIXES.join("|")})-[\\w-]+`,
+        "g",
+      )
+
+      for (const { raw } of contentFromBundle) {
+        if (typeof raw === "string") {
+          const matches = raw.match(variablePattern) || []
+          matches.forEach((v) => usedVariables.add(v))
+        }
+      }
 
       // Process each CSS asset
       for (const cssAsset of cssAssets) {

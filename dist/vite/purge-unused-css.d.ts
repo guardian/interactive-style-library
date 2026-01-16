@@ -16,13 +16,9 @@
  * plain HTML, CSS and JavaScript.
  *
  * @param {PurgeOptions} [options]
+ * @returns {import("vite").Plugin}
  */
-export function purgeInteractiveStylesCss(options?: PurgeOptions): {
-    name: string;
-    apply: string;
-    enforce: string;
-    generateBundle(_: any, bundle: any): Promise<void>;
-};
+export function purgeInteractiveStylesCss(options?: PurgeOptions): import("vite").Plugin;
 export type PurgeOptions = {
     /**
      * - Additional classes/variables to always keep

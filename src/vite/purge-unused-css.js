@@ -23,6 +23,7 @@ const PREFIXES = [SOURCE_PREFIX, VISUALS_PREFIX]
  * plain HTML, CSS and JavaScript.
  *
  * @param {PurgeOptions} [options]
+ * @returns {import("vite").Plugin}
  */
 export function purgeInteractiveStylesCss(options = {}) {
   const { safelist = [] } = options
