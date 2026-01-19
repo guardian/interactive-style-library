@@ -1,5 +1,6 @@
 import * as path from "path"
 import * as fs from "fs"
+import prettier from "prettier"
 
 /**
  * @param {string} [startDir]
@@ -86,4 +87,37 @@ export function getDistPath(relativePath) {
   }
 
   return fullPath
+}
+
+/**
+ * @param {string} percent
+ */
+export function percentToDecimal(percent) {
+  const number = parseInt(percent)
+
+  if (isNaN(number)) {
+    throw new Error(`could not parse percentage "${percent}"`)
+  }
+
+  return number / 100
+}
+
+/**
+ * @param {string} css
+ */
+export async function tidyCss(css) {
+  return prettier.format(css, { parser: "css" })
+}
+
+/**
+ * @param {string} css
+ */
+export function wrapDarkMode(css) {
+  return (
+    `@media (prefers-color-scheme: dark) {` +
+    `\n  :root:not([data-color-scheme="light"]) body {` +
+    `\n${css}` +
+    `\n  }` +
+    `\n}`
+  )
 }

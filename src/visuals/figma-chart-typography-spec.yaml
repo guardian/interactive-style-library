@@ -1,0 +1,80 @@
+# From https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=1102-324&t=zHhRwoBlW55q4XQl-0
+
+headline:
+  fontFamily: GH Guardian Headline
+  fontWeight: 500
+  size:
+    mobile: 20px
+    desktop: 20px
+  lineHeight:
+    mobile: 115%
+    desktop: 115%
+  color:
+    light: "#121212"
+    dark: "#DCDCDC"
+
+standfirst:
+  fontFamily: GuardianTextSans
+  fontWeight: 400
+  size:
+    mobile: 15px
+    desktop: 15px
+  lineHeight:
+    mobile: 130%
+    desktop: 130%
+  color:
+    light: "#121212"
+    dark: "#DCDCDC"
+
+legend:
+  fontFamily: GuardianTextSans
+  fontWeight: 400
+  size:
+    mobile: 13px
+    desktop: 13px
+  lineHeight:
+    mobile: 115%
+    desktop: 115%
+  color:
+    light: "#707070"
+    dark: "#C8C8C8"
+
+annotation:
+  fontFamily: GuardianTextSans
+  fontWeight: 400
+  size:
+    mobile: 13px
+    desktop: 13px
+  lineHeight:
+    mobile: 130%
+    desktop: 130%
+  color:
+    light: "#121212"
+    dark: "#DCDCDC"
+
+axisLabel:
+  fontFamily: GuardianTextSans
+  fontWeight: 700
+  size:
+    mobile: 13px
+    desktop: 13px
+  lineHeight:
+    mobile: 115%
+    desktop: 115%
+  color:
+    light: "#707070"
+    dark: "#C8C8C8"
+
+source:
+  fontFamily: GuardianTextSans
+  fontWeight: 700
+  size:
+    mobile: 12px
+    desktop: 12px
+  lineHeight:
+    mobile: 115%
+    desktop: 115%
+  color:
+    light: "#999999"
+    # TODO: is this mapping right? I can't find any reference in Figma...
+    dark: "#999999"

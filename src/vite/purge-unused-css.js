@@ -35,9 +35,13 @@ export function purgeInteractiveStylesCss(options = {}) {
 
     async generateBundle(_, bundle) {
       // Find all CSS assets in the bundle
-      const cssAssets = Object.values(bundle).filter(
-        (asset) => asset.type === "asset" && asset.fileName.endsWith(".css"),
-      )
+      const cssAssets =
+        /** @type {import("vite").Rollup.OutputAsset[]} */
+        (
+          Object.values(bundle).filter(
+            (asset) => asset.type === "asset" && asset.fileName.endsWith(".css"),
+          )
+        )
 
       if (cssAssets.length === 0) {
         return
@@ -69,7 +73,7 @@ export function purgeInteractiveStylesCss(options = {}) {
           )
         })
         .map(([_, item]) => ({
-          raw: item.type === "chunk" ? item.code : item.source,
+          raw: item.type === "chunk" ? item.code : String(item.source),
           extension: "html", // Treat as HTML so PurgeCSS extracts class names
         }))
 
@@ -93,11 +97,11 @@ export function purgeInteractiveStylesCss(options = {}) {
       for (const cssAsset of cssAssets) {
         const result = await new PurgeCSS().purge({
           content: contentFromBundle,
-          css: [{ raw: cssAsset.source }],
+          css: [{ raw: String(cssAsset.source) }],
           variables: true,
           safelist: {
             standard: [standardSafelist, ...safelist],
-            variables: [variablesSafelist, ...usedVariables, ...safelist],
+            variables: [variablesSafelist, ...Array.from(usedVariables), ...safelist],
           },
         })
 
