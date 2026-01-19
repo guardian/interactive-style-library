@@ -15,15 +15,23 @@ export function generate() {
   const scssEntries = sorted
     .map(([name, value]) => `\t${name}: ${value}px,`)
     .join("\n")
+
   const scss =
     `${makeGeneratedComment(import.meta.url)}` +
     `\n\n$breakpoints: (\n${scssEntries}\n);\n`
 
-  const distPath = getDistPath("source/breakpoints.scss")
-  fs.writeFileSync(distPath, scss)
+  const scssDistPath = getDistPath("source/breakpoints.scss")
+  fs.writeFileSync(scssDistPath, scss)
+
+  const js =
+    `${makeGeneratedComment(import.meta.url)}\n\n` +
+    `export const palette = /** @type {const} */ (${JSON.stringify(Object.fromEntries(sorted), null, 2)})\n`
+
+  const jsDistPath = getDistPath("source/breakpoints.js")
+  fs.writeFileSync(jsDistPath, js)
 
   return {
-    files: [distPath],
+    files: [scssDistPath, jsDistPath],
   }
 }
 
