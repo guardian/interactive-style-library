@@ -100,8 +100,10 @@ function generateLineClasses(lines) {
     css += `\n}`
 
     if (style.color) {
-      css +=
-        `\n` + wrapDarkMode(`${className} {\nstroke: ${style.color.dark};\n}`)
+      css += wrapDarkMode(
+        `${className} {\nstroke: ${style.color.dark};\n}`,
+        className,
+      )
     }
 
     return css
@@ -126,7 +128,7 @@ function generateLineMixins(lines) {
     if (style.color) {
       scss +=
         `\nstroke: ${style.color.light};\n\n` +
-        wrapDarkMode(` stroke: ${style.color.dark};`)
+        wrapDarkMode(` stroke: ${style.color.dark};`, "&")
     }
 
     scss += `\n}`
@@ -205,7 +207,8 @@ function generateTypographyClasses(styles) {
     }
 
     css +=
-      `\n\n` + wrapDarkMode(`${className} {\ncolor: ${style.colorDark};\n}`)
+      `\n\n` +
+      wrapDarkMode(`${className} {\ncolor: ${style.colorDark};\n}`, className)
 
     return css
   })
@@ -246,7 +249,7 @@ function generateTypograhpyMixins(styles) {
 
     scss +=
       `\n\n` +
-      wrapDarkMode(`color: ${style.colorDark};`).replace(/\n/g, "\n") +
+      wrapDarkMode(`color: ${style.colorDark};`, "&").replace(/\n/g, "\n") +
       `\n}`
 
     return scss

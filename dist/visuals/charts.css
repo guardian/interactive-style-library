@@ -11,7 +11,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-headline {
     .vis-chart-headline {
       color: #dcdcdc;
     }
@@ -29,7 +29,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-standfirst {
     .vis-chart-standfirst {
       color: #dcdcdc;
     }
@@ -47,7 +47,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-legend {
     .vis-chart-legend {
       color: #c8c8c8;
     }
@@ -65,7 +65,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-annotation {
     .vis-chart-annotation {
       color: #dcdcdc;
     }
@@ -83,7 +83,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-axisLabel {
     .vis-chart-axisLabel {
       color: #c8c8c8;
     }
@@ -101,7 +101,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-source {
     .vis-chart-source {
       color: #999999;
     }
@@ -112,7 +112,7 @@
   stroke: #707070;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-x-tick {
     .vis-chart-x-tick {
       stroke: #c8c8c8;
     }
@@ -124,7 +124,7 @@
   stroke: #121212;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-x {
     .vis-chart-x {
       stroke: #dcdcdc;
     }
@@ -136,7 +136,7 @@
   stroke: #bababa;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-color-scheme="light"]) body {
+  :root:not([data-color-scheme="light"]) .vis-chart-guideline {
     .vis-chart-guideline {
       stroke: #707070;
     }

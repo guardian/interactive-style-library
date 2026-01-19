@@ -17,7 +17,7 @@
   color: #121212;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       color: #dcdcdc;
     }
   }
@@ -40,7 +40,7 @@
   color: #121212;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       color: #dcdcdc;
     }
   }
@@ -63,7 +63,7 @@
   color: #707070;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       color: #c8c8c8;
     }
   }
@@ -86,7 +86,7 @@
   color: #121212;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       color: #dcdcdc;
     }
   }
@@ -109,7 +109,7 @@
   color: #707070;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       color: #c8c8c8;
     }
   }
@@ -132,7 +132,7 @@
   color: #999999;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       color: #999999;
     }
   }
@@ -146,7 +146,7 @@
   stroke: #707070;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       stroke: #c8c8c8;
     }
   }
@@ -161,7 +161,7 @@
   stroke: #121212;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       stroke: #dcdcdc;
     }
   }
@@ -176,7 +176,7 @@
   stroke: #bababa;
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-color-scheme="light"]) body {
+    :root:not([data-color-scheme="light"]) & {
       stroke: #707070;
     }
   }

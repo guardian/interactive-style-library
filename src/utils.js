@@ -126,10 +126,10 @@ export async function tidyCss(css) {
 /**
  * @param {string} css
  */
-export function wrapDarkMode(css) {
+export function wrapDarkMode(css, selector) {
   return (
     `@media (prefers-color-scheme: dark) {` +
-    `\n  :root:not([data-color-scheme="light"]) body {` +
+    `\n  :root:not([data-color-scheme="light"]) ${selector} {` +
     `\n${css}` +
     `\n  }` +
     `\n}`
