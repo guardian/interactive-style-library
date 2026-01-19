@@ -1,6 +1,7 @@
 import * as path from "path"
 import * as fs from "fs"
 import prettier from "prettier"
+import { pxToRem as sourcePxToRem } from "@guardian/source/foundations"
 
 /**
  * @param {string} [startDir]
@@ -100,6 +101,19 @@ export function percentToDecimal(percent) {
   }
 
   return number / 100
+}
+
+/**
+ * @param {string} pxString eg. "16px"
+ */
+export function pxToRem(pxString) {
+  const numPx = parseInt(pxString)
+
+  if (isNaN(numPx)) {
+    throw new Error(`could not parse percentage "${pxString}"`)
+  }
+
+  return sourcePxToRem(numPx)
 }
 
 /**

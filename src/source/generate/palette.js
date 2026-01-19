@@ -5,7 +5,7 @@ import {
   logGeneratedFiles,
   makeGeneratedComment,
 } from "../../utils.js"
-import { loadContext, getPathForGenerated } from "../utils.js"
+import { loadContext, getPathForGenerated } from "../common.js"
 import { SOURCE_PREFIX } from "../constants.js"
 
 export function generate() {

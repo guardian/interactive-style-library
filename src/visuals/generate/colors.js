@@ -3,15 +3,16 @@ import { parse } from "yaml"
 import { fileURLToPath } from "url"
 import path from "path"
 import { VISUALS_PREFIX } from "../constants.js"
-import { splitCamelHues } from "../utils.js"
+import { splitCamelHues } from "../common.js"
 import { writeFileSync } from "fs"
 import {
   camelToKebab,
   getDistPath,
   logGeneratedFiles,
   makeGeneratedComment,
+  tidyCss,
 } from "../../utils.js"
-import { formatCssVar } from "../utils.js"
+import { formatCssVar } from "../common.js"
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url))
 const VAR_PREFIX = `--${VISUALS_PREFIX}-`
@@ -41,16 +42,33 @@ function processNews(news, mode) {
 
   if (modeData) {
     if (modeData.main) {
-      vars.push(...varsFromEntries(modeData.main, (c) => `${VAR_PREFIX}news-${c}`))
+      vars.push(
+        ...varsFromEntries(modeData.main, (c) => `${VAR_PREFIX}news-${c}`),
+      )
     }
     if (modeData.shades) {
-      vars.push(...varsFromEntries(modeData.shades, (c) => `${VAR_PREFIX}news-${c}-shade`))
+      vars.push(
+        ...varsFromEntries(
+          modeData.shades,
+          (c) => `${VAR_PREFIX}news-${c}-shade`,
+        ),
+      )
     }
     if (modeData.tints) {
-      vars.push(...varsFromEntries(modeData.tints, (c) => `${VAR_PREFIX}news-${c}-tint`))
+      vars.push(
+        ...varsFromEntries(
+          modeData.tints,
+          (c) => `${VAR_PREFIX}news-${c}-tint`,
+        ),
+      )
     }
     if (modeData.chart) {
-      vars.push(...varsFromEntries(modeData.chart, (n) => `${VAR_PREFIX}chart-${camelToKebab(n)}`))
+      vars.push(
+        ...varsFromEntries(
+          modeData.chart,
+          (n) => `${VAR_PREFIX}chart-${camelToKebab(n)}`,
+        ),
+      )
     }
   }
 
@@ -58,16 +76,33 @@ function processNews(news, mode) {
     const analysis = news.analysis
 
     if (analysis.main) {
-      vars.push(...varsFromEntries(analysis.main, (c) => `${VAR_PREFIX}analysis-${c}`))
+      vars.push(
+        ...varsFromEntries(analysis.main, (c) => `${VAR_PREFIX}analysis-${c}`),
+      )
     }
     if (analysis.shades) {
-      vars.push(...varsFromEntries(analysis.shades, (c) => `${VAR_PREFIX}analysis-${c}-shade`))
+      vars.push(
+        ...varsFromEntries(
+          analysis.shades,
+          (c) => `${VAR_PREFIX}analysis-${c}-shade`,
+        ),
+      )
     }
     if (analysis.tints) {
-      vars.push(...varsFromEntries(analysis.tints, (c) => `${VAR_PREFIX}analysis-${c}-tint`))
+      vars.push(
+        ...varsFromEntries(
+          analysis.tints,
+          (c) => `${VAR_PREFIX}analysis-${c}-tint`,
+        ),
+      )
     }
     if (analysis.chart) {
-      vars.push(...varsFromEntries(analysis.chart, (n) => `${VAR_PREFIX}analysis-chart-${camelToKebab(n)}`))
+      vars.push(
+        ...varsFromEntries(
+          analysis.chart,
+          (n) => `${VAR_PREFIX}analysis-chart-${camelToKebab(n)}`,
+        ),
+      )
     }
   }
 
@@ -81,16 +116,36 @@ function processCategorical(categorical, mode) {
   if (!modeData) return vars
 
   if (modeData.gender) {
-    vars.push(...varsFromEntries(modeData.gender, (n) => `${VAR_PREFIX}gender-${camelToKebab(n)}`))
+    vars.push(
+      ...varsFromEntries(
+        modeData.gender,
+        (n) => `${VAR_PREFIX}gender-${camelToKebab(n)}`,
+      ),
+    )
   }
   if (modeData.sentiment) {
-    vars.push(...varsFromEntries(modeData.sentiment, (n) => `${VAR_PREFIX}sentiment-${camelToKebab(n)}`))
+    vars.push(
+      ...varsFromEntries(
+        modeData.sentiment,
+        (n) => `${VAR_PREFIX}sentiment-${camelToKebab(n)}`,
+      ),
+    )
   }
   if (modeData.ukParties) {
-    vars.push(...varsFromEntries(modeData.ukParties, (p) => `${VAR_PREFIX}party-uk-${p.toLowerCase()}`))
+    vars.push(
+      ...varsFromEntries(
+        modeData.ukParties,
+        (p) => `${VAR_PREFIX}party-uk-${p.toLowerCase()}`,
+      ),
+    )
   }
   if (modeData.usParties) {
-    vars.push(...varsFromEntries(modeData.usParties, (p) => `${VAR_PREFIX}party-us-${p.toLowerCase()}`))
+    vars.push(
+      ...varsFromEntries(
+        modeData.usParties,
+        (p) => `${VAR_PREFIX}party-us-${p.toLowerCase()}`,
+      ),
+    )
   }
 
   return vars
@@ -137,12 +192,13 @@ function processDiverging(diverging) {
   return vars
 }
 
-function makeCss(vars) {
+async function makeCss(vars) {
   const formatted = vars.map(formatCssVar)
-  return `${makeGeneratedComment(import.meta.url)}\n\n:root {\n  ${formatted.join("\n  ")}\n}\n`
+  let css = `${makeGeneratedComment(import.meta.url)}\n\n:root {\n  ${formatted.join("\n  ")}\n}\n`
+  return await tidyCss(css)
 }
 
-function makeCombinedCss(lightVars, darkVars) {
+async function makeCombinedCss(lightVars, darkVars) {
   const lightMap = new Map(lightVars.map((v) => [v.key, v.value]))
 
   // Find vars that are different in dark mode
@@ -154,10 +210,12 @@ function makeCombinedCss(lightVars, darkVars) {
   const lightBlock = `:root {\n  ${lightFormatted.join("\n  ")}\n}`
   const darkBlock = `@media (prefers-color-scheme: dark) {\n  :root:not([data-color-scheme="light"]) {\n    ${darkFormatted.join("\n    ")}\n  }\n}`
 
-  return `${makeGeneratedComment(import.meta.url)}\n\n${lightBlock}\n\n${darkBlock}\n`
+  let css = `${makeGeneratedComment(import.meta.url)}\n\n${lightBlock}\n\n${darkBlock}\n`
+
+  return await tidyCss(css)
 }
 
-export function generate() {
+export async function generate() {
   // TODO: ideally we should fetch this from something like Figma
   const yamlPath = path.join(__dirname, "../figma-color-spec.yaml")
   const yamlContent = readFileSync(yamlPath, "utf8")
@@ -187,14 +245,16 @@ export function generate() {
   const darkPath = getDistPath("visuals/colors-dark.css")
   const combinedPath = getDistPath("visuals/colors.css")
 
-  writeFileSync(lightPath, makeCss(lightVars))
-  writeFileSync(darkPath, makeCss(darkVars))
-  writeFileSync(combinedPath, makeCombinedCss(lightVars, darkVars))
+  writeFileSync(lightPath, await makeCss(lightVars))
+  writeFileSync(darkPath, await makeCss(darkVars))
+  writeFileSync(combinedPath, await makeCombinedCss(lightVars, darkVars))
 
   return {
     files: [lightPath, darkPath, combinedPath],
   }
 }
 
-const { files } = generate()
-logGeneratedFiles(import.meta.filename, files)
+;(async () => {
+  const { files } = await generate()
+  logGeneratedFiles(import.meta.filename, files)
+})()

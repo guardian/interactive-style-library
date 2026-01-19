@@ -39,7 +39,8 @@ export function purgeInteractiveStylesCss(options = {}) {
         /** @type {import("vite").Rollup.OutputAsset[]} */
         (
           Object.values(bundle).filter(
-            (asset) => asset.type === "asset" && asset.fileName.endsWith(".css"),
+            (asset) =>
+              asset.type === "asset" && asset.fileName.endsWith(".css"),
           )
         )
 
@@ -101,7 +102,11 @@ export function purgeInteractiveStylesCss(options = {}) {
           variables: true,
           safelist: {
             standard: [standardSafelist, ...safelist],
-            variables: [variablesSafelist, ...Array.from(usedVariables), ...safelist],
+            variables: [
+              variablesSafelist,
+              ...Array.from(usedVariables),
+              ...safelist,
+            ],
           },
         })
 
