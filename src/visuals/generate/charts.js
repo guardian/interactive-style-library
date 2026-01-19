@@ -185,7 +185,7 @@ function getDesktopOverrides(style) {
 
 function generateTypographyClasses(styles) {
   return styles.map((style) => {
-    const className = `.${CHARTS_PREFIX}-${style.name}`
+    const className = `.${CHARTS_PREFIX}-${camelToKebab(style.name)}`
 
     let css =
       `${className} {` +
@@ -216,7 +216,7 @@ function generateTypographyClasses(styles) {
 
 function generateTypograhpyMixins(styles) {
   return styles.map((style) => {
-    const mixinName = `${CHARTS_PREFIX}-${style.name}`
+    const mixinName = `${CHARTS_PREFIX}-${camelToKebab(style.name)}`
 
     // Build the CSS properties for the SassDoc block
     const docProps = [
