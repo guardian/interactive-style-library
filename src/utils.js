@@ -120,7 +120,7 @@ export function pxToRem(pxString) {
  * @param {string} css
  */
 export async function tidyCss(css) {
-  return prettier.format(css, { parser: "css" })
+  return prettier.format(css, { parser: "scss" })
 }
 
 /**

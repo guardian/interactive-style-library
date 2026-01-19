@@ -112,7 +112,16 @@ function generateLineMixins(lines) {
   return Object.entries(lines).map(([name, style]) => {
     const mixinName = `${CHARTS_PREFIX}-${formatStyleName(name)}`
 
-    let scss = `@mixin ${mixinName} {\n stroke-width: ${style.strokeWidth};`
+    // Build the CSS properties for the SassDoc block
+    const docProps = [`stroke-width: ${style.strokeWidth};`]
+    if (style.color) {
+      docProps.push(
+        `stroke: ${style.color.light}; /* Dark mode => ${style.color.dark} */`,
+      )
+    }
+    const sassDoc = `/// \`\`\`scss\n${docProps.map((p) => `/// ${p}`).join("\n")}\n/// \`\`\``
+
+    let scss = `${sassDoc}\n@mixin ${mixinName} {\n stroke-width: ${style.strokeWidth};`
 
     if (style.color) {
       scss +=
@@ -206,8 +215,20 @@ function generateTypograhpyMixins(styles) {
   return styles.map((style) => {
     const mixinName = `${CHARTS_PREFIX}-${style.name}`
 
+    // Build the CSS properties for the SassDoc block
+    const docProps = [
+      `font-family: ${style.fontFamily};`,
+      `font-weight: ${style.fontWeight};`,
+      `font-size: ${pxToRem(style.sizeMobile)};`,
+      `line-height: ${style.lineHeightMobile};`,
+      `color: ${style.colorLight}; /* Dark mode => ${style.colorDark} */`,
+    ]
+
+    // Comment code block as `sass` so we get proper syntax highlighting of CSS rules
+    const sassDoc = `/// \`\`\`sass\n${docProps.map((p) => `/// ${p}`).join("\n")}\n/// \`\`\``
+
     let scss =
-      `@mixin ${mixinName} {` +
+      `${sassDoc}\n@mixin ${mixinName} {` +
       `\nfont-family: ${style.fontFamily};` +
       `\nfont-weight: ${style.fontWeight};` +
       `\nfont-size: ${pxToRem(style.sizeMobile)};` +
