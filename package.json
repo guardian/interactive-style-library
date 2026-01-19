@@ -7,6 +7,14 @@
       "types": "./dist/vite/purge-unused-css.d.ts",
       "default": "./dist/vite/purge-unused-css.js"
     },
+    "./visuals/colors": {
+      "types": "./dist/visuals/colors.d.ts",
+      "default": "./dist/visuals/colors.js"
+    },
+    "./source/palette": {
+      "types": "./dist/source/palette.d.ts",
+      "default": "./dist/source/palette.js"
+    },
     "./*": "./dist/*",
     "./source/constants.js": null,
     "./visuals/constants.js": null

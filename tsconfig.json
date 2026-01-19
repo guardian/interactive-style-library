@@ -1,16 +1,13 @@
 {
+  // tsconfig for development purposes, to make your IDE happy
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "lib": ["ES2020"],
-    "outDir": "./dist",
     "skipLibCheck": true
   },
   "include": [
-    "src/vite/**/*.js",
-    "src/source/constants.js",
-    "src/visuals/constants.js"
+    "src/**/*.js",
   ]
 }

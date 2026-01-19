@@ -216,7 +216,6 @@ async function makeCombinedCss(lightVars, darkVars) {
 }
 
 export async function generate() {
-  // TODO: ideally we should fetch this from something like Figma
   const yamlPath = path.join(__dirname, "../figma-color-spec.yaml")
   const yamlContent = readFileSync(yamlPath, "utf8")
   const spec = parse(yamlContent)

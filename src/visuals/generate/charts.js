@@ -84,8 +84,6 @@ export function parseSpec() {
     })),
   }
 
-  console.log(styles)
-
   return styles
 }
 

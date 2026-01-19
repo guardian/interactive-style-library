@@ -1,0 +1,13 @@
+{
+  // tsconfig for generating d.ts files for files in dist
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./dist",
+    "emitDeclarationOnly": true,
+  },
+  "include": [
+    "dist/**/*.js"
+  ],
+  "exclude": []
+}

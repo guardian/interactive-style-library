@@ -25,11 +25,19 @@ export function generate() {
     `${makeGeneratedComment(import.meta.url)}` +
     `\n\n:root {\n${cssVars.join("\n")}\n}\n`
 
-  const distPath = getDistPath("source/palette.css")
-  fs.writeFileSync(distPath, css)
+  const cssDistPath = getDistPath("source/palette.css")
+  fs.writeFileSync(cssDistPath, css)
+
+  // Generate palette JS with const type assertion for literal types
+  const js =
+    `${makeGeneratedComment(import.meta.url)}\n\n` +
+    `export const palette = /** @type {const} */ (${JSON.stringify(palette, null, 2)})\n`
+
+  const jsDistPath = getDistPath("source/palette.js")
+  fs.writeFileSync(jsDistPath, js)
 
   return {
-    files: [distPath],
+    files: [cssDistPath, jsDistPath],
   }
 }
 
