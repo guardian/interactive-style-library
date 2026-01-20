@@ -118,7 +118,6 @@
     }
   }
 }
-,
 .vis-chart-x {
   stroke-width: 1.2px;
   stroke: #121212;
@@ -130,7 +129,6 @@
     }
   }
 }
-,
 .vis-chart-guideline {
   stroke-width: 0.5px;
   stroke: #bababa;
@@ -142,7 +140,6 @@
     }
   }
 }
-,
 .vis-chart-plot {
   stroke-width: 2px;
 }

@@ -267,7 +267,7 @@ export async function generate() {
 
   let css =
     `${generatedComment}\n\n${cssClasses.join("\n\n")}\n` +
-    `${lineClasses}\n` +
+    `${lineClasses.join("\n")}\n` +
     `${spacingVars}\n`
 
   css = await tidyCss(css)
