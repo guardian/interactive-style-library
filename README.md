@@ -40,11 +40,7 @@ Then style your content like so.
 </p>
 ```
 
-Read [**USAGE.md**](./docs/USAGE.md) for detailed installation and usage info, including
-Svelte setup, and IDE autocompletion of classes, variables and mixins.
-
-Read [**RECIPES.md**](./docs/RECIPES.md) for ready-to-use code snippets using Source and Visuals
-styles.
+For more detailed installation and setup instructions, read [**USAGE.md**](./docs/USAGE.md).
 
 ## What's in the box
 
@@ -153,6 +149,54 @@ The interactive-style-library package provides Source and Visuals styles in a va
 
 📚 [`all.scss`](./dist/visuals/all.scss)
 
+</td>
+</tr>
+</table>
+
+## More information
+
+Find more information and instructions in this project's documentation.
+
+<table>
+<tr>
+<td>
+
+[**USAGE.md**](./docs/USAGE.md)
+
+</td>
+<td>
+Full usage instructions, how to import styles into your project (including Svelte and React)
+
+<tr>
+<td>
+
+[**RECIPES.md**](./docs/RECIPES.md)
+
+</td>
+<td>
+Ready-to-use examples of HTML, SCSS, JavaScript, Svelte, etc. that use these styles
+</td>
+</tr>
+
+<tr>
+<td>
+
+[**IDE-SETUP.md**](./docs/IDE-SETUP.md)
+
+</td>
+<td>
+How to set up your IDE so it auto-completes CSS classes and variables, and SCSS mixins
+</td>
+</tr>
+
+<tr>
+<td>
+
+[**ALL-FILES.md**](./docs/ALL-FILES.md)
+
+</td>
+<td>
+A full list of all files provided by this package and what they do.
 </td>
 </tr>
 </table>
