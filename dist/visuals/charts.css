@@ -12,9 +12,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-headline {
-    .vis-chart-headline {
-      color: #dcdcdc;
-    }
+    color: #dcdcdc;
   }
 }
 
@@ -30,9 +28,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-standfirst {
-    .vis-chart-standfirst {
-      color: #dcdcdc;
-    }
+    color: #dcdcdc;
   }
 }
 
@@ -48,9 +44,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-legend {
-    .vis-chart-legend {
-      color: #c8c8c8;
-    }
+    color: #c8c8c8;
   }
 }
 
@@ -66,9 +60,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-annotation {
-    .vis-chart-annotation {
-      color: #dcdcdc;
-    }
+    color: #dcdcdc;
   }
 }
 
@@ -84,9 +76,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-axis-label {
-    .vis-chart-axis-label {
-      color: #c8c8c8;
-    }
+    color: #c8c8c8;
   }
 }
 
@@ -102,9 +92,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-source {
-    .vis-chart-source {
-      color: #999999;
-    }
+    color: #999999;
   }
 }
 .vis-chart-x-tick {
@@ -113,9 +101,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-x-tick {
-    .vis-chart-x-tick {
-      stroke: #c8c8c8;
-    }
+    stroke: #c8c8c8;
   }
 }
 .vis-chart-x {
@@ -124,9 +110,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-x {
-    .vis-chart-x {
-      stroke: #dcdcdc;
-    }
+    stroke: #dcdcdc;
   }
 }
 .vis-chart-guideline {
@@ -135,9 +119,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-scheme="light"]) .vis-chart-guideline {
-    .vis-chart-guideline {
-      stroke: #707070;
-    }
+    stroke: #707070;
   }
 }
 .vis-chart-plot {

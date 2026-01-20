@@ -100,10 +100,7 @@ function generateLineClasses(lines) {
     css += `\n}`
 
     if (style.color) {
-      css += wrapDarkMode(
-        `${className} {\nstroke: ${style.color.dark};\n}`,
-        className,
-      )
+      css += wrapDarkMode(`stroke: ${style.color.dark};`, className)
     }
 
     return css
@@ -206,9 +203,7 @@ function generateTypographyClasses(styles) {
         `\n}\n}`
     }
 
-    css +=
-      `\n\n` +
-      wrapDarkMode(`${className} {\ncolor: ${style.colorDark};\n}`, className)
+    css += `\n\n` + wrapDarkMode(`color: ${style.colorDark};`, className)
 
     return css
   })
