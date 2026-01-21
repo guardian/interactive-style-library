@@ -125,11 +125,12 @@ export async function tidyCss(css) {
 
 /**
  * @param {string} css
+ * @param {string} selector - Can be comma-separated, e.g. ".foo, .bar"
  */
 export function wrapDarkMode(css, selector) {
   return (
     `@media (prefers-color-scheme: dark) {` +
-    `\n :root:not([data-color-scheme="light"]) ${selector} {` +
+    `\n :root:not([data-color-scheme="light"]) :is(${selector}) {` +
     `\n  ${css}` +
     `\n }` +
     `\n}`

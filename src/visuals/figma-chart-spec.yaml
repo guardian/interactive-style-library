@@ -13,6 +13,8 @@ typography:
     color:
       light: "#121212"
       dark: "#DCDCDC"
+    marginBottom: 8px
+    marginTop: 8px
 
   standfirst:
     fontFamily: GuardianTextSans
@@ -26,6 +28,8 @@ typography:
     color:
       light: "#121212"
       dark: "#DCDCDC"
+    marginBottom: 24px
+    marginTop: 8px
 
   legend:
     fontFamily: GuardianTextSans
@@ -39,6 +43,8 @@ typography:
     color:
       light: "#707070"
       dark: "#C8C8C8"
+    marginTop: 24px
+    marginBottom: 14px
 
   annotation:
     fontFamily: GuardianTextSans
@@ -52,10 +58,12 @@ typography:
     color:
       light: "#121212"
       dark: "#DCDCDC"
+    marginLeft: 4px
+    marginRight: 4px
 
   axisLabel:
     fontFamily: GuardianTextSans
-    fontWeight: 700
+    fontWeight: 400
     size:
       mobile: 13px
       desktop: 13px
@@ -65,10 +73,11 @@ typography:
     color:
       light: "#707070"
       dark: "#C8C8C8"
+    marginBottom: 4px
 
   source:
     fontFamily: GuardianTextSans
-    fontWeight: 700
+    fontWeight: 400
     size:
       mobile: 12px
       desktop: 12px
@@ -79,6 +88,24 @@ typography:
       light: "#999999"
       # TODO: is this mapping right? I can't find any reference in Figma...
       dark: "#999999"
+    marginTop: 14px
+
+structure:
+  legendItem:
+    display: flex
+    flexDirection: row
+    alignItems: center
+    gap: 4px
+
+  legendList:
+    display: flex
+    flexDirection: row
+    flexWrap: wrap
+    gap: 14px
+
+  legendPatch:
+    height: 10px
+    width: 10px
 
 lines:
   xAxisTick:
@@ -101,23 +128,33 @@ lines:
 
   dataLine:
     strokeWidth: 2px
+    rounded: true
 
 spacing:
-  yAxisLabelPadding: 4px
-  xAxisLabelPadding: 4px
-
+  axisLabelMargin: 4px
   xAxisTickHeight: 5px
 
-  dataLinePaddingLeft:
+  plotMarginLeft:
     desktop: 40px
     mobile: 20px
 
-  dataLinePaddingRight:
+  plotMarginRight:
     desktop: 20px
     mobile: 10px
 
-  legendSpacing: 14px
-  legendLabelIconSpacing: 4px
+  legendGap: 14px
+  legendLabelIconGap: 4px
 
-  legendPaddingTop: 24px
-  legendPaddingBottom: 14px
+  legendMarginTop: 24px
+  legendMarginBottom: 14px
+
+  chartMarginTop: 28px
+  chartMarginBottom: 28px
+
+  plotWidth:
+    desktop: 560px
+    mobile: 260px
+
+  plotHeight:
+    desktop: 270px
+    mobile: 270px

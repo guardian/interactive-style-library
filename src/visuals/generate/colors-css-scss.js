@@ -11,7 +11,6 @@ import {
   logGeneratedFiles,
   makeGeneratedComment,
   tidyCss,
-  wrapDarkMode,
 } from "../../utils.js"
 import { formatCssVar } from "../common.js"
 
@@ -209,7 +208,11 @@ async function makeCombinedCss(lightVars, darkVars) {
   const darkFormatted = darkOnlyVars.map(formatCssVar)
 
   const lightBlock = `:root {\n  ${lightFormatted.join("\n  ")}\n}`
-  const darkBlock = wrapDarkMode(darkFormatted.join("\n "), "")
+  const darkBlock =
+    `@media (prefers-color-scheme: dark) {\n` +
+    `  :root:not([data-color-scheme="light"]) {\n` +
+    `    ${darkFormatted.join("\n    ")}\n` +
+    `  }\n}`
 
   let css = `${makeGeneratedComment(import.meta.url)}\n\n${lightBlock}\n\n${darkBlock}\n`
 

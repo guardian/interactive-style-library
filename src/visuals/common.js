@@ -2,6 +2,7 @@ import {
   headlineBold14Object,
   textSans12Object,
 } from "@guardian/source/foundations"
+import { camelToKebab } from "../utils.js"
 
 /**
  * @param {string} figmaFontFamily
@@ -25,4 +26,31 @@ export function splitCamelHues(str) {
 
 export function formatCssVar({ key, value }) {
   return `${key}: ${value};`
+}
+
+const chartNameMap = {
+  // line styles
+  xAxisTick: "tick",
+  horizontalGuideline: "guideline",
+  dataLine: "linePlot",
+
+  // spacing
+  xAxisTickHeight: "axisTickHeight",
+}
+
+/**
+ * Format a YAML chart style name for output.
+ *
+ * @param {string} yamlName - The name from the YAML spec
+ * @param {"kebab" | "camel"} casing - Output casing format
+ * @returns {string}
+ */
+export function formatChartName(yamlName, casing = "kebab") {
+  const outputName = chartNameMap[yamlName] ?? yamlName
+
+  if (casing === "kebab") {
+    return camelToKebab(outputName)
+  }
+
+  return outputName
 }

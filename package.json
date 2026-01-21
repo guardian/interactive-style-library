@@ -11,13 +11,16 @@
       "types": "./dist/visuals/colors.d.ts",
       "default": "./dist/visuals/colors.js"
     },
+    "./visuals/charts": {
+      "types": "./dist/visuals/charts.d.ts",
+      "default": "./dist/visuals/charts.js"
+    },
     "./source/palette": {
       "types": "./dist/source/palette.d.ts",
       "default": "./dist/source/palette.js"
     },
     "./*": "./dist/*",
-    "./source/constants.js": null,
-    "./visuals/constants.js": null
+    "./constants.js": null
   },
   "files": [
     "dist"
