@@ -156,6 +156,25 @@ The interactive-style-library package provides Source and Visuals styles in a va
 </tr>
 </table>
 
+## But why?
+
+The Source design system provides design tokens as an NPM package ([`@guardian/source`](https://github.com/guardian/csnx/tree/main/libs/%40guardian/source)), but these tokens are mostly designed to work with `@emotion/react`, a CSS-in-JS framework for React.
+
+For projects that don't use React, these tokens are not very accessible. So this package re-exports
+these tokens as CSS classes and variables, SCSS mixins, and in other forms (including some of the
+original JS tokens for convenience).
+
+While this work could have been done in `@guardian/source` itself (we tried!), keeping this code in
+a separate repo gives us the freedom to include documentation and utilities specific to
+interactives' developers workflow.
+
+We can also include styles outside of Source: like the Visuals team's design tokens!
+
+> [!NOTE]
+> The [Design Systems team](https://chat.google.com/room/AAQABZY0BtU?cls=7) is working on a project
+> to overhaul the Guardian's design tokens solution, which when ready, will likely succeed some or
+> all of this work. Stay tuned!
+
 ## More information
 
 Find more information and instructions in this project's documentation.
