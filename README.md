@@ -6,6 +6,9 @@ Just `@import "interactive-style-library/source/all.scss"` and go.
 
 Files are generated directly from [@guardian/source](https://github.com/guardian/csnx/tree/main/libs/%40guardian/source) and [Visuals](https://www.figma.com/design/lQ8KHxsb8xIJaMujuJV9dr/Colour-guide-2025?node-id=0-1&p=f&t=0ThLMx10HCgM8IMZ-0) design tokens.
 
+> Looking for styles for buttons, icons, and other brand components?
+> Find them in [interactive-source-components](https://github.com/guardian/interactive-source-components/blob/main/README.md).
+
 ## How to use
 
 First install the package directly from GitHub (in time we'll publish it to NPM under the `@guardian` scope).
@@ -26,7 +29,7 @@ imports into your main SCSS file.
 Then style your content like so.
 
 ```html
-<h2 class="src-headline-medium-34" style="color: var(--src-brand--400)">
+<h2 class="src-headline-medium-34" style="color: var(--src-brand-400)">
   Chip wreck! Thousands of chips wash ashore on beach
 </h2>
 
