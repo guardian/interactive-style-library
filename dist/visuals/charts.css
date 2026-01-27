@@ -225,10 +225,28 @@
 
 .vis-chart .vis-chart-legend-list,
 .vis-chart-legend-list {
+  font-family:
+    GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
+    Arial, "Lucida Grande", sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1.15;
+  color: #707070;
+  fill: #707070;
+  margin-top: 24px;
+  margin-bottom: 14px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-scheme="light"])
+    :is(.vis-chart .vis-chart-legend-list, .vis-chart-legend-list) {
+    color: #c8c8c8;
+    fill: #c8c8c8;
+  }
 }
 
 .vis-chart .vis-chart-legend-patch,

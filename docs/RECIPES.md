@@ -91,12 +91,12 @@ rendered charts below.
   <h2 class="vis-chart-headline">Big transfer window spending</h2>
   <p class="vis-chart-standfirst">Transfer window spend (in millions of £) by top 3 UK football clubs</p>
 
-  <ul class="vis-chart-legend vis-chart-legend-list">
+  <ul class="vis-chart-legend-list">
     {#each teams as team}
-      <div class="vis-chart-legend-item">
-        <div data-team={team} class="vis-chart-legend-patch"></div>
-        <li>{team}</li>
-      </div>
+      <li class="vis-chart-legend-item">
+        <span data-team={team} class="vis-chart-legend-patch"></span>
+        {team}
+      </li>
     {/each}
   </ul>
 

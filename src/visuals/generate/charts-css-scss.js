@@ -179,13 +179,21 @@ function generateTypographyStyles(styles) {
   return results
 }
 
-function generateStructureStyles(structure) {
+function generateStructureStyles(structure, typography) {
   return Object.entries(structure).map(([name, props]) => {
     const styleName = `${CHARTS_PREFIX}-${camelToKebab(name)}`
     const className = `.${styleName}`
     const selector = `${WRAPPER_CLASS} ${className}, ${className}`
 
-    const writer = style().props(props)
+    let writer
+
+    // legendList should include legend typography styles
+    if (name === "legendList") {
+      const legendTypo = typography.find((t) => t.name === "legend")
+      writer = createTypographyWriter(legendTypo).props(props)
+    } else {
+      writer = style().props(props)
+    }
 
     return {
       css: writer.buildCss(selector),
@@ -201,7 +209,7 @@ export async function generate() {
 
   const typographyStyles = generateTypographyStyles(spec.typography)
   const lineStyles = generateLineStyles(spec.lines)
-  const structureStyles = generateStructureStyles(spec.structure)
+  const structureStyles = generateStructureStyles(spec.structure, spec.typography)
   const spacingVars = generateSpacingVars(spec.spacing)
 
   let cssOutput =
