@@ -1,3 +1,30 @@
+<table>
+<tr>
+<td>
+
+<img width="440" src="./images/autocompletion-demo-1.jpg">
+
+</td>
+<td>
+
+<img width="440" src="./images/autocompletion-demo-2.jpg">
+
+</td>
+</tr>
+<tr>
+<td>
+
+<img width="440" src="./images/autocompletion-demo-3.jpg">
+
+</td>
+<td>
+
+<img width="440" src="./images/autocompletion-demo-4.jpg">
+
+</td>
+</tr>
+</table>
+
 ## IDE autocompletion
 
 > [!NOTE]

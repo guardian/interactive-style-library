@@ -85,6 +85,7 @@ rendered charts below.
   const x = scalePoint().domain(seasons).range([0, plotWidth.desktop])
   const y = scaleLinear().domain([0, 700]).range([plotHeight.desktop, 0])
   const plot = line().x((d) => x(d.season)).y((d) => y(d.spend))
+
 </script>
 
 <figure class="vis-chart">
