@@ -122,6 +122,36 @@
 
 /// ```sass
 /// font-family: GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+/// font-weight: 700;
+/// font-size: 0.8125rem;
+/// line-height: 1.3;
+/// color: #121212; /* Dark mode => #DCDCDC */
+/// fill: #121212; /* Dark mode => #DCDCDC */
+/// margin-left: 4px;
+/// margin-right: 4px;
+/// ```
+@mixin vis-chart-annotation-bold {
+  font-family:
+    GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
+    Arial, "Lucida Grande", sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  color: #121212;
+  fill: #121212;
+  margin-left: 4px;
+  margin-right: 4px;
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-color-scheme="light"]) :is(&) {
+      color: #dcdcdc;
+      fill: #dcdcdc;
+    }
+  }
+}
+
+/// ```sass
+/// font-family: GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 /// font-weight: 400;
 /// font-size: 0.8125rem;
 /// line-height: 1.15;

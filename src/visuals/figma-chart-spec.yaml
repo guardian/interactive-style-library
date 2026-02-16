@@ -61,6 +61,21 @@ typography:
     marginLeft: 4px
     marginRight: 4px
 
+  annotationBold:
+    fontFamily: GuardianTextSans
+    fontWeight: 700
+    size:
+      mobile: 13px
+      desktop: 13px
+    lineHeight:
+      mobile: 130%
+      desktop: 130%
+    color:
+      light: "#121212"
+      dark: "#DCDCDC"
+    marginLeft: 4px
+    marginRight: 4px
+
   axisLabel:
     fontFamily: GuardianTextSans
     fontWeight: 400

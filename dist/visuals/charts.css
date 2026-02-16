@@ -88,6 +88,28 @@
   }
 }
 
+.vis-chart .vis-chart-annotation-bold,
+.vis-chart-annotation-bold {
+  font-family:
+    GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
+    Arial, "Lucida Grande", sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  color: #121212;
+  fill: #121212;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-scheme="light"])
+    :is(.vis-chart .vis-chart-annotation-bold, .vis-chart-annotation-bold) {
+    color: #dcdcdc;
+    fill: #dcdcdc;
+  }
+}
+
 .vis-chart .vis-chart-axis-label,
 .vis-chart-axis-label {
   font-family:
