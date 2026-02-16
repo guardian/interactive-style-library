@@ -96,219 +96,143 @@ export const palette = /** @type {const} */ ({
 })
 
 export const news = /** @type {const} */ ({
-  "blue": {
-    "light": "#0094DA",
-    "dark": "#009CE3"
+  "light": {
+    "blue": "#0094DA",
+    "red": "#C70000",
+    "turquoise": "#23B4A9",
+    "grey": "#A1A1A1",
+    "brown": "#CBA36E",
+    "pink": "#F678BB",
+    "orange": "#FF7F0F",
+    "blueShade": "#005689",
+    "redShade": "#8B0000",
+    "turquoiseShade": "#0C7A73",
+    "greyShade": "#494949",
+    "brownShade": "#866D50",
+    "pinkShade": "#9C2274",
+    "orangeShade": "#C74600",
+    "blueTint": "#D4EDFF",
+    "redTint": "#FFDBD4",
+    "turquoiseTint": "#D9F2EF",
+    "greyTint": "#E7E7E7",
+    "brownTint": "#F7EBDC",
+    "pinkTint": "#FFE6F4",
+    "orangeTint": "#FFE2CD"
   },
-  "red": {
-    "light": "#C70000",
-    "dark": "#CE0E09"
-  },
-  "turquoise": {
-    "light": "#23B4A9",
-    "dark": "#35BBB1"
-  },
-  "grey": {
-    "light": "#A1A1A1",
-    "dark": "#A1A1A1"
-  },
-  "brown": {
-    "light": "#CBA36E",
-    "dark": "#CBA36E"
-  },
-  "pink": {
-    "light": "#F678BB",
-    "dark": "#F678BB"
-  },
-  "orange": {
-    "light": "#FF7F0F",
-    "dark": "#FF8B25"
-  },
-  "blueShade": {
-    "light": "#005689",
-    "dark": "#00669D"
-  },
-  "redShade": {
-    "light": "#8B0000",
-    "dark": "#9A0000"
-  },
-  "turquoiseShade": {
-    "light": "#0C7A73",
-    "dark": "#128981"
-  },
-  "greyShade": {
-    "light": "#494949",
-    "dark": "#5F5F5F"
-  },
-  "brownShade": {
-    "light": "#866D50",
-    "dark": "#866D50"
-  },
-  "pinkShade": {
-    "light": "#9C2274",
-    "dark": "#9C2274"
-  },
-  "orangeShade": {
-    "light": "#C74600",
-    "dark": "#C74600"
-  },
-  "blueTint": {
-    "light": "#D4EDFF",
-    "dark": "#244057"
-  },
-  "redTint": {
-    "light": "#FFDBD4",
-    "dark": "#5f2116"
-  },
-  "turquoiseTint": {
-    "light": "#D9F2EF",
-    "dark": "#254A46"
-  },
-  "greyTint": {
-    "light": "#E7E7E7",
-    "dark": "#383838"
-  },
-  "brownTint": {
-    "light": "#F7EBDC",
-    "dark": "#493D30"
-  },
-  "pinkTint": {
-    "light": "#FFE6F4",
-    "dark": "#6b2251"
-  },
-  "orangeTint": {
-    "light": "#FFE2CD",
-    "dark": "#64381a"
+  "dark": {
+    "blue": "#009CE3",
+    "red": "#CE0E09",
+    "turquoise": "#35BBB1",
+    "grey": "#A1A1A1",
+    "brown": "#CBA36E",
+    "pink": "#F678BB",
+    "orange": "#FF8B25",
+    "blueShade": "#00669D",
+    "redShade": "#9A0000",
+    "turquoiseShade": "#128981",
+    "greyShade": "#5F5F5F",
+    "brownShade": "#866D50",
+    "pinkShade": "#9C2274",
+    "orangeShade": "#C74600",
+    "blueTint": "#244057",
+    "redTint": "#5f2116",
+    "turquoiseTint": "#254A46",
+    "greyTint": "#383838",
+    "brownTint": "#493D30",
+    "pinkTint": "#6b2251",
+    "orangeTint": "#64381a"
   }
 })
 
 export const chart = /** @type {const} */ ({
-  "furniture": {
-    "light": "#121212",
-    "dark": "#DCDCDC"
+  "light": {
+    "furniture": "#121212",
+    "axisLabels": "#707070",
+    "categorical": "#A1A1A1",
+    "axisLines": "#BABABA",
+    "structure1": "#DCDCDC",
+    "structure2": "#F3F3F3"
   },
-  "axisLabels": {
-    "light": "#707070",
-    "dark": "#C8C8C8"
-  },
-  "categorical": {
-    "light": "#A1A1A1",
-    "dark": "#A1A1A1"
-  },
-  "axisLines": {
-    "light": "#BABABA",
-    "dark": "#707070"
-  },
-  "structure1": {
-    "light": "#DCDCDC",
-    "dark": "#494949"
-  },
-  "structure2": {
-    "light": "#F3F3F3",
-    "dark": "#383838"
+  "dark": {
+    "furniture": "#DCDCDC",
+    "axisLabels": "#C8C8C8",
+    "categorical": "#A1A1A1",
+    "axisLines": "#707070",
+    "structure1": "#494949",
+    "structure2": "#383838"
   }
 })
 
 export const gender = /** @type {const} */ ({
-  "male": {
-    "light": "#23B4A9",
-    "dark": "#23B4A9"
+  "light": {
+    "male": "#23B4A9",
+    "female": "#FF7F0F",
+    "nonBinary": "#9C2274"
   },
-  "female": {
-    "light": "#FF7F0F",
-    "dark": "#FF7F0F"
-  },
-  "nonBinary": {
-    "light": "#9C2274",
-    "dark": "#9C2274"
+  "dark": {
+    "male": "#23B4A9",
+    "female": "#FF7F0F",
+    "nonBinary": "#9C2274"
   }
 })
 
 export const sentiment = /** @type {const} */ ({
-  "veryGood": {
-    "light": "#004E7C",
-    "dark": "#004E7C"
+  "light": {
+    "veryGood": "#004E7C",
+    "good": "#0077B6",
+    "slightlyGood": "#00B2FF",
+    "slightlyBad": "#FF5943",
+    "bad": "#C70000",
+    "veryBad": "#8B0000"
   },
-  "good": {
-    "light": "#0077B6",
-    "dark": "#0077B6"
-  },
-  "slightlyGood": {
-    "light": "#00B2FF",
-    "dark": "#00B2FF"
-  },
-  "slightlyBad": {
-    "light": "#FF5943",
-    "dark": "#FF5943"
-  },
-  "bad": {
-    "light": "#C70000",
-    "dark": "#C70000"
-  },
-  "veryBad": {
-    "light": "#8B0000",
-    "dark": "#8B0000"
+  "dark": {
+    "veryGood": "#004E7C",
+    "good": "#0077B6",
+    "slightlyGood": "#00B2FF",
+    "slightlyBad": "#FF5943",
+    "bad": "#C70000",
+    "veryBad": "#8B0000"
   }
 })
 
 export const partyUk = /** @type {const} */ ({
-  "lab": {
-    "light": "#C70000",
-    "dark": "#E33824"
+  "light": {
+    "lab": "#C70000",
+    "con": "#0077B6",
+    "libDem": "#FF7F0F",
+    "reform": "#3DBBE2",
+    "green": "#39A566",
+    "snp": "#F5DC00",
+    "other": "#848484"
   },
-  "con": {
-    "light": "#0077B6",
-    "dark": "#009AE1"
-  },
-  "libDem": {
-    "light": "#FF7F0F",
-    "dark": "#FF7F0F"
-  },
-  "reform": {
-    "light": "#3DBBE2",
-    "dark": "#3DBBE2"
-  },
-  "green": {
-    "light": "#39A566",
-    "dark": "#39A566"
-  },
-  "snp": {
-    "light": "#F5DC00",
-    "dark": "#F5DC00"
-  },
-  "other": {
-    "light": "#848484",
-    "dark": "#848484"
+  "dark": {
+    "lab": "#E33824",
+    "con": "#009AE1",
+    "libDem": "#FF7F0F",
+    "reform": "#3DBBE2",
+    "green": "#39A566",
+    "snp": "#F5DC00",
+    "other": "#848484"
   }
 })
 
 export const partyUs = /** @type {const} */ ({
-  "dem": {
-    "light": "#093CA3",
-    "dark": "#3261DB"
+  "light": {
+    "dem": "#093CA3",
+    "rep": "#C70000",
+    "kennedy": "#FF7F0F",
+    "green": "#0DA498",
+    "lib": "#C6B716",
+    "indyDem": "#7378D8",
+    "other": "#848484"
   },
-  "rep": {
-    "light": "#C70000",
-    "dark": "#C70000"
-  },
-  "kennedy": {
-    "light": "#FF7F0F",
-    "dark": "#FF7F0F"
-  },
-  "green": {
-    "light": "#0DA498",
-    "dark": "#23B4A9"
-  },
-  "lib": {
-    "light": "#C6B716",
-    "dark": "#C6B716"
-  },
-  "indyDem": {
-    "light": "#7378D8",
-    "dark": "#7378D8"
-  },
-  "other": {
-    "light": "#848484",
-    "dark": "#848484"
+  "dark": {
+    "dem": "#3261DB",
+    "rep": "#C70000",
+    "kennedy": "#FF7F0F",
+    "green": "#23B4A9",
+    "lib": "#C6B716",
+    "indyDem": "#7378D8",
+    "other": "#848484"
   }
 })

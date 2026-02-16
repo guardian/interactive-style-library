@@ -101,7 +101,7 @@ import { partyUk, palette } from "interactive-style-library/visuals/colors.js"
 
 const politicsScale = scaleLinear()
   .domain([-50, 50])
-  .range([partyUk.lab.light, palette.gray["2"], partyUk.reform.light])
+  .range([partyUk.light.lab, palette.gray["2"], partyUk.light.reform])
 ```
 
 ### In Svelte projects

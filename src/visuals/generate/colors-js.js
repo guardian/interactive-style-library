@@ -60,29 +60,26 @@ function processNews(news) {
     const modeData = news[mode]
     if (!modeData) continue
 
-    // main colors: news.blue.light
+    result[mode] = result[mode] || {}
+
+    // main colors: news.light.blue
     if (modeData.main) {
       for (const [color, value] of Object.entries(modeData.main)) {
-        result[color] = result[color] || {}
-        result[color][mode] = value
+        result[mode][color] = value
       }
     }
 
-    // shades: news.blueShade.light
+    // shades: news.light.blueShade
     if (modeData.shades) {
       for (const [color, value] of Object.entries(modeData.shades)) {
-        const key = `${color}Shade`
-        result[key] = result[key] || {}
-        result[key][mode] = value
+        result[mode][`${color}Shade`] = value
       }
     }
 
-    // tints: news.blueTint.light
+    // tints: news.light.blueTint
     if (modeData.tints) {
       for (const [color, value] of Object.entries(modeData.tints)) {
-        const key = `${color}Tint`
-        result[key] = result[key] || {}
-        result[key][mode] = value
+        result[mode][`${color}Tint`] = value
       }
     }
   }
@@ -97,9 +94,9 @@ function processChart(news) {
     const modeData = news[mode]
     if (!modeData?.chart) continue
 
+    result[mode] = {}
     for (const [name, value] of Object.entries(modeData.chart)) {
-      result[name] = result[name] || {}
-      result[name][mode] = value
+      result[mode][name] = value
     }
   }
 
@@ -113,9 +110,9 @@ function processCategorical(categorical, category) {
     const modeData = categorical[mode]
     if (!modeData?.[category]) continue
 
+    result[mode] = {}
     for (const [name, value] of Object.entries(modeData[category])) {
-      result[name] = result[name] || {}
-      result[name][mode] = value
+      result[mode][name] = value
     }
   }
 
