@@ -4,12 +4,8 @@ import * as path from "path"
 import * as fs from "fs"
 import { JSDOM } from "jsdom"
 
-import {
-  camelToKebab,
-  findProjectRoot,
-  getDistPath,
-  logGeneratedFiles,
-} from "../../utils.js"
+import { camelToKebab, findProjectRoot, getDistPath } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 import { tidyCss, getSourceDistPath, loadBundledContext } from "../common.js"
 
 const document = new JSDOM("<!DOCTYPE html>").window.document

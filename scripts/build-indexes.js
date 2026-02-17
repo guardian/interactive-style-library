@@ -4,6 +4,7 @@ import {
   makeGeneratedComment,
   findProjectRoot,
 } from "../src/utils.js"
+import { logGeneratedFiles } from "../src/cli.js"
 import path from "path"
 
 const root = findProjectRoot()
@@ -62,8 +63,9 @@ writeFileSync(
   `${comment}\n\n${buildScss(sourceCss, sourceScss)}\n`,
 )
 
-console.log("scripts/build-indexes.js generated:")
-console.log("  * dist/visuals/all.css")
-console.log("  * dist/visuals/all.scss")
-console.log("  * dist/source/all.css")
-console.log("  * dist/source/all.scss")
+logGeneratedFiles(import.meta.filename, [
+  getDistPath("visuals/all.css"),
+  getDistPath("visuals/all.scss"),
+  getDistPath("source/all.css"),
+  getDistPath("source/all.scss"),
+])

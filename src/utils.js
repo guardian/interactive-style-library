@@ -59,23 +59,6 @@ export function makeGeneratedComment(metaUrl) {
 }
 
 /**
- * @param {string} generatorFilename
- * @param {string[]} [files]
- */
-export function logGeneratedFiles(generatorFilename, files) {
-  const root = findProjectRoot()
-  const relativeGeneratorName = path.relative(root, generatorFilename)
-  const relativeFiles = files.map((filename) => path.relative(root, filename))
-
-  console.log(
-    `${relativeGeneratorName} generated: ` +
-      `\n  * ` +
-      relativeFiles.join("\n  * ") +
-      `\n`,
-  )
-}
-
-/**
  * @param {string} relativePath Path relative to dist/
  */
 export function getDistPath(relativePath) {

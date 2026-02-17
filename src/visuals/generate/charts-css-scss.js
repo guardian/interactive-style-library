@@ -6,12 +6,12 @@ import * as fs from "fs"
 import {
   camelToKebab,
   getDistPath,
-  logGeneratedFiles,
   makeGeneratedComment,
   percentToDecimal,
   pxToRem,
   tidyCss,
 } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 import { breakpoints } from "@guardian/source/foundations"
 import { CHARTS_PREFIX } from "../constants.js"
 import {

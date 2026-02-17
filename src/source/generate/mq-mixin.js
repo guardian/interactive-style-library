@@ -1,5 +1,6 @@
 import * as fs from "fs"
-import { getDistPath, logGeneratedFiles } from "../../utils.js"
+import { getDistPath } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 
 import { breakpoints } from "@guardian/source/foundations"
 

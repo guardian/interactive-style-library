@@ -2,7 +2,8 @@ import { readFileSync, writeFileSync } from "fs"
 import { parse } from "yaml"
 import { fileURLToPath } from "url"
 import path from "path"
-import { getDistPath, logGeneratedFiles, makeGeneratedComment } from "../../utils.js"
+import { getDistPath, makeGeneratedComment } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url))
 

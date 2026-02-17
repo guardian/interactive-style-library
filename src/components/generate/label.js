@@ -1,6 +1,7 @@
 import { themeLabel } from "@guardian/source/react-components"
 
-import { getDistPath, logGeneratedFiles } from "../../utils.js"
+import { getDistPath } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 import {
   classTuple,
   getSourceDistPath,

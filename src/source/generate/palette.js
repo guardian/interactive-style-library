@@ -2,9 +2,9 @@ import * as fs from "fs"
 import {
   getDistPath,
   camelToKebab,
-  logGeneratedFiles,
   makeGeneratedComment,
 } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 import { loadContext, getPathForGenerated } from "../common.js"
 import { SOURCE_PREFIX } from "../constants.js"
 

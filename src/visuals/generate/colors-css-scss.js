@@ -8,10 +8,10 @@ import { writeFileSync } from "fs"
 import {
   camelToKebab,
   getDistPath,
-  logGeneratedFiles,
   makeGeneratedComment,
   tidyCss,
 } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 import { formatCssVar } from "../common.js"
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url))

@@ -1,10 +1,10 @@
 import * as fs from "fs"
 import {
   getDistPath,
-  logGeneratedFiles,
   makeGeneratedComment,
   tidyCss,
 } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 import {
   loadContext,
   getPathForGenerated,

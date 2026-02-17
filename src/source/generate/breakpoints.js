@@ -1,9 +1,9 @@
 import * as fs from "fs"
 import {
   getDistPath,
-  logGeneratedFiles,
   makeGeneratedComment,
 } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 import { loadContext, getPathForGenerated } from "../common.js"
 
 export function generate() {

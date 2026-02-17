@@ -29,6 +29,7 @@
   ],
   "scripts": {
     "build": "./scripts/build.sh",
+    "build-watch": "node ./scripts/build-watch.js",
     "components.dev": "vite"
   },
   "license": "ISC",

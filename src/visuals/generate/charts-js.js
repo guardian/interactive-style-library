@@ -5,9 +5,9 @@ import { fileURLToPath } from "url"
 import * as fs from "fs"
 import {
   getDistPath,
-  logGeneratedFiles,
   makeGeneratedComment,
 } from "../../utils.js"
+import { logGeneratedFiles } from "../../cli.js"
 import { formatChartName } from "../common.js"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
