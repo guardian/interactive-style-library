@@ -12,5 +12,6 @@
   },
   "include": [
     "src/**/*.js",
+    "src/components/preview/vite-inline.d.ts"
   ]
 }

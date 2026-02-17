@@ -1,13 +1,10 @@
 # interactive-style-library
 
-Guardian design tokens from Source and Visuals' design spec, bundled into CSS and SCSS files.
+Guardian design tokens and CSS-only components from Source and Visuals' design spec, bundled into CSS and SCSS files.
 
 Just `@import "interactive-style-library/source/all.scss"` and go.
 
 Files are generated directly from [@guardian/source](https://github.com/guardian/csnx/tree/main/libs/%40guardian/source) and [Visuals](https://www.figma.com/design/lQ8KHxsb8xIJaMujuJV9dr/Colour-guide-2025?node-id=0-1&p=f&t=0ThLMx10HCgM8IMZ-0) design tokens.
-
-> Looking for styles for buttons, icons, and other brand components?
-> Find them in [interactive-source-components](https://github.com/guardian/interactive-source-components/blob/main/README.md).
 
 ## How to use
 
@@ -24,6 +21,13 @@ imports into your main SCSS file.
 // main.scss
 @use "interactive-style-library/source/all.scss" as *;
 @use "interactive-style-library/visuals/all.scss" as *;
+```
+
+For components (buttons, inputs, icons, etc.), import the CSS files you need.
+
+```css
+@import "interactive-style-library/components/button.css";
+@import "interactive-style-library/components/checkbox.css";
 ```
 
 Then style your content like so.
@@ -47,7 +51,7 @@ For more detailed installation and setup instructions, read [**USAGE.md**](./doc
 
 ## What's in the box
 
-The interactive-style-library package provides Source and Visuals styles in a variety of formats.
+The interactive-style-library package provides Source and Visuals styles, and CSS-only components, in a variety of formats.
 
 ### Source (from `@guardian/source`)
 
@@ -156,24 +160,69 @@ The interactive-style-library package provides Source and Visuals styles in a va
 </tr>
 </table>
 
+### Components (from `@guardian/source`)
+
+CSS-only versions of Source's React components. See each component's individual guide for usage and variants.
+
+<table>
+<tr>
+<td>
+
+🎨 [`button.css`](./dist/components/button.css)
+
+</td>
+<td>
+
+🎨 [`checkbox.css`](./dist/components/checkbox.css)
+
+</td>
+<td>
+
+🎨 [`icon.css`](./dist/components/icon.css)
+
+</td>
+</tr>
+<tr>
+<td>
+
+🎨 [`label.css`](./dist/components/label.css)
+
+</td>
+<td>
+
+🎨 [`select.css`](./dist/components/select.css)
+
+</td>
+<td>
+
+🎨 [`spinner.css`](./dist/components/spinner.css)
+
+</td>
+</tr>
+<tr>
+<td>
+
+🎨 [`text-input.css`](./dist/components/text-input.css)
+
+</td>
+</tr>
+</table>
+
 ## But why?
 
-The Source design system provides design tokens as an NPM package ([`@guardian/source`](https://github.com/guardian/csnx/tree/main/libs/%40guardian/source)), but these tokens are mostly designed to work with `@emotion/react`, a CSS-in-JS framework for React.
+The Source design system ([`@guardian/source`](https://github.com/guardian/csnx/tree/main/libs/%40guardian/source)) provides design tokens and UI components, but they're only available to projects using React and `@emotion/react`, a CSS-in-JS framework. Projects not using React — Svelte, plain HTML, or otherwise — can't easily access Source's colours, typography, or components.
 
-For projects that don't use React, these tokens are not very accessible. So this package re-exports
-these tokens as CSS classes and variables, SCSS mixins, and in other forms (including some of the
-original JS tokens for convenience).
+This package re-exports Source's design tokens as CSS variables, classes, and SCSS mixins, and its
+React components (Button, TextInput, Checkbox, etc.) as simplified CSS-only equivalents.
 
-While this work could have been done in `@guardian/source` itself (we tried!), keeping this code in
-a separate repo gives us the freedom to include documentation and utilities specific to
-interactives' developers workflow.
+While this work could have been done in `@guardian/source` itself ([we had a go!](https://github.com/guardian/csnx/pull/2195#issuecomment-3641464486)), keeping this code in a separate repo gives us the freedom to include documentation and utilities specific to interactives developers' workflow.
 
 We can also include styles outside of Source: like the Visuals team's design tokens!
 
 > [!NOTE]
 > The [Design Systems team](https://chat.google.com/room/AAQABZY0BtU?cls=7) is working on a project
 > to overhaul the Guardian's design tokens solution, which when ready, will likely succeed some or
-> all of this work. Stay tuned!
+> all of this work. Stay tuned.
 
 ## More information
 

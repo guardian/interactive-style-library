@@ -1,9 +1,10 @@
-# Design token files reference
+# Files reference
 
 The following tables list every file exported by `interactive-style-library`.
 
 Source files are imported with the path `interactive-style-library/source/*`, Visuals files with
-`interactive-style-library/visuals/*`.
+`interactive-style-library/visuals/*`, and component files with
+`interactive-style-library/components/*`.
 
 ## Source
 
@@ -33,3 +34,18 @@ Source files are imported with the path `interactive-style-library/source/*`, Vi
 | 📊 [`visuals/charts-mixins.scss`](./dist/visuals/charts.css) | SCSS mixins for chart structure and typography | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=1102-323&p=f&t=ycHjdCdLmgXxZWh7-0) |
 | 📚 [`visuals/all.css`](./dist/visuals/all.css) | All Visuals CSS resources | |
 | 📚 [`visuals/all.scss`](./dist/visuals/all.scss) | All Visuals CSS and SCSS resources | |
+
+## Components
+
+CSS-only versions of Source's React components. See each component's README for usage and variants.
+
+<!-- prettier-ignore -->
+| File | Description | Usage | Reference |
+| ---- | ----------- | ----- | --------- |
+| [`components/button.css`](../dist/components/button.css) | Button styles (primary, secondary, etc.) | [README](../src/components/generate/button/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-button--docs) |
+| [`components/checkbox.css`](../dist/components/checkbox.css) | Checkbox styles with custom tick animation | [README](../src/components/generate/checkbox/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-checkbox--docs) | 
+| [`components/icon.css`](../dist/components/icon.css) | Icon library with all Source icons | [README](../src/components/generate/icons/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-icons--docs) |
+| [`components/label.css`](../dist/components/label.css) | Label styles with optional and supporting text | [README](../src/components/generate/label/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-label--docs) |
+| [`components/select.css`](../dist/components/select.css) | Select/dropdown styles | [README](../src/components/generate/select/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-select--docs) |
+| [`components/spinner.css`](../dist/components/spinner.css) | Loading spinner styles | [README](../src/components/generate/spinner/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-spinner--docs) |
+| [`components/text-input.css`](../dist/components/text-input.css) | Text input field styles | [README](../src/components/generate/text-input/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-textinput--docs) |

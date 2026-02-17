@@ -26,7 +26,9 @@ function generateSpacingJs(spacing) {
     const exportName = formatChartName(yamlName, "camel")
 
     if (typeof value === "object" && value.mobile && value.desktop) {
-      lines.push(`export const ${exportName} = /** @type {const} */ (${formatValue(value)})`)
+      lines.push(
+        `export const ${exportName} = /** @type {const} */ (${formatValue(value)})`,
+      )
     } else {
       lines.push(`export const ${exportName} = ${formatValue(value)}`)
     }

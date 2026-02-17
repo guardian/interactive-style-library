@@ -3,6 +3,7 @@
 - [Installation](#installation)
 - [Using the package's files](#using-the-packages-files)
   - [Quick setup](#quick-setup)
+  - [Components](#components)
   - [JavaScript files](#javascript-files)
   - [In Svelte projects](#in-svelte-projects)
   - [In React/Preact projects](#in-reactpreact-projects)
@@ -91,6 +92,73 @@ _all styles_. See [design token files reference](./ALL-FILES.md) for a list of t
 > [!WARNING]
 > Unless you [purge unused styles](#purge-unused-styles), every CSS variable and class declaration
 > in `interactive-style-library` will end up in your final CSS file.
+
+### Components
+
+The package also provides CSS-only versions of Source's React components (buttons, checkboxes, text
+inputs, etc.). Import the CSS file for each component you need.
+
+```css
+@import "interactive-style-library/components/button.css";
+@import "interactive-style-library/components/label.css";
+@import "interactive-style-library/components/text-input.css";
+```
+
+Then use the `src-` prefixed classes in your HTML.
+
+```html
+<label for="email" class="src-label">
+  Email address
+  <div class="src-label__supporting">harpreet@example.com</div>
+</label>
+<input type="email" id="email" class="src-text-input" />
+
+<button class="src-button src-button--secondary">Submit</button>
+```
+
+Each component supports variants via modifier classes (e.g. `src-button--small`,
+`src-button--tertiary`). See each component's individual usage guide for available classes and usage examples.
+
+<!-- prettier-ignore -->
+<table>
+<tr>
+<td>
+
+[**Button**](./components/BUTTON.md)
+
+</td>
+<td>
+
+[**Checkbox**](./components/CHECKBOX.md)
+
+</td>
+<td>
+
+[**Icon**](./components/ICON.css)
+
+</td>
+<td>
+
+[**Label**](./components/LABEL.css)
+
+</td>
+<td>
+
+[**Select**](./components/SELECT.css)
+
+</td>
+<td>
+
+[**Spinner**](./components/SPINNER.css)
+
+</td>
+<td>
+
+[**Text Input**](./components/TEXT-INPUT.css)
+
+</td>
+</tr>
+</table>
 
 ### JavaScript files
 

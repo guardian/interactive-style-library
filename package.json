@@ -1,5 +1,6 @@
 {
   "name": "interactive-style-library",
+  "author": "ed.gargan@guardian.co.uk",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -19,6 +20,7 @@
       "types": "./dist/source/palette.d.ts",
       "default": "./dist/source/palette.js"
     },
+    "./components/*": "./dist/components/*",
     "./*": "./dist/*",
     "./constants.js": null
   },
@@ -26,12 +28,26 @@
     "dist"
   ],
   "scripts": {
-    "build": "./scripts/build.sh"
+    "build": "./scripts/build.sh",
+    "components.dev": "vite"
   },
   "license": "ISC",
   "devDependencies": {
+    "@emotion/react": "^11.14.0",
     "@guardian/source": "^12.2.0",
+    "@prettier/sync": "^0.6.1",
+    "autoprefixer": "^10.4.21",
+    "baseline-browser-mapping": "^2.9.10",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.25.8",
+    "hint": "^7.1.13",
+    "jsdom": "^26.1.0",
+    "postcss": "^8.5.6",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-nested": "^7.0.2",
     "prettier": "^3.8.0",
+    "react-dom": "^18.3.1",
+    "shiki": "^3.20.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "yaml": "^2.8.2"

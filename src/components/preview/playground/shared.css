@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+h2 {
+  font-family: GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.playground {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.playground__code {
+  background: #24292e;
+  border-radius: 4px;
+  overflow: auto;
+  margin: 0;
+}
+
+.playground__code pre {
+  margin: 0;
+  padding: 1rem;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.playground__code code {
+  background: none !important;
+}
