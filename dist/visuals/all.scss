@@ -3,5 +3,5 @@
 */
 
 @forward "interactive-style-library/visuals/charts-mixins.scss";
-@import "interactive-style-library/visuals/charts.css";
-@import "interactive-style-library/visuals/colors.css";
+@use "interactive-style-library/visuals/charts.css";
+@use "interactive-style-library/visuals/colors.css";

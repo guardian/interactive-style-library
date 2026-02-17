@@ -26,7 +26,7 @@ function buildCss(files) {
 }
 
 function buildScss(cssFiles, scssFiles) {
-  const imports = cssFiles.map((f) => `@import "${f}";`)
+  const imports = cssFiles.map((f) => `@use "${f}";`)
   const forwards = scssFiles.map((f) => `@forward "${f}";`)
   return [...forwards, ...imports].join("\n")
 }

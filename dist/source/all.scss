@@ -4,5 +4,5 @@
 
 @forward "interactive-style-library/source/mq.scss";
 @forward "interactive-style-library/source/typography-mixins.scss";
-@import "interactive-style-library/source/palette.css";
-@import "interactive-style-library/source/typography-classes.css";
+@use "interactive-style-library/source/palette.css";
+@use "interactive-style-library/source/typography-classes.css";
