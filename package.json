@@ -41,7 +41,7 @@
     "baseline-browser-mapping": "^2.9.10",
     "concurrently": "^9.1.2",
     "esbuild": "^0.25.8",
-    "hint": "^7.1.13",
+    "hint": "^2.0.0",
     "jsdom": "^26.1.0",
     "postcss": "^8.5.6",
     "postcss-combine-duplicated-selectors": "^10.0.3",
