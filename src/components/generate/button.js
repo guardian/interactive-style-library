@@ -6,11 +6,11 @@ import {
   classTuple,
   tidyCss,
   getSourceDistPath,
-  loadBundledContext,
+  loadContextFromPath,
 } from "../common.js"
 
 export async function generate() {
-  const context = loadBundledContext(
+  const context = loadContextFromPath(
     getSourceDistPath("react-components/button/styles.js"),
   )
 

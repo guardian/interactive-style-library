@@ -4,14 +4,14 @@ import { getDistPath } from "../../utils.js"
 import { logGeneratedFiles } from "../../cli.js"
 import {
   getSourceDistPath,
-  loadBundledContext,
+  loadContextFromPath,
   removeBacktickMarkupWhitespace,
   makeDecl,
   writeDeclClasses,
 } from "../common.js"
 
 export async function generate() {
-  const context = loadBundledContext(
+  const context = loadContextFromPath(
     getSourceDistPath("react-components/checkbox/styles.js"),
   )
 

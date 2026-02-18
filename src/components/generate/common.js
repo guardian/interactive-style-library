@@ -1,5 +1,3 @@
-import { buildSync } from "esbuild"
-import { Script, createContext } from "vm"
 import * as path from "path"
 import * as fs from "fs"
 import prettier from "prettier"
@@ -22,32 +20,6 @@ export function getSourceDistPath(distRelativeSourcePath) {
   )
 
   return fullPath
-}
-
-/**
- * @param {string} path
- */
-export function loadBundledContext(path) {
-  const code = buildSync({
-    entryPoints: [path],
-    bundle: true,
-    platform: "node",
-    write: false,
-    outdir: "out",
-  }).outputFiles[0].text
-
-  const context = createContext({
-    console,
-    module: { exports: {} },
-    exports: {},
-    process,
-  })
-
-  new Script(code).runInContext(context)
-
-  Object.freeze(context)
-
-  return context
 }
 
 // /**

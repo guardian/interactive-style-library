@@ -27,15 +27,37 @@ export function getSourceDistPath(distRelativeSourcePath) {
 /**
  * @param {string} path
  */
-export function loadBundledContext(path) {
-  const code = buildSync({
-    entryPoints: [path],
-    bundle: true,
-    platform: "node",
-    write: false,
-    outdir: "out",
-  }).outputFiles[0].text
+export function loadContextFromPath(path) {
+  return runBundledCode(
+    buildSync({
+      entryPoints: [path],
+      bundle: true,
+      platform: "node",
+      write: false,
+      outdir: "out",
+    }).outputFiles[0].text,
+  )
+}
 
+/**
+ * Bundle source code (provided as a string) and execute it in a VM context.
+ * @param {string} source - The JS source to bundle
+ * @param {string} resolveDir - Directory to resolve imports from
+ */
+export function loadContextFromSource(source, resolveDir) {
+  return runBundledCode(
+    buildSync({
+      stdin: { contents: source, resolveDir },
+      bundle: true,
+      platform: "node",
+      write: false,
+      outdir: "out",
+    }).outputFiles[0].text,
+  )
+}
+
+/** @param {string} code */
+function runBundledCode(code) {
   const context = createContext({
     console,
     module: { exports: {} },

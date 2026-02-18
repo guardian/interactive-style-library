@@ -1,15 +1,14 @@
 import { iconSize } from "@guardian/source/foundations"
-
 import { getDistPath } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
 import {
   getSourceDistPath,
-  loadBundledContext,
+  loadContextFromPath,
   writeDeclClasses,
 } from "../common.js"
+import { logGeneratedFiles } from "../../cli.js"
 
 export async function generate() {
-  const themeContext = loadBundledContext(
+  const themeContext = loadContextFromPath(
     getSourceDistPath("react-components/spinner/theme.js"),
   )
 
@@ -72,7 +71,7 @@ export async function generate() {
     ],
   ]
 
-  const sizeContent = loadBundledContext(
+  const sizeContent = loadContextFromPath(
     getSourceDistPath("foundations/__generated__/size.js"),
   )
 

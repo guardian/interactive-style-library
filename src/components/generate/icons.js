@@ -6,18 +6,23 @@ import { JSDOM } from "jsdom"
 
 import { camelToKebab, findProjectRoot, getDistPath } from "../../utils.js"
 import { logGeneratedFiles } from "../../cli.js"
-import { tidyCss, getSourceDistPath, loadBundledContext } from "../common.js"
+import {
+  tidyCss,
+  getSourceDistPath,
+  loadContextFromPath,
+  loadContextFromSource,
+} from "../common.js"
 
 const document = new JSDOM("<!DOCTYPE html>").window.document
 
 export async function generate() {
   const iconClasses = []
 
-  const sizeContent = loadBundledContext(
+  const sizeContext = loadContextFromPath(
     getSourceDistPath("foundations/__generated__/size.js"),
   )
 
-  for (let [name, pixels] of Object.entries(sizeContent.iconSize)) {
+  for (let [name, pixels] of Object.entries(sizeContext.iconSize)) {
     iconClasses.push([
       `src-icon--${name}`,
       `.src-icon--${name} {` +
@@ -32,18 +37,28 @@ export async function generate() {
     "node_modules/@guardian/source/dist/react-components/__generated__/icons/",
   )
 
-  for (const fullPath of globSync(`${iconsPath}/*.js`)) {
+  // Bundle all icons in a single esbuild call
+  const iconFiles = globSync(`${iconsPath}/*.js`)
+
+  const barrel = iconFiles
+    .map(
+      (f) => `export { ${path.parse(f).name} } from "./${path.basename(f)}";`,
+    )
+    .join("\n")
+
+  const allIcons = loadContextFromSource(barrel, iconsPath)
+
+  for (const fullPath of iconFiles) {
     try {
       const iconName = path.parse(fullPath).name
-      const context = loadBundledContext(fullPath)
 
-      if (!(iconName in context)) {
-        throw new Error(
-          `"${iconName}" not found in ${path.basename(fullPath)} context`,
-        )
+      if (!(iconName in allIcons)) {
+        throw new Error(`"${iconName}" not found in bundled icons context`)
       }
 
-      const renderedIcon = renderToString(context[iconName]({ size: "medium" }))
+      const renderedIcon = renderToString(
+        allIcons[iconName]({ size: "medium" }),
+      )
 
       const template = document.createElement("template")
       template.innerHTML = renderedIcon
@@ -66,8 +81,8 @@ export async function generate() {
       const css =
         `.src-icon--${kebabName} {` +
         `\tdisplay: inline-block;\n` +
-        `\twidth: ${context.iconSize.medium}px;\n` +
-        `\theight: ${context.iconSize.medium}px;\n` +
+        `\twidth: ${sizeContext.iconSize.medium}px;\n` +
+        `\theight: ${sizeContext.iconSize.medium}px;\n` +
         `\tmask-image: url("${encodedIcon}");\n` +
         `\tmask-repeat: no-repeat;\n` +
         `\tmask-size: contain;\n` +

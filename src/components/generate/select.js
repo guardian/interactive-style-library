@@ -1,19 +1,19 @@
 import { themeSelect } from "@guardian/source/react-components"
 
 import { getDistPath } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
 import {
   getSourceDistPath,
-  loadBundledContext,
+  loadContextFromPath,
   makeDecl,
   parseCss,
   removeBacktickMarkupWhitespace,
   writeDeclClasses,
 } from "../common.js"
+import { logGeneratedFiles } from "../../cli.js"
 
 // TODO: support small?
 export async function generate() {
-  const context = loadBundledContext(
+  const context = loadContextFromPath(
     getSourceDistPath("react-components/select/styles.js"),
   )
 

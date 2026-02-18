@@ -5,12 +5,12 @@ import { logGeneratedFiles } from "../../cli.js"
 import {
   classTuple,
   getSourceDistPath,
-  loadBundledContext,
+  loadContextFromPath,
   writeDeclClasses,
 } from "../common.js"
 
 export async function generate() {
-  const context = loadBundledContext(
+  const context = loadContextFromPath(
     getSourceDistPath("react-components/label/styles.js"),
   )
 

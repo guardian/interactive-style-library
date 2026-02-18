@@ -1,16 +1,16 @@
 import { themeTextInput } from "@guardian/source/react-components"
 
 import { getDistPath } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
 import {
   classTuple,
   getSourceDistPath,
-  loadBundledContext,
+  loadContextFromPath,
   writeDeclClasses,
 } from "../common.js"
+import { logGeneratedFiles } from "../../cli.js"
 
 export async function generate() {
-  const context = loadBundledContext(
+  const context = loadContextFromPath(
     getSourceDistPath("react-components/text-input/styles.js"),
   )
 
