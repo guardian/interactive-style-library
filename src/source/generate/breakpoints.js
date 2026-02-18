@@ -1,6 +1,5 @@
 import * as fs from "fs"
 import { getDistPath, makeGeneratedComment } from "../../utils.js"
-
 import { loadContext, getPathForGenerated } from "../common.js"
 
 export function generate() {
