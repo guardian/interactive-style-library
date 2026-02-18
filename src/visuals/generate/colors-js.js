@@ -3,7 +3,6 @@ import { parse } from "yaml"
 import { fileURLToPath } from "url"
 import path from "path"
 import { getDistPath, makeGeneratedComment } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url))
 
@@ -119,6 +118,3 @@ function processCategorical(categorical, category) {
 
   return result
 }
-
-const { files } = generate()
-logGeneratedFiles(import.meta.filename, files)

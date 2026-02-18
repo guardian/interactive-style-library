@@ -1,18 +1,11 @@
 import { watch } from "fs"
-import { execSync, execFileSync } from "child_process"
+import { execSync } from "child_process"
 import { globSync } from "fs"
 import path from "path"
-import { bold, yellow, red } from "../src/cli.js"
+import { bold, yellow, red, logGeneratedFiles } from "../src/cli.js"
 
 const generatorFiles = globSync("./src/**/generate/**/*.js")
-
-// Generators are files that can be run directly (they have an IIFE at the
-// bottom). Common/shared helpers don't, so we exclude them.
-const runnableGenerators = generatorFiles.filter(
-  (f) => !path.basename(f).startsWith("common"),
-)
-
-const dirs = [...new Set(runnableGenerators.map((f) => path.dirname(f)))]
+const dirs = [...new Set(generatorFiles.map((f) => path.dirname(f)))]
 
 /** @type {Map<string, NodeJS.Timeout>} */
 const debounceTimers = new Map()
@@ -30,7 +23,7 @@ function needsReindex(file) {
 }
 
 /** @param {string} file */
-function runGenerator(file) {
+async function runGenerator(file) {
   const relPath = path.relative(".", file)
 
   console.log(
@@ -38,15 +31,19 @@ function runGenerator(file) {
   )
 
   try {
-    execFileSync("node", [file], { stdio: "inherit" })
+    const modulePath = path.resolve(file) + `?t=${Date.now()}`
+    const { generate } = await import(modulePath)
+    const { files } = await generate()
+    logGeneratedFiles(path.resolve(file), files)
     if (needsReindex(file)) rebuildIndexes()
-  } catch {
+  } catch (err) {
     console.error(red(`\n✗ ${relPath} failed`))
+    console.error(err)
   }
 }
 
 console.log(
-  `Watching ${runnableGenerators.length} generators in ${dirs.length} directories...`,
+  `Watching ${generatorFiles} generators in ${dirs.length} directories...`,
 )
 
 for (const dir of dirs) {
@@ -55,7 +52,6 @@ for (const dir of dirs) {
     if (path.basename(filename).startsWith("common")) return
 
     const fullPath = path.join(dir, filename)
-    if (!runnableGenerators.includes(fullPath)) return
 
     clearTimeout(debounceTimers.get(fullPath))
     debounceTimers.set(

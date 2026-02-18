@@ -1,7 +1,6 @@
 import * as fs from "fs"
 
 import { getDistPath } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
 import {
   classTuple,
   tidyCss,
@@ -47,8 +46,3 @@ export async function generate() {
     files: [distPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

@@ -11,7 +11,7 @@ import {
   makeGeneratedComment,
   tidyCss,
 } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
+
 import { formatCssVar } from "../common.js"
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url))
@@ -256,8 +256,3 @@ export async function generate() {
     files: [lightPath, darkPath, combinedPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

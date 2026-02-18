@@ -1,7 +1,6 @@
 import { themeCheckbox } from "@guardian/source/react-components"
 
 import { getDistPath } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
 import {
   getSourceDistPath,
   loadContextFromPath,
@@ -88,8 +87,3 @@ export async function generate() {
     files: [distPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

@@ -1,10 +1,6 @@
 import * as fs from "fs"
-import {
-  getDistPath,
-  camelToKebab,
-  makeGeneratedComment,
-} from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
+import { getDistPath, camelToKebab, makeGeneratedComment } from "../../utils.js"
+
 import { loadContext, getPathForGenerated } from "../common.js"
 import { SOURCE_PREFIX } from "../constants.js"
 
@@ -40,6 +36,3 @@ export function generate() {
     files: [cssDistPath, jsDistPath],
   }
 }
-
-const { files } = generate()
-logGeneratedFiles(import.meta.filename, files)

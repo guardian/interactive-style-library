@@ -1,11 +1,15 @@
 import { globSync } from "fs"
-import { execSync } from "child_process"
+import path from "path"
+import { logGeneratedFiles } from "../src/cli.js"
 
-// TODO: accept params to run specific generators?
-let pattern = "./src/**/generate/**/*.js"
+const files = globSync("./src/**/generate/**/*.js").filter(
+  (f) => !path.basename(f).startsWith("common"),
+)
 
-const files = globSync(pattern)
-
-files.forEach((file) => {
-  execSync(`node ${file}`, { stdio: "inherit" })
-})
+await Promise.all(
+  files.map(async (file) => {
+    const { generate } = await import(path.resolve(file))
+    const { files } = await generate()
+    logGeneratedFiles(path.resolve(file), files)
+  }),
+)

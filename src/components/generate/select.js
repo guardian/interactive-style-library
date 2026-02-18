@@ -1,5 +1,4 @@
 import { themeSelect } from "@guardian/source/react-components"
-
 import { getDistPath } from "../../utils.js"
 import {
   getSourceDistPath,
@@ -9,7 +8,6 @@ import {
   removeBacktickMarkupWhitespace,
   writeDeclClasses,
 } from "../common.js"
-import { logGeneratedFiles } from "../../cli.js"
 
 // TODO: support small?
 export async function generate() {
@@ -95,8 +93,3 @@ export async function generate() {
     files: [distPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

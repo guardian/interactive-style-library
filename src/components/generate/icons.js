@@ -5,7 +5,6 @@ import * as fs from "fs"
 import { JSDOM } from "jsdom"
 
 import { camelToKebab, findProjectRoot, getDistPath } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
 import {
   tidyCss,
   getSourceDistPath,
@@ -115,8 +114,3 @@ export async function generate() {
     files: [distPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

@@ -3,11 +3,8 @@ import { parse } from "yaml"
 import path from "path"
 import { fileURLToPath } from "url"
 import * as fs from "fs"
-import {
-  getDistPath,
-  makeGeneratedComment,
-} from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
+import { getDistPath, makeGeneratedComment } from "../../utils.js"
+
 import { formatChartName } from "../common.js"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -54,8 +51,3 @@ export async function generate() {
     files: [distPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

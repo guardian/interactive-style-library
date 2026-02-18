@@ -1,10 +1,6 @@
 import * as fs from "fs"
-import {
-  getDistPath,
-  makeGeneratedComment,
-  tidyCss,
-} from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
+import { getDistPath, makeGeneratedComment, tidyCss } from "../../utils.js"
+
 import {
   loadContext,
   getPathForGenerated,
@@ -47,8 +43,3 @@ export async function generate() {
     files: [cssDistPath, scssDistPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

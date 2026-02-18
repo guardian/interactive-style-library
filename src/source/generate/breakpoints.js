@@ -1,9 +1,6 @@
 import * as fs from "fs"
-import {
-  getDistPath,
-  makeGeneratedComment,
-} from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
+import { getDistPath, makeGeneratedComment } from "../../utils.js"
+
 import { loadContext, getPathForGenerated } from "../common.js"
 
 export function generate() {
@@ -34,6 +31,3 @@ export function generate() {
     files: [scssDistPath, jsDistPath],
   }
 }
-
-const { files } = generate()
-logGeneratedFiles(import.meta.filename, files)

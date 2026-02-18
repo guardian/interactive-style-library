@@ -11,13 +11,10 @@ import {
   pxToRem,
   tidyCss,
 } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
+
 import { breakpoints } from "@guardian/source/foundations"
 import { CHARTS_PREFIX } from "../constants.js"
-import {
-  formatChartName,
-  resolveFontFamily,
-} from "../common.js"
+import { formatChartName, resolveFontFamily } from "../common.js"
 import { style } from "../style-writer.js"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -158,17 +155,23 @@ function generateTypographyStyles(styles) {
     if (typo.name === "axisLabel") {
       // Base axis label class
       const baseWriter = createTypographyWriter(typo)
-      results.push(buildTypographyOutput(`${CHARTS_PREFIX}-axis-label`, baseWriter))
+      results.push(
+        buildTypographyOutput(`${CHARTS_PREFIX}-axis-label`, baseWriter),
+      )
 
       // X-axis variant with text positioning
       const xWriter = createTypographyWriter(typo)
         .prop("text-anchor", "middle")
         .prop("dominant-baseline", "hanging")
-      results.push(buildTypographyOutput(`${CHARTS_PREFIX}-x-axis-label`, xWriter))
+      results.push(
+        buildTypographyOutput(`${CHARTS_PREFIX}-x-axis-label`, xWriter),
+      )
 
       // Y-axis variant
       const yWriter = createTypographyWriter(typo)
-      results.push(buildTypographyOutput(`${CHARTS_PREFIX}-y-axis-label`, yWriter))
+      results.push(
+        buildTypographyOutput(`${CHARTS_PREFIX}-y-axis-label`, yWriter),
+      )
     } else {
       const name = `${CHARTS_PREFIX}-${camelToKebab(typo.name)}`
       const writer = createTypographyWriter(typo)
@@ -209,7 +212,10 @@ export async function generate() {
 
   const typographyStyles = generateTypographyStyles(spec.typography)
   const lineStyles = generateLineStyles(spec.lines)
-  const structureStyles = generateStructureStyles(spec.structure, spec.typography)
+  const structureStyles = generateStructureStyles(
+    spec.structure,
+    spec.typography,
+  )
   const spacingVars = generateSpacingVars(spec.spacing)
 
   let cssOutput =
@@ -239,8 +245,3 @@ export async function generate() {
     files: [cssDistPath, scssDistPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

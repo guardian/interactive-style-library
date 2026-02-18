@@ -1,6 +1,5 @@
 import * as fs from "fs"
 import { getDistPath } from "../../utils.js"
-import { logGeneratedFiles } from "../../cli.js"
 
 import { breakpoints } from "@guardian/source/foundations"
 
@@ -29,6 +28,3 @@ export function generate() {
     files: [distPath],
   }
 }
-
-const { files } = generate()
-logGeneratedFiles(import.meta.filename, files)

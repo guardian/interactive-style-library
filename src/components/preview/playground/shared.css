@@ -7,8 +7,9 @@
 }
 
 h2 {
-  font-family: GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
+  font-family:
+    GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
   font-size: 1.25rem;
   margin: 0 0 1rem 0;
   padding-bottom: 0.5rem;
@@ -32,8 +33,8 @@ h2 {
 .playground__code pre {
   margin: 0;
   padding: 1rem;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
-    monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.8rem;
   line-height: 1.5;
 }

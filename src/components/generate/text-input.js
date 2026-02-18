@@ -7,7 +7,6 @@ import {
   loadContextFromPath,
   writeDeclClasses,
 } from "../common.js"
-import { logGeneratedFiles } from "../../cli.js"
 
 export async function generate() {
   const context = loadContextFromPath(
@@ -60,8 +59,3 @@ export async function generate() {
     files: [distPath],
   }
 }
-
-;(async () => {
-  const { files } = await generate()
-  logGeneratedFiles(import.meta.filename, files)
-})()

@@ -8,20 +8,20 @@
  * @returns {string} The dedented, trimmed string
  */
 export function stripBaseIndent(html) {
-  const lines = html.split("\n");
+  const lines = html.split("\n")
 
-  const firstNonEmptyLine = lines.find((line) => line.trim());
-  if (!firstNonEmptyLine) return "";
+  const firstNonEmptyLine = lines.find((line) => line.trim())
+  if (!firstNonEmptyLine) return ""
 
-  const baseIndent = firstNonEmptyLine.match(/^(\s*)/)[1].length;
+  const baseIndent = firstNonEmptyLine.match(/^(\s*)/)[1].length
 
   return lines
     .map((line) => {
       if (line.slice(0, baseIndent).trim() === "") {
-        return line.slice(baseIndent);
+        return line.slice(baseIndent)
       }
-      return line;
+      return line
     })
     .join("\n")
-    .trim();
+    .trim()
 }
