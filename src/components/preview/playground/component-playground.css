@@ -3,8 +3,10 @@
   align-items: center;
   justify-content: center;
   min-height: 120px;
-  background: #f6f6f6;
-  border-radius: 4px;
+
+  border-radius: 2px;
+  border: 1px solid var(--src-neutral-86);
+
   padding: 1rem;
 }
 

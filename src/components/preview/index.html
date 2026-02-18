@@ -5,246 +5,305 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive Source Components</title>
 
-    <link rel="stylesheet" href="/components/button.css" />
-    <link rel="stylesheet" href="/components/checkbox.css" />
-    <link rel="stylesheet" href="/components/icons.css" />
-    <link rel="stylesheet" href="/components/label.css" />
-    <link rel="stylesheet" href="/components/spinner.css" />
-    <link rel="stylesheet" href="/components/text-input.css" />
-    <link rel="stylesheet" href="/components/select.css" />
-
     <link rel="stylesheet" href="./styles.css" />
-
     <script type="module" src="./playground/index.js"></script>
+
+    <style>
+      @import "/source/all.css";
+      @import "/source/font-faces.css";
+
+      @import "/components/button.css";
+      @import "/components/button.css";
+      @import "/components/checkbox.css";
+      @import "/components/icons.css";
+      @import "/components/label.css";
+      @import "/components/spinner.css";
+      @import "/components/text-input.css";
+      @import "/components/select.css";
+      @import "/components/toggle.css";
+    </style>
   </head>
   <body>
-    <h1>Interactive Source Components</h1>
+    <header>
+      <h1 class="src-titlepiece-42">Interactive Source components</h1>
+    </header>
 
-    <!-- Button -->
-    <component-playground name="Button">
-      <button slot="preview" class="src-button">Click me</button>
+    <section>
+      <!-- Button -->
+      <component-playground name="Button">
+        <button slot="preview" class="src-button">Click me</button>
 
-      <template slot="code">
-        <button class="src-button">Click me</button>
-      </template>
+        <template slot="code">
+          <button class="src-button">Click me</button>
+        </template>
 
-      <fieldset slot="controls" data-target=".src-button">
-        <legend>Priority</legend>
-        <label>
-          <input type="radio" name="btn-priority" value="" checked />
-          Primary
-        </label>
-        <label>
+        <fieldset slot="controls" data-target=".src-button">
+          <legend>Priority</legend>
+          <label>
+            <input type="radio" name="btn-priority" value="" checked />
+            Primary
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="btn-priority"
+              value="src-button--secondary"
+            />
+            Secondary
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="btn-priority"
+              value="src-button--tertiary"
+            />
+            Tertiary
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="btn-priority"
+              value="src-button--subdued"
+            />
+            Subdued
+          </label>
+        </fieldset>
+
+        <fieldset slot="controls" data-target=".src-button">
+          <legend>Size</legend>
+          <label>
+            <input type="radio" name="btn-size" value="" checked />
+            Medium
+          </label>
+          <label>
+            <input type="radio" name="btn-size" value="src-button--small" />
+            Small
+          </label>
+          <label>
+            <input type="radio" name="btn-size" value="src-button--xsmall" />
+            Extra small
+          </label>
+        </fieldset>
+      </component-playground>
+
+      <!-- Spinner -->
+      <component-playground name="Spinner">
+        <div
+          slot="preview"
+          class="src-spinner"
+          role="status"
+          aria-label="Loading"
+        ></div>
+
+        <template slot="code">
+          <div class="src-spinner" role="status" aria-label="Loading"></div>
+        </template>
+
+        <fieldset slot="controls" data-target=".src-spinner">
+          <legend>Size</legend>
+          <label>
+            <input type="radio" name="spinner-size" value="" checked />
+            Medium
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="spinner-size"
+              value="src-spinner--small"
+            />
+            Small
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="spinner-size"
+              value="src-spinner--xsmall"
+            />
+            Extra small
+          </label>
+        </fieldset>
+      </component-playground>
+
+      <!-- Text Input -->
+      <component-playground name="Text Input">
+        <div slot="preview" style="width: 100%">
+          <label for="demo-input" class="src-label">
+            Email address
+            <div class="src-label__supporting">e.g. harpreet@example.com</div>
+          </label>
           <input
-            type="radio"
-            name="btn-priority"
-            value="src-button--secondary"
+            type="email"
+            id="demo-input"
+            class="src-text-input"
+            placeholder="Enter your email"
           />
-          Secondary
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="btn-priority"
-            value="src-button--tertiary"
-          />
-          Tertiary
-        </label>
-        <label>
-          <input type="radio" name="btn-priority" value="src-button--subdued" />
-          Subdued
-        </label>
-      </fieldset>
+        </div>
 
-      <fieldset slot="controls" data-target=".src-button">
-        <legend>Size</legend>
-        <label>
-          <input type="radio" name="btn-size" value="" checked />
-          Medium
-        </label>
-        <label>
-          <input type="radio" name="btn-size" value="src-button--small" />
-          Small
-        </label>
-        <label>
-          <input type="radio" name="btn-size" value="src-button--xsmall" />
-          Extra small
-        </label>
-      </fieldset>
-    </component-playground>
+        <template slot="code">
+          <label for="email" class="src-label">
+            Email address
+            <div class="src-label__supporting">e.g. harpreet@example.com</div>
+          </label>
+          <input type="email" id="email" class="src-text-input" />
+        </template>
 
-    <!-- Spinner -->
-    <component-playground name="Spinner">
-      <div
-        slot="preview"
-        class="src-spinner"
-        role="status"
-        aria-label="Loading"
-      ></div>
+        <fieldset slot="controls" data-target=".src-text-input">
+          <legend>Size</legend>
+          <label>
+            <input type="radio" name="input-size" value="" checked />
+            Medium
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="input-size"
+              value="src-text-input--small"
+            />
+            Small
+          </label>
+        </fieldset>
 
-      <template slot="code">
-        <div class="src-spinner" role="status" aria-label="Loading"></div>
-      </template>
+        <fieldset slot="controls" data-target=".src-text-input">
+          <legend>Width</legend>
+          <label>
+            <input type="radio" name="input-width" value="" checked />
+            Fluid
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="input-width"
+              value="src-text-input--width-30"
+            />
+            30 chars
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="input-width"
+              value="src-text-input--width-10"
+            />
+            10 chars
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="input-width"
+              value="src-text-input--width-4"
+            />
+            4 chars
+          </label>
+        </fieldset>
+      </component-playground>
 
-      <fieldset slot="controls" data-target=".src-spinner">
-        <legend>Size</legend>
-        <label>
-          <input type="radio" name="spinner-size" value="" checked />
-          Medium
-        </label>
-        <label>
-          <input type="radio" name="spinner-size" value="src-spinner--small" />
-          Small
-        </label>
-        <label>
-          <input type="radio" name="spinner-size" value="src-spinner--xsmall" />
-          Extra small
-        </label>
-      </fieldset>
-    </component-playground>
-
-    <!-- Text Input -->
-    <component-playground name="Text Input">
-      <div slot="preview" style="width: 100%">
-        <label for="demo-input" class="src-label">
+      <!-- Label -->
+      <component-playground name="Label">
+        <label slot="preview" for="label-demo" class="src-label">
           Email address
-          <div class="src-label__supporting">e.g. harpreet@example.com</div>
         </label>
-        <input
-          type="email"
-          id="demo-input"
-          class="src-text-input"
-          placeholder="Enter your email"
-        />
-      </div>
 
-      <template slot="code">
-        <label for="email" class="src-label">
-          Email address
-          <div class="src-label__supporting">e.g. harpreet@example.com</div>
-        </label>
-        <input type="email" id="email" class="src-text-input" />
-      </template>
+        <template slot="code">
+          <label for="email" class="src-label">Email address</label>
+        </template>
 
-      <fieldset slot="controls" data-target=".src-text-input">
-        <legend>Size</legend>
-        <label>
-          <input type="radio" name="input-size" value="" checked />
-          Medium
-        </label>
-        <label>
-          <input type="radio" name="input-size" value="src-text-input--small" />
-          Small
-        </label>
-      </fieldset>
+        <fieldset slot="controls" data-target=".src-label">
+          <legend>Size</legend>
+          <label>
+            <input type="radio" name="label-size" value="" checked />
+            Medium
+          </label>
+          <label>
+            <input type="radio" name="label-size" value="src-label--small" />
+            Small
+          </label>
+        </fieldset>
+      </component-playground>
 
-      <fieldset slot="controls" data-target=".src-text-input">
-        <legend>Width</legend>
-        <label>
-          <input type="radio" name="input-width" value="" checked />
-          Fluid
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="input-width"
-            value="src-text-input--width-30"
-          />
-          30 chars
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="input-width"
-            value="src-text-input--width-10"
-          />
-          10 chars
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="input-width"
-            value="src-text-input--width-4"
-          />
-          4 chars
-        </label>
-      </fieldset>
-    </component-playground>
-
-    <!-- Label -->
-    <component-playground name="Label">
-      <label slot="preview" for="label-demo" class="src-label">
-        Email address
-      </label>
-
-      <template slot="code">
-        <label for="email" class="src-label">Email address</label>
-      </template>
-
-      <fieldset slot="controls" data-target=".src-label">
-        <legend>Size</legend>
-        <label>
-          <input type="radio" name="label-size" value="" checked />
-          Medium
-        </label>
-        <label>
-          <input type="radio" name="label-size" value="src-label--small" />
-          Small
-        </label>
-      </fieldset>
-    </component-playground>
-
-    <!-- Checkbox -->
-    <component-playground name="Checkbox">
-      <div slot="preview" class="src-checkbox__container">
-        <input type="checkbox" id="demo-checkbox" class="src-checkbox" />
-        <label for="demo-checkbox" class="src-label">
-          Subscribe to newsletter
-        </label>
-      </div>
-
-      <template slot="code">
-        <div class="src-checkbox__container">
-          <input type="checkbox" id="newsletter" class="src-checkbox" />
-          <label for="newsletter" class="src-label">
+      <!-- Checkbox -->
+      <component-playground name="Checkbox">
+        <div slot="preview" class="src-checkbox__container">
+          <input type="checkbox" id="demo-checkbox" class="src-checkbox" />
+          <label for="demo-checkbox" class="src-label">
             Subscribe to newsletter
           </label>
         </div>
-      </template>
-    </component-playground>
 
-    <!-- Select -->
-    <component-playground name="Select">
-      <div slot="preview" style="width: 100%">
-        <label for="demo-select" class="src-label">
-          Country
-          <div class="src-label__supporting">Select your country</div>
-        </label>
-        <div class="src-select__wrapper">
-          <select id="demo-select" class="src-select">
-            <option value="">Choose an option</option>
-            <option value="uk">United Kingdom</option>
-            <option value="us">United States</option>
-            <option value="au">Australia</option>
-          </select>
+        <template slot="code">
+          <div class="src-checkbox__container">
+            <input type="checkbox" id="newsletter" class="src-checkbox" />
+            <label for="newsletter" class="src-label">
+              Subscribe to newsletter
+            </label>
+          </div>
+        </template>
+      </component-playground>
+
+      <!-- Toggle switch -->
+      <component-playground name="Toggle Switch">
+        <div slot="preview" class="src-toggle__container">
+          <input type="checkbox" id="demo-toggle" class="src-toggle" />
+          <label for="demo-toggle" class="src-toggle__label">
+            Show foo bar
+          </label>
         </div>
-      </div>
 
-      <template slot="code">
-        <label for="country" class="src-label">
-          Country
-          <div class="src-label__supporting">Select your country</div>
-        </label>
-        <div class="src-select__wrapper">
-          <select id="country" class="src-select">
-            <option value="">Choose an option</option>
-            <option value="uk">United Kingdom</option>
-          </select>
+        <template slot="code">
+          <div class="src-toggle__container">
+            <input type="checkbox" id="show-foo-bar" class="src-toggle" />
+            <label for="show-foo-bar" class="src-toggle__label">
+              Show foo bar
+            </label>
+          </div>
+        </template>
+
+        <fieldset slot="controls" data-target=".src-toggle">
+          <legend>Tick icon</legend>
+          <label>
+            <input type="radio" name="show-tick" value="" checked />
+            Show
+          </label>
+          <label>
+            <input type="radio" name="show-tick" value="src-toggle--no-tick" />
+            Hide
+          </label>
+        </fieldset>
+      </component-playground>
+
+      <!-- Select -->
+      <component-playground name="Select">
+        <div slot="preview" style="width: 100%">
+          <label for="demo-select" class="src-label">
+            Country
+            <div class="src-label__supporting">Select your country</div>
+          </label>
+          <div class="src-select__wrapper">
+            <select id="demo-select" class="src-select">
+              <option value="">Choose an option</option>
+              <option value="uk">United Kingdom</option>
+              <option value="us">United States</option>
+              <option value="au">Australia</option>
+            </select>
+          </div>
         </div>
-      </template>
-    </component-playground>
 
-    <!-- Icons -->
-    <icon-playground></icon-playground>
+        <template slot="code">
+          <label for="country" class="src-label">
+            Country
+            <div class="src-label__supporting">Select your country</div>
+          </label>
+          <div class="src-select__wrapper">
+            <select id="country" class="src-select">
+              <option value="">Choose an option</option>
+              <option value="uk">United Kingdom</option>
+              <option value="us">United States</option>
+              <option value="au">Australia</option>
+            </select>
+          </div>
+        </template>
+      </component-playground>
+
+      <!-- Icons -->
+      <icon-playground></icon-playground>
+    </section>
   </body>
 </html>

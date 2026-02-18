@@ -54,10 +54,8 @@ export class IconPlayground extends HTMLElement {
       <link rel="stylesheet" href="/components/icons.css">
       <style>${sharedStyles}\n${iconStyles}</style>
       <h2>Icons</h2>
-      <div class="playground">
-        <div class="playground__grid"></div>
-        <div class="playground__code"><span class="placeholder">Select an icon</span></div>
-      </div>
+      <div class="playground__grid"></div>
+      <div class="playground__code"><span class="placeholder">Select an icon</span></div>
       <div class="pagination">
         <button class="prev">Prev</button>
         <span class="pagination__info"></span>

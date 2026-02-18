@@ -37,14 +37,18 @@ export class ComponentPlayground extends HTMLElement {
     const name = this.getAttribute("name") || "Component"
 
     this.shadowRoot.innerHTML = `
-      <style>${sharedStyles}\n${componentStyles}</style>
-      <h2>${name}</h2>
-      <div class="playground">
-        <div class="playground__preview">
-          <slot name="preview"></slot>
-        </div>
-        <div class="playground__code"><pre><code></code></pre></div>
+      <style>
+        @import "/source/all.css";
+        @import "/source/font-faces.css";
+        ${sharedStyles}
+        ${componentStyles}
+      </style>
+
+      <h2 class="src-headline-medium-24">${name}</h2>
+      <div class="playground__preview">
+        <slot name="preview"></slot>
       </div>
+      <div class="playground__code"><pre><code></code></pre></div>
       <div class="playground__controls">
         <slot name="controls"></slot>
       </div>
@@ -86,11 +90,13 @@ export class ComponentPlayground extends HTMLElement {
     if (!this.baseCode) return ""
 
     let code = this.baseCode
+
     for (const { target, baseClass } of this.getClassUpdates()) {
       if (!baseClass) continue
       const pattern = new RegExp(`class="(${baseClass}[^"]*)"`, "g")
       code = code.replace(pattern, `class="${target.className}"`)
     }
+
     return code
   }
 

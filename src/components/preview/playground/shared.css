@@ -1,30 +1,49 @@
 :host {
   display: block;
   background: white;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 4px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 28px;
+
+  display: grid;
+
+  grid-template-areas:
+    "title ."
+    "preview controls"
+    "code code";
+
+  grid-template-columns: 1fr 1fr;
+
+  row-gap: 24px;
+  column-gap: 20px;
+
+  border-top: 1px solid var(--src-neutral-86);
 }
 
 h2 {
-  font-family:
-    GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
-  font-size: 1.25rem;
-  margin: 0 0 1rem 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #dcdcdc;
+  grid-area: title;
+
+  margin-top: 16px;
+  margin-bottom: 0;
 }
 
-.playground {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
+.playground__preview {
+  grid-area: preview;
 }
 
 .playground__code {
-  background: #24292e;
+  grid-area: code;
+}
+
+.playground__controls {
+  grid-area: controls;
+}
+
+.playground__code {
+  background-color: var(--src-neutral-97);
+  border: 1px solid var(--src-neutral-86);
+
   border-radius: 4px;
   overflow: auto;
   margin: 0;
