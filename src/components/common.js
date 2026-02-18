@@ -11,13 +11,20 @@ import { findProjectRoot } from "../utils.js"
 
 /**
  * @param {string} distRelativeSourcePath
+ * @param {Object} [opts={ kitchen: false }]
+ * @param {boolean} opts.kitchen `true` if this component is found in the development kitchen package
  */
-export function getSourceDistPath(distRelativeSourcePath) {
+export function getSourceDistPath(
+  distRelativeSourcePath,
+  { kitchen } = { kitchen: false },
+) {
   const root = findProjectRoot()
 
   const fullPath = path.join(
     root,
-    "node_modules/@guardian/source/dist",
+    kitchen
+      ? "node_modules/@guardian/source-development-kitchen/dist"
+      : "node_modules/@guardian/source/dist",
     distRelativeSourcePath,
   )
 
