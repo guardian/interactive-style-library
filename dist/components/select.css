@@ -30,9 +30,13 @@
   border: 1px solid #707070;
   border-radius: 4px;
   padding-left: 8px;
+
   -webkit-appearance: none;
+
   -moz-appearance: none;
+
   appearance: none;
+  padding-right: 46px;
 }
 
 .src-select:focus {

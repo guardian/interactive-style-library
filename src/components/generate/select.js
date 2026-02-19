@@ -70,7 +70,15 @@ export async function generate() {
       arrowIconRule.nodes.join(";\n"),
     ),
 
-    makeDecl(".src-select", selectStylesRoot.toString(), `appearance: none;`),
+    makeDecl(
+      ".src-select",
+      selectStylesRoot.toString(),
+      // Add some padding-right to make space for the down chevron
+      `
+        appearance: none;
+        padding-right: 46px;
+      `,
+    ),
 
     // NOTE: the actual Source component seems to use the incorrect margin-top when used with a label without supporting text (it uses 6px, when the other inputs use 4px, eg. text-input) - here, we use the correct 4px margin-top
     // NOTE: when we get to adding success/error feedback, this'll need to be moved to the container, the way the actual Select component does it
