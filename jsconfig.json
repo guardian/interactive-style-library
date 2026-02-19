@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "module": "nodenext",
-    "allowJs": true,
-    "checkJs": true,
-  }
-}
