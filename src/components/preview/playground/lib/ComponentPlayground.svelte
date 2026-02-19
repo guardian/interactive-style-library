@@ -5,6 +5,11 @@
   import * as prettierHtml from "prettier/plugins/html"
   import CodeBlock from "./CodeBlock.svelte"
 
+  /** @type {{
+    name: string,
+    children: import("svelte").Snippet,
+    controls?: import("svelte").Snippet,
+  }} */
   let { name, children, controls } = $props()
 
   const variantMap = new SvelteMap()
@@ -42,8 +47,10 @@
 
 <div class="playground">
   <h2 class="src-headline-medium-24">{name}</h2>
-  <div class="preview" bind:this={previewEl}>
-    {@render children(classes)}
+  <div class="preview">
+    <div bind:this={previewEl}>
+      {@render children(classes)}
+    </div>
   </div>
   <CodeBlock code={displayCode} />
   {#if controls}
@@ -80,9 +87,10 @@
 
   .preview {
     grid-area: preview;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    align-content: center;
+    justify-items: center;
+
     min-height: 120px;
     border-radius: 2px;
     border: 1px solid var(--src-neutral-86);

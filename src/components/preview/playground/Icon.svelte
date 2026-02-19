@@ -43,8 +43,8 @@
 </script>
 
 <div class="playground">
-  <h2>Icons</h2>
-  <div class="playground__grid">
+  <h2 class="src-headline-medium-24">Icons</h2>
+  <div class="grid">
     {#each pageIcons as icon}
       <button
         class="icon-item"
@@ -56,7 +56,7 @@
       </button>
     {/each}
   </div>
-  <div class="playground__code" bind:this={codeContainer}>
+  <div class="code" bind:this={codeContainer}>
     {#if !selectedIcon}
       <span class="placeholder">Select an icon</span>
     {/if}
@@ -106,7 +106,7 @@
     margin-bottom: 0;
   }
 
-  .playground__grid {
+  .grid {
     grid-area: grid;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -158,7 +158,7 @@
     word-break: break-word;
   }
 
-  .playground__code {
+  .code {
     grid-area: code;
     background-color: var(--src-neutral-97);
     border: 1px solid var(--src-neutral-86);
@@ -169,7 +169,7 @@
     align-items: center;
   }
 
-  .playground__code :global(pre) {
+  .code :global(pre) {
     margin: 0;
     padding: 1rem;
     font-family:
@@ -178,7 +178,7 @@
     line-height: 1.5;
   }
 
-  .playground__code :global(code) {
+  .code :global(code) {
     background: none !important;
   }
 

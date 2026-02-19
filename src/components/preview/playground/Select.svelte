@@ -5,16 +5,16 @@
 
 <ComponentPlayground name="Select">
   {#snippet children()}
-    <label for="country" class="src-label">
-      Country
-      <div class="src-label__supporting">Select your country</div>
+    <label for="projection" class="src-label">
+      Map projection
     </label>
     <div class="src-select__wrapper">
-      <select id="country" class="src-select">
-        <option value="">Choose an option</option>
-        <option value="uk">United Kingdom</option>
-        <option value="us">United States</option>
-        <option value="au">Australia</option>
+      <select id="projection" class="src-select">
+        <option value="">Choose a projection</option>
+        <option value="mercator">Mercator</option>
+        <option value="equal-earth">Equal Earth</option>
+        <option value="robinson">Robinson</option>
+        <option value="winkel-tripel">Winkel Tripel</option>
       </select>
     </div>
   {/snippet}

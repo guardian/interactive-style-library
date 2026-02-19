@@ -5,16 +5,11 @@
 
 <ComponentPlayground name="Text Input">
   {#snippet children(classes)}
-    <label for="email" class="src-label">
-      Email address
-      <div class="src-label__supporting">e.g. harpreet@example.com</div>
+    <label for="search" class="src-label">
+      Post code
+      <div class="src-label__supporting">eg. L208LZ</div>
     </label>
-    <input
-      type="email"
-      id="email"
-      class={classes("src-text-input")}
-      placeholder="Enter your email"
-    />
+    <input type="text" id="search" class={classes("src-text-input")} />
   {/snippet}
 
   {#snippet controls()}

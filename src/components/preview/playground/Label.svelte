@@ -5,7 +5,7 @@
 
 <ComponentPlayground name="Label">
   {#snippet children(classes)}
-    <label for="email" class={classes("src-label")}>Email address</label>
+    <label for="headline" class={classes("src-label")}>Headline</label>
   {/snippet}
 
   {#snippet controls()}

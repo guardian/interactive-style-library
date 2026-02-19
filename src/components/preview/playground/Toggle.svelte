@@ -6,8 +6,8 @@
 <ComponentPlayground name="Toggle Switch">
   {#snippet children(classes)}
     <div class="src-toggle__container">
-      <input type="checkbox" id="show-foo-bar" class={classes("src-toggle")} />
-      <label for="show-foo-bar" class="src-toggle__label"> Show foo bar </label>
+      <input type="checkbox" id="log-scale" class={classes("src-toggle")} />
+      <label for="log-scale" class="src-toggle__label">Log scale</label>
     </div>
   {/snippet}
 

@@ -5,7 +5,7 @@
 
 <ComponentPlayground name="Button">
   {#snippet children(classes)}
-    <button class={classes("src-button")}>Click me</button>
+    <button class={classes("src-button")}>Submit</button>
   {/snippet}
 
   {#snippet controls()}
