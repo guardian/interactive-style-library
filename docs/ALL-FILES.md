@@ -15,11 +15,12 @@ Source files are imported with the path `interactive-style-library/source/*`, Vi
 | 🎨 [`source/palette.js`](./dist/source/palette.js) | JS object of Source's colour palette | [Source: Core palette](https://zeroheight.com/2a1e5182b/p/71fb50-colour/b/399c59) |
 | 🖋️ [`source/typography-classes.css`](./dist/source/typography-classes.css) | CSS classes for typography presets | [Source: Typography presets](https://zeroheight.com/2a1e5182b/p/01555f-typography-presets) |
 | 🖋️ [`source/typography-mixins.scss`](./dist/source/typography-mixins.scss) | SCSS mixins for typography presets | [Source: Typography presets](https://zeroheight.com/2a1e5182b/p/01555f-typography-presets) |
+| 🖋️ [`source/font-faces.scss`](./dist/source/font-faces.css) | `@font-face` decls. for typography classes, adapted from [dotcom-rendering](https://github.com/guardian/dotcom-rendering/blob/main/dotcom-rendering/src/lib/fonts-css.ts) | [Source: Typography presets](https://zeroheight.com/2a1e5182b/p/01555f-typography-presets) |
 | 📐 [`source/mq.scss`](./dist/source/mq.scss) | [sass-mq](https://github.com/sass-mq/sass-mq) setup with Source breakpoints | [Source: Grids (web)](https://zeroheight.com/2a1e5182b/p/41be19-grids-web) |
 | 📐 [`source/breakpoints.scss`](./dist/source/breakpoints.scss) | SCSS map of responsive breakpoints | [Source: Grids (web)](https://zeroheight.com/2a1e5182b/p/41be19-grids-web) |
 | 📐 [`source/breakpoints.js`](./dist/source/breakpoints.js) | JS object with Source breakpoints | [Source: Grids (web)](https://zeroheight.com/2a1e5182b/p/41be19-grids-web) |
-| 📚 [`source/all.css`](./dist/source/all.css) | All Source CSS resources | |
-| 📚 [`source/all.scss`](./dist/source/all.scss) | All Source CSS and SCSS resources | |
+| 📚 [`source/all.css`](./dist/source/all.css) | All Source CSS resources _(excl. font faces)_ | |
+| 📚 [`source/all.scss`](./dist/source/all.scss) | All Source CSS + SCSS resources _(excl. font faces and breakpoints)_ | |
 
 ## Visuals
 
@@ -42,10 +43,11 @@ CSS-only versions of Source's React components. See each component's README for 
 <!-- prettier-ignore -->
 | File | Description | Usage | Reference |
 | ---- | ----------- | ----- | --------- |
-| [`components/button.css`](../dist/components/button.css) | Button styles (primary, secondary, etc.) | [README](../src/components/generate/button/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-button--docs) |
-| [`components/checkbox.css`](../dist/components/checkbox.css) | Checkbox styles with custom tick animation | [README](../src/components/generate/checkbox/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-checkbox--docs) | 
-| [`components/icon.css`](../dist/components/icon.css) | Icon library with all Source icons | [README](../src/components/generate/icons/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-icons--docs) |
-| [`components/label.css`](../dist/components/label.css) | Label styles with optional and supporting text | [README](../src/components/generate/label/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-label--docs) |
-| [`components/select.css`](../dist/components/select.css) | Select/dropdown styles | [README](../src/components/generate/select/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-select--docs) |
-| [`components/spinner.css`](../dist/components/spinner.css) | Loading spinner styles | [README](../src/components/generate/spinner/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-spinner--docs) |
-| [`components/text-input.css`](../dist/components/text-input.css) | Text input field styles | [README](../src/components/generate/text-input/README.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-textinput--docs) |
+| [`components/button.css`](../dist/components/button.css) | Button styles (primary, secondary, etc.) | [BUTTON.md](./components/BUTTON.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-button--docs) |
+| [`components/checkbox.css`](../dist/components/checkbox.css) | Checkbox styles with custom tick animation | [CHECKBOX.md](./components/CHECKBOX.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-checkbox--docs) | 
+| [`components/icon.css`](../dist/components/icon.css) | Icon library with all Source icons | [ICONS.md](./components/ICONS.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-icons--docs) |
+| [`components/label.css`](../dist/components/label.css) | Label styles with optional and supporting text | [LABEL.md](./components/LABEL.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-label--docs) |
+| [`components/select.css`](../dist/components/select.css) | Select/dropdown styles | [SELECT.md](./components/SELECT.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-select--docs) |
+| [`components/spinner.css`](../dist/components/spinner.css) | Loading spinner styles | [SPINNER.md](./components/SPINNER.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-spinner--docs) |
+| [`components/text-input.css`](../dist/components/text-input.css) | Text input field styles | [TEXT-INPUT.md](./components/TEXT-INPUT.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source_react-components-textinput--docs) |
+| [`components/toggle.css`](../dist/components/toggle.css) | Text input field styles | [TOGGLE.md](./components/TOGGLE.md) | [Storybook](https://guardian.github.io/storybooks/?path=/docs/source-development-kitchen_react-components-toggleswitch--docs) |

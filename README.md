@@ -2,7 +2,7 @@
 
 Guardian design tokens and CSS-only components from Source and Visuals' design spec, bundled into CSS and SCSS files.
 
-Just `@import "interactive-style-library/source/all.scss"` and go.
+Just `@use "interactive-style-library/source/all" as *` and go.
 
 Files are generated directly from [@guardian/source](https://github.com/guardian/csnx/tree/main/libs/%40guardian/source) and [Visuals](https://www.figma.com/design/lQ8KHxsb8xIJaMujuJV9dr/Colour-guide-2025?node-id=0-1&p=f&t=0ThLMx10HCgM8IMZ-0) design tokens.
 
@@ -19,15 +19,15 @@ imports into your main SCSS file.
 
 ```scss
 // main.scss
-@use "interactive-style-library/source/all.scss" as *;
-@use "interactive-style-library/visuals/all.scss" as *;
+@use "interactive-style-library/source/all" as *;
+@use "interactive-style-library/visuals/all" as *;
 ```
 
 For components (buttons, inputs, icons, etc.), import the CSS files you need.
 
 ```css
-@import "interactive-style-library/components/button.css";
-@import "interactive-style-library/components/checkbox.css";
+@use "@guardian/interactive-source-components/label.css";
+@use "@guardian/interactive-source-components/text-input.css";
 ```
 
 Then style your content like so.
@@ -45,6 +45,9 @@ Then style your content like so.
   The chips washed up near Eastbourne after several shipping containers
   containing "food and packaging" came ashore nearby earlier this week.
 </p>
+
+<label for="feedback" class="src-label">Have your say</label>
+<input id="feedback" class="src-text-input" />
 ```
 
 For more detailed installation and setup instructions, read [**USAGE.md**](./docs/USAGE.md).
@@ -81,16 +84,21 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 </td>
 <td>
 
+🖋️ [`font-faces.css`](./dist/source/font-faces.css)
+
+</td>
+<td>
+
 📐 [`mq.scss`](./dist/source/mq.scss)
 
 </td>
+</tr>
+<tr>
 <td>
 
 📐 [`breakpoints.scss`](./dist/source/breakpoints.scss)
 
 </td>
-</tr>
-<tr>
 <td>
 
 📐 [`breakpoints.js`](./dist/source/breakpoints.js)
@@ -101,6 +109,8 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 📚 [`all.css`](./dist/source/all.css)
 
 </td>
+</tr>
+<tr>
 <td>
 
 📚 [`all.scss`](./dist/source/all.scss)
@@ -162,7 +172,7 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 
 ### Components (from `@guardian/source`)
 
-CSS-only versions of Source's React components. See each component's individual guide for usage and variants.
+CSS-only versions of Source's React components. See each component's individual guide ([docs/components](./docs/components/)) for usage and variants.
 
 <table>
 <tr>
@@ -203,6 +213,11 @@ CSS-only versions of Source's React components. See each component's individual 
 <td>
 
 🎨 [`text-input.css`](./dist/components/text-input.css)
+
+</td>
+<td>
+
+🎨 [`toggle.css`](./dist/components/toggle.css)
 
 </td>
 </tr>

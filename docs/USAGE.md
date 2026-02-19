@@ -44,7 +44,7 @@ the `all.scss` files into your main SCSS.
 ```
 
 This gives you access to all CSS variables, classes, and SCSS utilities from both Source and
-Visuals:
+Visuals (with a couple of exceptions – see [ALL-FILES.md](./ALL-FILES.md)):
 
 <table>
 <tr>
@@ -96,12 +96,12 @@ _all styles_. See [design token files reference](./ALL-FILES.md) for a list of t
 ### Components
 
 The package also provides CSS-only versions of Source's React components (buttons, checkboxes, text
-inputs, etc.). Import the CSS file for each component you need.
+inputs, etc.). Simply import the CSS file for each component you need.
 
 ```css
-@import "interactive-style-library/components/button.css";
-@import "interactive-style-library/components/label.css";
-@import "interactive-style-library/components/text-input.css";
+@use "interactive-style-library/components/button.css";
+@use "interactive-style-library/components/label.css";
+@use "interactive-style-library/components/text-input.css";
 ```
 
 Then use the `src-` prefixed classes in your HTML.
