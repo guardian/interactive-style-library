@@ -18,8 +18,6 @@ export async function generate() {
     getSourceDistPath("react-components/inline/styles.js"),
   )
 
-  console.log(inlineContext)
-
   const radioClasses = [
     // TODO: why fieldset2?
     makeDecl(".src-radio-group", context.fieldset2(themeRadioGroup)),

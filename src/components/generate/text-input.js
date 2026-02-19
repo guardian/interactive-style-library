@@ -2,7 +2,7 @@ import { themeTextInput } from "@guardian/source/react-components"
 
 import { getDistPath } from "../../utils.js"
 import {
-  classTuple,
+  makeDecl,
   getSourceDistPath,
   loadContextFromPath,
   writeDeclClasses,
@@ -14,42 +14,34 @@ export async function generate() {
   )
 
   const textInputClasses = [
-    classTuple(
-      "src-text-input",
+    makeDecl(
+      ".src-text-input",
       context.textInput(themeTextInput, "medium"),
       context.widthFluid.styles,
     ),
 
-    classTuple("src-text-input--medium", context.inputSizeMedium.styles),
-    classTuple("src-text-input--small", context.inputSizeSmall.styles),
+    makeDecl(".src-text-input--medium", context.inputSizeMedium.styles),
+    makeDecl(".src-text-input--small", context.inputSizeSmall.styles),
 
-    classTuple("src-text-input--width-fluid", context.widthFluid.styles),
-    classTuple("src-text-input--width-30", context.width30.styles),
-    classTuple("src-text-input--width-10", context.width10.styles),
-    classTuple("src-text-input--width-4", context.width4.styles),
+    makeDecl(".src-text-input--width-fluid", context.widthFluid.styles),
+    makeDecl(".src-text-input--width-30", context.width30.styles),
+    makeDecl(".src-text-input--width-10", context.width10.styles),
+    makeDecl(".src-text-input--width-4", context.width4.styles),
 
     // Add margin above input according to preceding label element
-    [
-      "src-text-input",
-      `.src-label + .src-text-input {\n` +
-        `${context.labelMargin.styles}` +
-        `}\n`,
-    ],
-    [
-      // TODO: can we do without :has?
-      "src-text-input",
-      `label.src-label + .src-text-input,\n` +
-        `label.src-label + :has(> .src-text-input) {\n` +
-        `${context.labelMargin.styles}` +
-        `}\n`,
-    ],
-    [
-      "src-text-input",
+    makeDecl(".src-label + .src-text-input", context.labelMargin.styles),
+
+    // TODO: can we do without :has?
+    makeDecl(
+      `label.src-label + .src-text-input, label.src-label + :has(> .src-text-input)`,
+      context.labelMargin.styles,
+    ),
+
+    makeDecl(
       `label:has(.src-label__supporting) + .src-text-input,` +
-        `label:has(.src-label__supporting) + :has(> .src-text-input) {\n` +
-        `${context.supportingTextMargin.styles}` +
-        `}\n`,
-    ],
+        `label:has(.src-label__supporting) + :has(> .src-text-input)`,
+      context.supportingTextMargin.styles,
+    ),
   ]
 
   const distPath = getDistPath("components/text-input.css")

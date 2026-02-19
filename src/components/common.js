@@ -79,37 +79,6 @@ function runBundledCode(code) {
   return context
 }
 
-// /**
-//  * @param {string} moduleDir
-//  */
-// export function getDistPath(moduleDir) {
-//   const root = findProjectRoot()
-//   let relPath = path.relative(root, moduleDir)
-//
-//   relPath = relPath.replace(/^src(\/|\\)/, "dist$1")
-//
-//   const leaf = path.basename(moduleDir)
-//   const cssFile = `${leaf}.css`
-//
-//   const parentDir = path.dirname(relPath)
-//
-//   return path.join(parentDir, cssFile)
-// }
-
-/**
- * @param {string} className
- * @param {string|Array|Object} restStyles
- * @deprecated Use `makeDecl` instead
- */
-export function classTuple(className, ...restStyles) {
-  let joinedStyles = parseEmotion(...restStyles)
-
-  return /** @type {[string, string]} */ ([
-    className,
-    `.${className} {${joinedStyles}}`,
-  ])
-}
-
 /**
  * @param {string} selector
  * @param {string|Array|Object} restStyles

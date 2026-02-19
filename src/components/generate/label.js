@@ -3,9 +3,9 @@ import { themeLabel } from "@guardian/source/react-components"
 import { getDistPath } from "../../utils.js"
 
 import {
-  classTuple,
   getSourceDistPath,
   loadContextFromPath,
+  makeDecl,
   writeDeclClasses,
 } from "../common.js"
 
@@ -15,14 +15,15 @@ export async function generate() {
   )
 
   const labelClasses = [
-    classTuple(
-      "src-label",
+    makeDecl(
+      ".src-label",
       context.labelText(themeLabel, "medium"),
       "display: block;",
     ),
-    classTuple("src-label--small", context.textSize.small),
-    classTuple("src-label__optional", context.optionalText(themeLabel)),
-    classTuple("src-label__supporting", context.supportingText(themeLabel)),
+
+    makeDecl(".src-label--small", context.textSize.small),
+    makeDecl(".src-label__optional", context.optionalText(themeLabel)),
+    makeDecl(".src-label__supporting", context.supportingText(themeLabel)),
   ]
 
   const distPath = getDistPath("components/label.css")
