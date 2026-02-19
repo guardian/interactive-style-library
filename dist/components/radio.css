@@ -16,7 +16,10 @@
 .src-radio-group--horizontal {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+}
+
+.src-radio-group--horizontal .src-radio__container:not(:last-child) {
+  margin-right: 20px;
 }
 
 .src-radio__container {
@@ -112,9 +115,7 @@ html:not(.src-focus-disabled) .src-radio:focus {
   font-style: normal;
   --source-text-decoration-thickness: 2px;
   color: #121212;
-  width: 100%;
   margin-top: 1px;
-  display: block;
 }
 
 /* If label text is empty, add additional spacing to align supporting text */

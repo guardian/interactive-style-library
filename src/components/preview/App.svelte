@@ -58,13 +58,6 @@
       padding-bottom: 20px;
     }
 
-    legend {
-      font-weight: bold;
-      font-size: 0.75rem;
-      color: #707070;
-      margin-bottom: 0.25rem;
-    }
-
     fieldset {
       border: 0;
       padding: 0;
@@ -75,8 +68,6 @@
     fieldset label {
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
-      margin-right: 0.75rem;
       font-size: 0.875rem;
       cursor: pointer;
     }

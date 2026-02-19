@@ -9,11 +9,15 @@
   variantMap.set(label, "")
 </script>
 
-<fieldset>
-  <legend style="text-transform: capitalize">{label}</legend>
+<fieldset class="src-radio-group src-radio-group--horizontal">
+  <legend class="src-label">
+    {label}
+  </legend>
+
   {#each options as option}
-    <label>
+    <label class="src-radio__label src-radio__container">
       <input
+        class="src-radio"
         type="radio"
         name={uniqueId}
         value={option.value}
@@ -24,3 +28,9 @@
     </label>
   {/each}
 </fieldset>
+
+<style>
+  legend {
+    text-transform: capitalize;
+  }
+</style>

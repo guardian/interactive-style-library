@@ -17,10 +17,6 @@ export async function generate() {
     }),
   )
 
-  const checkboxContext = loadContextFromPath(
-    getSourceDistPath("react-components/checkbox/styles.js"),
-  )
-
   let toggleStylesRoot = await parseCss(context.toggleStyles.styles)
 
   toggleStylesRoot.walkDecls((decl) => {

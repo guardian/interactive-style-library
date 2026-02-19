@@ -6,6 +6,7 @@ import {
   getSourceDistPath,
   loadContextFromPath,
   makeDecl,
+  parseCss,
   writeDeclClasses,
 } from "../common.js"
 
@@ -18,26 +19,29 @@ export async function generate() {
     getSourceDistPath("react-components/inline/styles.js"),
   )
 
+  let labelStylesRoot = await parseCss(context.labelText(themeRadio).styles)
+
+  labelStylesRoot.walkDecls((decl) => {
+    // Labels don't need to be 100%, and this interferes with
+    // input-inside-label situations
+    if (decl.prop === "width" && decl.value === "100%") {
+      decl.remove()
+    }
+  })
+
   const radioClasses = [
     // TODO: why fieldset2?
     makeDecl(".src-radio-group", context.fieldset2(themeRadioGroup)),
 
+    makeDecl(".src-radio-group--horizontal", inlineContext.inlineWrapper),
     makeDecl(
-      ".src-radio-group--horizontal",
-      inlineContext.inlineWrapper,
-      // This imitates the spacing applied by the horizontal orientation
-      `gap: ${space["5"] / 2}px;`,
+      ".src-radio-group--horizontal .src-radio__container:not(:last-child)",
+      `margin-right: ${space["5"]}px;`,
     ),
 
     makeDecl(".src-radio__container", context.radioContainer(themeRadio)),
     makeDecl(".src-radio", context.radio(themeRadio)),
-
-    makeDecl(
-      ".src-radio__label",
-      context.labelText(themeRadio),
-      `display: block`, // Ensures supporting text sits on its own line
-    ),
-
+    makeDecl(".src-radio__label", labelStylesRoot.toString()),
     makeDecl(".src-radio__supporting", context.supportingText(themeRadio)),
   ]
 
