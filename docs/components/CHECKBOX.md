@@ -2,14 +2,14 @@
 
 ```html
 <script>
-  import "@guardian/interactive-source-components/checkbox.css";
+  import "@guardian/interactive-source-components/checkbox.css"
 </script>
 
 <div class="src-checkbox__container">
   <input type="checkbox" id="newsletter" class="src-checkbox" />
-  <label for="newsletter" class="src-label">
+  <label for="newsletter" class="src-checkbox__label">
     Subscribe to newsletter
-    <div class="src-label__supporting">
+    <div class="src-checkbox__supporting">
       We'll send you updates about new articles
     </div>
   </label>

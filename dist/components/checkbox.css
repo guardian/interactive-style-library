@@ -135,7 +135,7 @@ html:not(.src-focus-disabled) .src-checkbox:focus {
   mask-image: unset;
 }
 
-.src-checkbox ~ .src-label {
+.src-checkbox__label {
   font-family:
     GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
     Arial, "Lucida Grande", sans-serif;
@@ -151,11 +151,11 @@ html:not(.src-focus-disabled) .src-checkbox:focus {
 
 /* If label text is empty, add additional spacing to align supporting text */
 
-.src-checkbox ~ .src-label:empty {
+.src-checkbox__label:empty {
   margin-top: 2px;
 }
 
-.src-checkbox ~ .src-label .src-label__supporting {
+.src-checkbox__supporting {
   font-family:
     GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
     Arial, "Lucida Grande", sans-serif;

@@ -72,10 +72,10 @@ export async function generate() {
     makeDecl(".src-checkbox:indeterminate::after", `mask-image: unset;`),
 
     // NOTE: checkboxes have their own label style, so we can't use the label.css
-    makeDecl(".src-checkbox ~ .src-label", context.labelText(themeCheckbox)),
+    makeDecl(".src-checkbox__label", context.labelText(themeCheckbox)),
 
     makeDecl(
-      ".src-checkbox ~ .src-label .src-label__supporting",
+      ".src-checkbox__supporting",
       context.supportingText(themeCheckbox),
     ),
   ]
