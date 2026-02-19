@@ -5,10 +5,8 @@
 
 <ComponentPlayground name="Select">
   {#snippet children()}
-    <label for="projection" class="src-label">
-      Map projection
-    </label>
-    <div class="src-select__wrapper">
+    <label for="projection" class="src-label"> Map projection </label>
+    <div class="src-select__container">
       <select id="projection" class="src-select">
         <option value="">Choose a projection</option>
         <option value="mercator">Mercator</option>

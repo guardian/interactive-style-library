@@ -27,7 +27,7 @@ export async function generate() {
     }
   })
 
-  const selectWrapperStylesRoot = await parseCss(
+  const selectContainerStylesRoot = await parseCss(
     context.selectWrapper(themeSelect).styles,
   )
 
@@ -35,7 +35,7 @@ export async function generate() {
   let arrowIconRule
 
   // Steal rule for the SVG icon that we're going to add via a data URL instead
-  selectWrapperStylesRoot.nodes.forEach((node) => {
+  selectContainerStylesRoot.nodes.forEach((node) => {
     if (node.type === "rule" && node.selector === "svg") {
       arrowIconRule = node.clone()
       node.remove()
@@ -60,10 +60,10 @@ export async function generate() {
   `)
 
   const selectClasses = [
-    makeDecl(".src-select__wrapper", selectWrapperStylesRoot.toString()),
+    makeDecl(".src-select__container", selectContainerStylesRoot.toString()),
 
     makeDecl(
-      ".src-select__wrapper::after",
+      ".src-select__container::after",
       `
         content: url("data:image/svg+xml,${encodeURIComponent(arrowSvg)}");
      `,
@@ -83,13 +83,13 @@ export async function generate() {
     // NOTE: the actual Source component seems to use the incorrect margin-top when used with a label without supporting text (it uses 6px, when the other inputs use 4px, eg. text-input) - here, we use the correct 4px margin-top
     // NOTE: when we get to adding success/error feedback, this'll need to be moved to the container, the way the actual Select component does it
     makeDecl(
-      `.src-label + .src-select__wrapper`,
+      `.src-label + .src-select__container`,
       `margin-top: ${context.space[1]}px`,
     ),
 
     // TODO: can we do this without :has()? at least, we should document that this use of :has() is a progessive enhancement, we'll fall back to the above margin if it's not available, which isn't so bad
     makeDecl(
-      `.src-label:has(.src-label__supporting) + .src-select__wrapper`,
+      `.src-label:has(.src-label__supporting) + .src-select__container`,
       context.supportingTextMargin.styles,
     ),
   ]

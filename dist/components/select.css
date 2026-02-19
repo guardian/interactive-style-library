@@ -1,8 +1,8 @@
-.src-select__wrapper {
+.src-select__container {
   position: relative;
 }
 
-.src-select__wrapper::after {
+.src-select__container::after {
   content: url("data:image/svg+xml,%3Csvg%20viewBox%3D%22-3%20-3%2030%2030%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20fill%3D%22%23121212%22%20clip-rule%3D%22evenodd%22%20d%3D%22m1%207.224%2010.498%2010.498h1.004L23%207.224l-.98-.954L12%2014.708%201.98%206.27z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
   position: absolute;
   right: 12px;
@@ -58,10 +58,10 @@ html:not(.src-focus-disabled) .src-select:focus {
 .src-select:invalid:active {
   border: 2px solid #c70000;
 }
-.src-label + .src-select__wrapper {
+.src-label + .src-select__container {
   margin-top: 4px;
 }
 
-.src-label:has(.src-label__supporting) + .src-select__wrapper {
+.src-label:has(.src-label__supporting) + .src-select__container {
   margin-top: 6px;
 }
