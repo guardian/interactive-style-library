@@ -30,7 +30,7 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "build-watch": "node ./scripts/build-watch.js",
-    "components.dev": "vite"
+    "components.dev": "vite -c src/components/preview/vite.config.js"
   },
   "license": "ISC",
   "devDependencies": {
@@ -38,6 +38,7 @@
     "@guardian/source": "^12.2.0",
     "@guardian/source-development-kitchen": "^24.0.1",
     "@prettier/sync": "^0.6.1",
+    "@sveltejs/vite-plugin-svelte": "^6.2.4",
     "autoprefixer": "^10.4.21",
     "baseline-browser-mapping": "^2.9.10",
     "concurrently": "^9.1.2",
@@ -48,8 +49,10 @@
     "postcss-combine-duplicated-selectors": "^10.0.3",
     "postcss-nested": "^7.0.2",
     "prettier": "^3.8.0",
+    "prettier-plugin-svelte": "^3.5.0",
     "react-dom": "^18.3.1",
     "shiki": "^3.20.0",
+    "svelte": "^5.53.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "yaml": "^2.8.2"
