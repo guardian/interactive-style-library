@@ -4,16 +4,26 @@
 </script>
 
 <ComponentPlayground name="Select">
-  {#snippet children()}
-    <label for="projection" class="src-label"> Map projection </label>
-    <div class="src-select__container">
-      <select id="projection" class="src-select">
-        <option value="">Choose a projection</option>
+  {#snippet children(classes)}
+    <label for="projection" class="src-label">Map projection</label>
+    <div class={classes("src-select")}>
+      <select id="projection">
+        <option value="" disabled selected>Choose a projection</option>
         <option value="mercator">Mercator</option>
         <option value="equal-earth">Equal Earth</option>
         <option value="robinson">Robinson</option>
         <option value="winkel-tripel">Winkel Tripel</option>
       </select>
     </div>
+  {/snippet}
+
+  {#snippet controls()}
+    <Variant
+      label="Size"
+      options={[
+        { label: "Medium", value: "" },
+        { label: "Small", value: "src-select--small" },
+      ]}
+    />
   {/snippet}
 </ComponentPlayground>

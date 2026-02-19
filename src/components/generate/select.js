@@ -15,6 +15,10 @@ export async function generate() {
     getSourceDistPath("react-components/select/styles.js"),
   )
 
+  const textInputContext = loadContextFromPath(
+    getSourceDistPath("react-components/text-input/styles.js"),
+  )
+
   const selectStylesRoot = await parseCss(context.select(themeSelect).styles)
   selectStylesRoot.nodes.forEach((node) => {
     // Remove the `@supports (appearance: none) { ... }` rule: supporting this is a requirement for this library
@@ -52,26 +56,27 @@ export async function generate() {
     }
   })
 
-  const arrowSvg = removeBacktickMarkupWhitespace(`
-    <svg viewBox="-3 -3 30 30" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" fill="${themeSelect.textUserInput}" clip-rule="evenodd" d="m1 7.224 10.498 10.498h1.004L23 7.224l-.98-.954L12 14.708 1.98 6.27z">
-      </path>
-    </svg>
-  `)
+  const arrowSvg = (/** @type {"medium" | "small"} */ size) => {
+    const width = size === "small" ? "22" : "30"
+    return removeBacktickMarkupWhitespace(`
+      <svg viewBox="-3 -3 30 30" width="${width}" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" fill="${themeSelect.textUserInput}" clip-rule="evenodd" d="m1 7.224 10.498 10.498h1.004L23 7.224l-.98-.954L12 14.708 1.98 6.27z">
+        </path>
+      </svg>
+    `)
+  }
 
   const selectClasses = [
-    makeDecl(".src-select__container", selectContainerStylesRoot.toString()),
+    makeDecl(".src-select", selectContainerStylesRoot.toString()),
 
     makeDecl(
-      ".src-select__container::after",
-      `
-        content: url("data:image/svg+xml,${encodeURIComponent(arrowSvg)}");
-     `,
+      ".src-select::after",
+      `content: url("data:image/svg+xml,${encodeURIComponent(arrowSvg("medium"))}");`,
       arrowIconRule.nodes.join(";\n"),
     ),
 
     makeDecl(
-      ".src-select",
+      ".src-select > select",
       selectStylesRoot.toString(),
       // Add some padding-right to make space for the down chevron
       `
@@ -80,16 +85,27 @@ export async function generate() {
       `,
     ),
 
+    // These small styles aren't part of source, but we need symmetry between the different
+    // input types, so we make our own!
+    makeDecl(
+      ".src-select--small > select",
+      textInputContext.inputSizeSmall.styles,
+      `padding-right: 36px;`,
+    ),
+
+    makeDecl(
+      ".src-select.src-select--small::after",
+      `content: url("data:image/svg+xml,${encodeURIComponent(arrowSvg("small"))}");`,
+      `right: 0px;`,
+    ),
+
     // NOTE: the actual Source component seems to use the incorrect margin-top when used with a label without supporting text (it uses 6px, when the other inputs use 4px, eg. text-input) - here, we use the correct 4px margin-top
     // NOTE: when we get to adding success/error feedback, this'll need to be moved to the container, the way the actual Select component does it
-    makeDecl(
-      `.src-label + .src-select__container`,
-      `margin-top: ${context.space[1]}px`,
-    ),
+    makeDecl(`.src-label + .src-select`, `margin-top: ${context.space[1]}px`),
 
     // TODO: can we do this without :has()? at least, we should document that this use of :has() is a progessive enhancement, we'll fall back to the above margin if it's not available, which isn't so bad
     makeDecl(
-      `.src-label:has(.src-label__supporting) + .src-select__container`,
+      `.src-label:has(.src-label__supporting) + .src-select`,
       context.supportingTextMargin.styles,
     ),
   ]
