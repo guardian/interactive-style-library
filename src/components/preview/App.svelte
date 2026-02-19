@@ -7,6 +7,7 @@
   import Toggle from "./playground/Toggle.svelte"
   import Select from "./playground/Select.svelte"
   import Icon from "./playground/Icon.svelte"
+  import Radio from "./playground/Radio.svelte"
 </script>
 
 <header>
@@ -21,6 +22,7 @@
   <Checkbox />
   <Toggle />
   <Select />
+  <Radio />
   <Icon />
 </section>
 
@@ -43,6 +45,7 @@
       border-right: 1px solid var(--src-neutral-86);
 
       padding-top: 48px;
+      padding-bottom: 64px;
     }
 
     h1 {
@@ -60,6 +63,13 @@
       font-size: 0.75rem;
       color: #707070;
       margin-bottom: 0.25rem;
+    }
+
+    fieldset {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      min-width: 0;
     }
 
     fieldset label {

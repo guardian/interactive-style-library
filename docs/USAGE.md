@@ -117,48 +117,10 @@ Then use the `src-` prefixed classes in your HTML.
 ```
 
 Each component supports variants via modifier classes (e.g. `src-button--small`,
-`src-button--tertiary`). See each component's individual usage guide for available classes and usage examples.
+`src-button--tertiary`).
 
-<!-- prettier-ignore -->
-<table>
-<tr>
-<td>
-
-[**Button**](./components/BUTTON.md)
-
-</td>
-<td>
-
-[**Checkbox**](./components/CHECKBOX.md)
-
-</td>
-<td>
-
-[**Icon**](./components/ICON.css)
-
-</td>
-<td>
-
-[**Label**](./components/LABEL.css)
-
-</td>
-<td>
-
-[**Select**](./components/SELECT.css)
-
-</td>
-<td>
-
-[**Spinner**](./components/SPINNER.css)
-
-</td>
-<td>
-
-[**Text Input**](./components/TEXT-INPUT.css)
-
-</td>
-</tr>
-</table>
+See each component's individual usage guide for available classes and usage examples
+– [docs/components](./components/).
 
 ### JavaScript files
 

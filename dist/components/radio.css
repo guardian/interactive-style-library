@@ -1,0 +1,136 @@
+.src-radio-group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.src-radio-group[aria-invalid="true"] input {
+  border: 2px solid #c70000;
+}
+
+.src-radio-group[aria-invalid="true"] input:not(:checked):hover,
+.src-radio-group[aria-invalid="true"] input:active {
+  border: 2px solid #0077b6;
+}
+
+.src-radio-group--horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.src-radio__container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  /**
+	 * Ensure minimum height of 44px by applying 10px padding to top and bottom
+	 * of container. This ensures consistent spacing when supporting text present.
+	 */
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.src-radio__container:hover input {
+  border: 2px solid #0077b6;
+}
+
+.src-radio {
+  flex: 0 0 auto;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 0 8px 0 0;
+
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  position: relative;
+  transition: box-shadow 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+  transition-delay: 0.08s;
+
+  color: #707070;
+}
+
+.src-radio:checked {
+  border: 2px solid #0077b6;
+  color: #0077b6;
+}
+
+.src-radio:focus {
+  outline: 0;
+}
+
+html:not(.src-focus-disabled) .src-radio:focus {
+  box-shadow: 0 0 0 3px #0077b6;
+}
+
+/*
+	Take care: Emotion extracts @supports blocks and moves them below
+	all other <style> elements, making these values hard to override.
+	I have chosen to keep these styles in the @supports block as
+	moving them out makes radio buttons look horrible on older browsers
+	*/
+
+@supports (
+  ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none))
+    or (-moz-appearance: none)
+) {
+  .src-radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+  }
+
+  .src-radio:after {
+    background: currentColor;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+    transform: scale(0);
+    transform-origin: center;
+    transition: transform 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+  }
+  .src-radio:checked:after {
+    transform: scale(0.6);
+  }
+}
+
+.src-radio__label {
+  font-family:
+    GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
+    Arial, "Lucida Grande", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  font-weight: 400;
+  font-style: normal;
+  --source-text-decoration-thickness: 2px;
+  color: #121212;
+  width: 100%;
+  margin-top: 1px;
+  display: block;
+}
+
+/* If label text is empty, add additional spacing to align supporting text */
+
+.src-radio__label:empty {
+  margin-top: 2px;
+}
+
+.src-radio__supporting {
+  font-family:
+    GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue", Helvetica,
+    Arial, "Lucida Grande", sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  font-weight: 400;
+  font-style: normal;
+  --source-text-decoration-thickness: 2px;
+  color: #707070;
+}
