@@ -4,13 +4,16 @@
 </script>
 
 <ComponentPlayground name="Button">
-  {#snippet children(classes)}
-    <button class={classes("src-button")}>Submit</button>
+  {#snippet children(variants)}
+    <button
+      class={["src-button", variants.get("priority"), variants.get("size")]}
+      >Submit</button
+    >
   {/snippet}
 
   {#snippet controls()}
     <Variant
-      label="Priority"
+      label="priority"
       options={[
         { label: "Primary", value: "" },
         { label: "Secondary", value: "src-button--secondary" },
@@ -19,7 +22,7 @@
       ]}
     />
     <Variant
-      label="Size"
+      label="size"
       options={[
         { label: "Medium", value: "" },
         { label: "Small", value: "src-button--small" },

@@ -4,8 +4,8 @@
 </script>
 
 <ComponentPlayground name="Radio Buttons">
-  {#snippet children(classes)}
-    <fieldset class={classes("src-radio-group")}>
+  {#snippet children(variants)}
+    <fieldset class={["src-radio-group", variants.get("orientation")]}>
       <legend class="src-label">Pick your favourite chart</legend>
       <div class="src-radio__container">
         <input
@@ -43,7 +43,7 @@
 
   {#snippet controls()}
     <Variant
-      label="Orientation"
+      label="orientation"
       options={[
         { label: "Vertical", value: "" },
         { label: "Horizontal", value: "src-radio-group--horizontal" },

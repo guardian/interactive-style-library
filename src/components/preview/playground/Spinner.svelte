@@ -4,9 +4,9 @@
 </script>
 
 <ComponentPlayground name="Spinner">
-  {#snippet children(classes)}
+  {#snippet children(variants)}
     <div
-      class={classes("src-spinner")}
+      class={["src-spinner", variants.get("size")]}
       role="status"
       aria-label="Loading"
     ></div>
@@ -14,7 +14,7 @@
 
   {#snippet controls()}
     <Variant
-      label="Size"
+      label="size"
       options={[
         { label: "Medium", value: "" },
         { label: "Small", value: "src-spinner--small" },

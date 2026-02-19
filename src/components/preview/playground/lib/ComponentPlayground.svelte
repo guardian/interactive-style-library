@@ -19,13 +19,7 @@
   let previewEl = $state()
   let displayCode = $state("")
 
-  function classes(baseClass) {
-    return [baseClass, ...variantMap.values()].filter(Boolean)
-  }
-
   $effect(() => {
-    // Reading variantMap.size triggers reactivity when the map changes
-    void variantMap.size
     void [...variantMap.values()]
 
     if (!previewEl) return
@@ -49,7 +43,7 @@
   <h2 class="src-headline-medium-24">{name}</h2>
   <div class="preview">
     <div bind:this={previewEl}>
-      {@render children(classes)}
+      {@render children(variantMap)}
     </div>
   </div>
   <CodeBlock code={displayCode} />

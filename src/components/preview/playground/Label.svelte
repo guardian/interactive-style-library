@@ -4,13 +4,15 @@
 </script>
 
 <ComponentPlayground name="Label">
-  {#snippet children(classes)}
-    <label for="headline" class={classes("src-label")}>Headline</label>
+  {#snippet children(variants)}
+    <label for="headline" class={["src-label", variants.get("size")]}
+      >Headline</label
+    >
   {/snippet}
 
   {#snippet controls()}
     <Variant
-      label="Size"
+      label="size"
       options={[
         { label: "Medium", value: "" },
         { label: "Small", value: "src-label--small" },

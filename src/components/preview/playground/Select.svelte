@@ -4,9 +4,13 @@
 </script>
 
 <ComponentPlayground name="Select">
-  {#snippet children(classes)}
-    <label for="projection" class="src-label">Map projection</label>
-    <div class={classes("src-select")}>
+  {#snippet children(variants)}
+    {@const small = variants.get("size") === "src-select--small"}
+    <label for="projection" class={["src-label", small && "src-label--small"]}>
+      Map projection
+    </label>
+
+    <div class={["src-select", variants.get("size")]}>
       <select id="projection">
         <option value="" disabled selected>Choose a projection</option>
         <option value="mercator">Mercator</option>
@@ -19,7 +23,7 @@
 
   {#snippet controls()}
     <Variant
-      label="Size"
+      label="size"
       options={[
         { label: "Medium", value: "" },
         { label: "Small", value: "src-select--small" },

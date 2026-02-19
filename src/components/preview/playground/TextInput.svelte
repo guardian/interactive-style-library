@@ -4,24 +4,29 @@
 </script>
 
 <ComponentPlayground name="Text Input">
-  {#snippet children(classes)}
-    <label for="search" class="src-label">
+  {#snippet children(variants)}
+    {@const small = variants.get("size") === "src-text-input--small"}
+    <label for="search" class={["src-label", small && "src-label--small"]}>
       Post code
       <div class="src-label__supporting">eg. L208LZ</div>
     </label>
-    <input type="text" id="search" class={classes("src-text-input")} />
+    <input
+      type="text"
+      id="search"
+      class={["src-text-input", variants.get("size"), variants.get("width")]}
+    />
   {/snippet}
 
   {#snippet controls()}
     <Variant
-      label="Size"
+      label="size"
       options={[
         { label: "Medium", value: "" },
         { label: "Small", value: "src-text-input--small" },
       ]}
     />
     <Variant
-      label="Width"
+      label="width"
       options={[
         { label: "Fluid", value: "" },
         { label: "30 chars", value: "src-text-input--width-30" },

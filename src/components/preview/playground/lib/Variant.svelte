@@ -10,7 +10,7 @@
 </script>
 
 <fieldset>
-  <legend>{label}</legend>
+  <legend style="text-transform: capitalize">{label}</legend>
   {#each options as option}
     <label>
       <input
