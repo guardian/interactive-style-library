@@ -42,7 +42,9 @@ html:not(.src-focus-disabled) .src-button:focus {
   outline-offset: 3px;
 }
 
-.src-button:hover {
+.src-button:not(.src-button--secondary):not(.src-button--tertiary):not(
+    .src-button--subdued
+  ):hover {
   background-color: #03183a;
 }
 

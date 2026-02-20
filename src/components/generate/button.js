@@ -7,6 +7,7 @@ import {
   loadContextFromPath,
   makeDecl,
   writeDeclClasses,
+  parseCss,
 } from "../common.js"
 
 export async function generate() {
@@ -16,12 +17,35 @@ export async function generate() {
 
   const theme = context.themeButton
 
-  const buttonClasses = [
-    makeDecl(
-      ".src-button",
-      context.buttonStyles({ priority: "primary", size: "default" })(
+  const primaryStylesRoot = await parseCss(
+    context
+      .buttonStyles({ priority: "primary", size: "default" })(
         context.themeButton,
-      ),
+      )
+      .map((item) => item?.styles)
+      .join("\n"),
+  )
+
+  /** @type {import("postcss").Rule} */
+  let primaryHoverRule
+
+  primaryStylesRoot.walkRules((rule) => {
+    if (rule.selector === "&:hover") {
+      primaryHoverRule = rule.clone()
+      rule.remove()
+    }
+  })
+
+  // console.log(primaryHoverRule.toString())
+
+  const buttonClasses = [
+    makeDecl(".src-button", primaryStylesRoot.toString()),
+
+    // The subdued class doesn't set any background-color or color on hover, so
+    // only include priary hover class if the subdued class isn't set
+    makeDecl(
+      ".src-button:not(.src-button--secondary):not(.src-button--tertiary):not(.src-button--subdued)",
+      primaryHoverRule.toString(),
     ),
 
     makeDecl(".src-button--secondary", context.secondary(theme)),
