@@ -159,6 +159,28 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 <tr>
 <td>
 
+🗳️ [`parties.css`](./dist/visuals/parties.css)
+
+</td>
+<td>
+
+🗳️ [`parties-light.css`](./dist/visuals/parties-light.css)
+
+</td>
+<td>
+
+🗳️ [`parties-dark.css`](./dist/visuals/parties-dark.css)
+
+</td>
+</tr>
+<tr>
+<td>
+
+🗳️ [`parties.js`](./dist/visuals/parties.js)
+
+</td>
+<td>
+
 📚 [`all.css`](./dist/visuals/all.css)
 
 </td>

@@ -127,11 +127,12 @@ See each component's individual usage guide for available classes and usage exam
 Most design tokens are available in JavaScript settings too, which can be imported like so.
 
 ```js
-import { partyUk, palette } from "interactive-style-library/visuals/colors.js"
+import { uk } from "interactive-style-library/visuals/parties.js"
+import { palette } from "interactive-style-library/visuals/colors.js"
 
 const politicsScale = scaleLinear()
   .domain([-50, 50])
-  .range([partyUk.light.lab, palette.gray["2"], partyUk.light.reform])
+  .range([uk.light.lab, palette.gray["2"], uk.light.reform])
 ```
 
 ### In Svelte projects
@@ -235,7 +236,7 @@ element.className = `src-headline-medium-${size}`
 
 // Dynamic CSS variable: plugin can't know which party colour variable is used
 const party = getChosenParty() // eg. "con", "lab"
-element.style.color = `var(--vis-party-uk-${party})`
+element.style.color = `var(--vis-uk-${party})`
 ```
 
 To stop the plugin from removing the intended classes and variables, add them to the plugin's
@@ -248,8 +249,8 @@ purgeInteractiveStylesCss({
     "src-headline-medium-28",
     "src-headline-medium-34",
 
-    // Make sure all UK party CSS variable colors aren't purged
-    /^--vis-party-uk-/,
+    // Make sure all UK election party CSS variable colors aren't purged
+    /^--vis-uk-/,
   ],
 })
 ```
@@ -263,8 +264,8 @@ element.className =
 
 const party = getChosenParty() // eg. "con", "lab"
 if (party === "con") {
-  element.style.color = "--vis-party-uk-con"
+  element.style.color = "--vis-uk-con"
 } else if (party === "lab") {
-  element.style.color = "--vis-party-uk-lab"
+  element.style.color = "--vis-uk-lab"
 }
 ```

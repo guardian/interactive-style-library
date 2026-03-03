@@ -131,22 +131,6 @@ function processCategorical(categorical, mode) {
       ),
     )
   }
-  if (modeData.ukParties) {
-    vars.push(
-      ...varsFromEntries(
-        modeData.ukParties,
-        (p) => `${VAR_PREFIX}party-uk-${p.toLowerCase()}`,
-      ),
-    )
-  }
-  if (modeData.usParties) {
-    vars.push(
-      ...varsFromEntries(
-        modeData.usParties,
-        (p) => `${VAR_PREFIX}party-us-${p.toLowerCase()}`,
-      ),
-    )
-  }
 
   return vars
 }

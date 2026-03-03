@@ -17,8 +17,6 @@ export function generate() {
     chart: processChart(spec.news),
     gender: processCategorical(spec.categorical, "gender"),
     sentiment: processCategorical(spec.categorical, "sentiment"),
-    partyUk: processCategorical(spec.categorical, "ukParties"),
-    partyUs: processCategorical(spec.categorical, "usParties"),
   }
 
   const comment = makeGeneratedComment(import.meta.url).replace("/*", "/**")
@@ -28,9 +26,7 @@ export function generate() {
     `export const news = /** @type {const} */ (${JSON.stringify(output.news, null, 2)})\n\n` +
     `export const chart = /** @type {const} */ (${JSON.stringify(output.chart, null, 2)})\n\n` +
     `export const gender = /** @type {const} */ (${JSON.stringify(output.gender, null, 2)})\n\n` +
-    `export const sentiment = /** @type {const} */ (${JSON.stringify(output.sentiment, null, 2)})\n\n` +
-    `export const partyUk = /** @type {const} */ (${JSON.stringify(output.partyUk, null, 2)})\n\n` +
-    `export const partyUs = /** @type {const} */ (${JSON.stringify(output.partyUs, null, 2)})\n`
+    `export const sentiment = /** @type {const} */ (${JSON.stringify(output.sentiment, null, 2)})\n\n`
 
   const distPath = getDistPath("visuals/colors.js")
   writeFileSync(distPath, js)

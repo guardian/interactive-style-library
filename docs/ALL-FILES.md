@@ -33,6 +33,10 @@ Source files are imported with the path `interactive-style-library/source/*`, Vi
 | 🎨 [`visuals/colors.js`](./dist/visuals/colors.js) | JS object of light and dark colours | [Visuals Color guide 2025](https://www.figma.com/design/lQ8KHxsb8xIJaMujuJV9dr/Colour-guide-2025?node-id=0-1&p=f&t=0ThLMx10HCgM8IMZ-0) |
 | 📊 [`visuals/charts.css`](./dist/visuals/charts.css) | CSS resources for chart structure and typography | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=1102-323&p=f&t=ycHjdCdLmgXxZWh7-0) |
 | 📊 [`visuals/charts-mixins.scss`](./dist/visuals/charts.css) | SCSS mixins for chart structure and typography | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=1102-323&p=f&t=ycHjdCdLmgXxZWh7-0) |
+| 🗳️ [`visuals/parties.css`](./dist/visuals/parties.css) | CSS variables for combined light and dark party colours | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=2527-2&t=RbwK8XSqGwU6nnm7-0) |
+| 🗳️ [`visuals/parties-light.css`](./dist/visuals/parties-light.css) | CSS variables for light theme party colours only | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=2527-2&t=RbwK8XSqGwU6nnm7-0) |
+| 🗳️ [`visuals/parties-dark.css`](./dist/visuals/parties-dark.css) | CSS variables for dark theme party colours only | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=2527-2&t=RbwK8XSqGwU6nnm7-0) |
+| 🗳️ [`visuals/parties.js`](./dist/visuals/parties.js) | JS object of light and dark party colours | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=2527-2&t=RbwK8XSqGwU6nnm7-0) |
 | 📚 [`visuals/all.css`](./dist/visuals/all.css) | All Visuals CSS resources | |
 | 📚 [`visuals/all.scss`](./dist/visuals/all.scss) | All Visuals CSS and SCSS resources | |
 

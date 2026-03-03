@@ -3,6 +3,7 @@ import {
   getDistPath,
   makeGeneratedComment,
   findProjectRoot,
+  tidyCss,
 } from "../src/utils.js"
 import { logGeneratedFiles } from "../src/cli.js"
 
@@ -29,37 +30,47 @@ function stripGeneratedComment(css) {
   )
 }
 
-function buildCss(dir, files) {
-  return files
+async function buildCss(dir, files) {
+  const joinedFiles = files
     .map((f) =>
       stripGeneratedComment(
         readFileSync(getDistPath(`${dir}/${f}`), "utf8"),
       ).trim(),
     )
     .join("\n\n")
+
+  return await tidyCss(joinedFiles)
 }
 
-function buildScss(dir, files, scssFiles) {
+async function buildScss(dir, files, scssFiles) {
   const imports = files.map((f) => `@use "${pkgName}/${dir}/${f}";`)
   const forwards = scssFiles.map((f) => `@forward "${pkgName}/${dir}/${f}";`)
-  return [...forwards, ...imports].join("\n")
+
+  const joined = [...forwards, ...imports].join("\n")
+
+  return await tidyCss(joined)
 }
 
 const comment = makeGeneratedComment(import.meta.url)
 
 // Prefer colors.css over these -light/-dark files, it exports both sets
-const visualsExcludes = ["colors-dark.css", "colors-light.css"]
+const visualsExcludes = [
+  "colors-dark.css",
+  "colors-light.css",
+  "parties-light.css",
+  "parties-dark.css",
+]
 const visualsCss = getFiles("visuals", ".css", visualsExcludes)
 const visualsScss = getFiles("visuals", ".scss", visualsExcludes)
 
 writeFileSync(
   getDistPath("visuals/all.css"),
-  `${comment}\n\n${buildCss("visuals", visualsCss)}\n`,
+  `${comment}\n\n${await buildCss("visuals", visualsCss)}\n`,
 )
 
 writeFileSync(
   getDistPath("visuals/all.scss"),
-  `${comment}\n\n${buildScss("visuals", visualsCss, visualsScss)}\n`,
+  `${comment}\n\n${await buildScss("visuals", visualsCss, visualsScss)}\n`,
 )
 
 // mq.scss already exports the $breakpoints variable
@@ -69,12 +80,12 @@ const sourceScss = getFiles("source", ".scss", sourceExcludes)
 
 writeFileSync(
   getDistPath("source/all.css"),
-  `${comment}\n\n${buildCss("source", sourceCss)}\n`,
+  `${comment}\n\n${await buildCss("source", sourceCss)}\n`,
 )
 
 writeFileSync(
   getDistPath("source/all.scss"),
-  `${comment}\n\n${buildScss("source", sourceCss, sourceScss)}\n`,
+  `${comment}\n\n${await buildScss("source", sourceCss, sourceScss)}\n`,
 )
 
 logGeneratedFiles(import.meta.filename, [

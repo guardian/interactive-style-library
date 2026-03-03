@@ -138,20 +138,6 @@
   --vis-sentiment-slightly-bad: #ff5943;
   --vis-sentiment-bad: #c70000;
   --vis-sentiment-very-bad: #8b0000;
-  --vis-party-uk-lab: #c70000;
-  --vis-party-uk-con: #0077b6;
-  --vis-party-uk-libdem: #ff7f0f;
-  --vis-party-uk-reform: #3dbbe2;
-  --vis-party-uk-green: #39a566;
-  --vis-party-uk-snp: #f5dc00;
-  --vis-party-uk-other: #848484;
-  --vis-party-us-dem: #093ca3;
-  --vis-party-us-rep: #c70000;
-  --vis-party-us-kennedy: #ff7f0f;
-  --vis-party-us-green: #0da498;
-  --vis-party-us-lib: #c6b716;
-  --vis-party-us-indydem: #7378d8;
-  --vis-party-us-other: #848484;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -176,9 +162,5 @@
     --vis-chart-axis-lines: #707070;
     --vis-chart-structure1: #494949;
     --vis-chart-structure2: #383838;
-    --vis-party-uk-lab: #e33824;
-    --vis-party-uk-con: #009ae1;
-    --vis-party-us-dem: #3261db;
-    --vis-party-us-green: #23b4a9;
   }
 }

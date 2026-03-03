@@ -1,0 +1,159 @@
+# Adapted from:
+# * https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=2527-2&t=RbwK8XSqGwU6nnm7-0
+#
+# With some updates from:
+# * https://www.figma.com/design/lQ8KHxsb8xIJaMujuJV9dr/Colour-guide-2025?node-id=9801-577&t=lvCbtRvGc9dSr8Fv-0
+
+all:
+  light:
+    other: "#848484"
+    noc: "#C8C8C8"
+    undeclared: "#E7E7E7"
+  dark:
+    other: "#707070"
+    noc: "#333333"
+    undeclared: "#494949"
+
+uk:
+  light:
+    con: "#0077B6"
+    con2: "#D4EDFF"
+
+    lab: "#C70000"
+    lab2: "#FFDBD4"
+
+    libDem: "#FF7F0F"
+    libDem2: "#FFE2CD"
+
+    ukip: "#BB3B80"
+    ukip2: "#FFE6F4"
+
+    ind: "#333333"
+    ind2: "#E7E7E7"
+
+    snp: "#F5DC00"
+    snp2: "#FFF7C7"
+
+    sdlp: "#23B4A9"
+    sdlp2: "#D9F2EF"
+
+    plaid: "#135E58"
+    plaid2: "#BACECB"
+
+    sinn: "#22874D"
+    sinn2: "#C1D7BF"
+
+    dup: "#8B0000"
+    dup2: "#EABCB2"
+
+    green: "#39A566"
+    green2: "#D3F2DE"
+
+    alliance: "#C9BB19"
+    alliance2: "#eee1a4"
+
+    uup: "#004975"
+    uup2: "#C5CCDB"
+
+    reform: "#3DBBE2"
+    reform2: "#C3E5F4"
+
+    workers: "#7D0068"
+    workers2: "#D8B2D1"
+
+    alba: "#2F3192"
+    alba2: "#BDBEEA"
+
+  dark:
+    con: "#009AE1"
+    con2: "#2F5C81"
+
+    lab: "#DC2E1C"
+    lab2: "#833A2B"
+
+    libDem: "#FF7F0F"
+    libDem2: "#8E5732"
+
+    ukip: "#DC559D"
+    ukip2: "#8A4164"
+
+    ind: "#A1A1A1"
+    ind2: "#666666"
+
+    snp: "#F5DC00"
+    snp2: "#6B6033"
+
+    sdlp: "#28B8AD"
+    sdlp2: "#34736C"
+
+    plaid: "#37716B"
+    plaid2: "#41635F"
+
+    sinn: "#22874D"
+    sinn2: "#32593D"
+
+    dup: "#B23C2D"
+    dup2: "#763E34"
+
+    green: "#763E34"
+    green2: "#396348"
+
+    alliance: "#AB9F00"
+    alliance2: "#71692E"
+
+    alba: "#3C3EB9"
+    alba2: "#4749A6"
+
+    workers: "#8C136E"
+    workers2: "#752E60"
+
+    uup: "#346896"
+    uup2: "#3E5670"
+
+    reform: "#3DBBE2"
+    reform2: "#3E6877"
+
+us:
+  light:
+    dem: "#093CA3"
+    dem2: "#DAD7F5"
+
+    rep: "#C70000"
+    rep2: "#FFDBD4"
+
+    lib: "#C6B716"
+    lib2: "#F4EAC2"
+
+    green: "#0DA498"
+    green2: "#CFEDEA"
+
+    othInd: "#707070"
+    othInd2: "#E7E7E7"
+
+    libDem: "#FF7F0F"
+    libDem2: "#FFE2CD"
+
+    indDem: "#7378D8"
+    indDem2: "#DAD7F5"
+
+  dark:
+    dem: "#3261DB"
+    dem2: "#20366D"
+
+    rep: "#C70000"
+    rep2: "#5A0B0B"
+
+    lib: "#C6B716"
+    lib2: "#524D13"
+
+    green: "#23B4A9"
+    green2: "#19524E"
+
+    othInd: "#707070"
+    othInd2: "#333333"
+
+    libDem: "#FF7F0F"
+    libDem2: "#8E5732"
+
+    indDem: "#7389D8"
+    indDem2: "#394261"
