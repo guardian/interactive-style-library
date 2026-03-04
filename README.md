@@ -1,6 +1,6 @@
-# interactive-style-library
+# Interactive style library
 
-Guardian design tokens and CSS-only components from Source and Visuals' design spec, bundled into CSS and SCSS files.
+Guardian design tokens and CSS-only components from Source and Visuals' design spec, bundled into CSS, SCSS, and JS files.
 
 Just `@use "interactive-style-library/source/all" as *` and go.
 
@@ -260,6 +260,20 @@ We can also include styles outside of Source: like the Visuals team's design tok
 > The [Design Systems team](https://chat.google.com/room/AAQABZY0BtU?cls=7) is working on a project
 > to overhaul the Guardian's design tokens solution, which when ready, will likely succeed some or
 > all of this work. Stay tuned.
+
+## Contributing
+
+Want to add styles, fix a bug, or improve the output? See [**CONTRIBUTING.md**](./CONTRIBUTING.md) for the full guide.
+
+How this project works, briefly: the `src/` directory contains generator scripts that extract styles from `@guardian/source` and Visuals design specs, and create CSS, SCSS, and JS files in `dist/`.
+
+### Build commands
+
+```bash
+npm run build           # Full clean build — generates everything into dist/
+npm run build-watch     # When running, changed generators are re-run automatically
+npm run components.dev  # Preview app — see components in the browser
+```
 
 ## More information
 
