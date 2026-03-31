@@ -1,5 +1,4 @@
 import { neutral, success } from "@guardian/source/foundations"
-import { themeCheckbox } from "@guardian/source/react-components"
 
 import { getDistPath } from "../../utils.js"
 import {
