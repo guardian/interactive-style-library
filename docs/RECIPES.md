@@ -68,7 +68,9 @@ fractions, and super/subscripts on the existing `.src-headline-*` classes.
 @use "interactive-style-library/source/headline-numeric.css";
 ```
 
-Activate features per-element with the standard CSS properties:
+This imports a CSS file with `@font-face` declarations that override the article page's
+stock *Headline* font declarations. These overrides load the same font, this font simply
+supports a few numeric features enabled with CSS properties, like so.
 
 ```html
 <table class="src-headline-bold-24" style="font-variant-numeric: tabular-nums lining-nums;">
