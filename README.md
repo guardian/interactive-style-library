@@ -92,13 +92,13 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 🖋️ [`headline-numeric.css`](./dist/source/headline-numeric.css)
 
 </td>
+</tr>
+<tr>
 <td>
 
 📐 [`mq.scss`](./dist/source/mq.scss)
 
 </td>
-</tr>
-<tr>
 <td>
 
 📐 [`breakpoints.scss`](./dist/source/breakpoints.scss)
@@ -109,13 +109,13 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 📐 [`breakpoints.js`](./dist/source/breakpoints.js)
 
 </td>
+</tr>
+<tr>
 <td>
 
 📚 [`all.css`](./dist/source/all.css)
 
 </td>
-</tr>
-<tr>
 <td>
 
 📚 [`all.scss`](./dist/source/all.scss)
