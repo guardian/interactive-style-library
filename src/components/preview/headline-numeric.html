@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>headline-numeric preview</title>
+
+    <style>
+      @import "/source/all.css";
+
+      /* Order matters: font-faces.css first (the "article" baseline), then
+         headline-numeric.css to override the GH Guardian Headline family with
+         the full-not-hinted files. */
+      @import "/source/font-faces.css";
+      @import "/source/headline-numeric.css";
+
+      body {
+        font-family:
+          GuardianTextSans, "Guardian Text Sans Web", "Helvetica Neue",
+          Helvetica, Arial, sans-serif;
+        max-width: 50rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        color: var(--src-neutral-7);
+      }
+
+      h1 {
+        margin: 0 0 0.25rem;
+      }
+
+      h2 {
+        margin: 2rem 0 0.5rem;
+        border-bottom: 1px solid var(--src-neutral-86);
+        padding-bottom: 0.25rem;
+      }
+
+      p.lede {
+        margin: 0 0 1.5rem;
+        color: var(--src-neutral-38);
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 14rem 1fr 1fr;
+        gap: 1rem;
+        align-items: baseline;
+        padding: 0.5rem 0;
+        border-bottom: 1px dashed var(--src-neutral-93);
+      }
+
+      .row .rule {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.75rem;
+        color: var(--src-neutral-38);
+        white-space: pre;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .row .rule strong {
+        font-weight: 700;
+        color: var(--src-neutral-10);
+      }
+
+      .row .label {
+        font-size: 0.75rem;
+        color: var(--src-neutral-46);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* Each demo uses the existing .src-headline-bold-24 class so we're proving
+         the override works on the *existing* typography classes, not on a new
+         family. */
+      .demo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+      }
+
+      .lining {
+        font-variant-numeric: lining-nums;
+      }
+      .tabular {
+        font-variant-numeric: tabular-nums;
+      }
+      .lining-tabular {
+        font-variant-numeric: lining-nums tabular-nums;
+      }
+      .fractions {
+        font-variant-numeric: diagonal-fractions;
+      }
+      .sup {
+        font-variant-position: super;
+      }
+      .sub {
+        font-variant-position: sub;
+      }
+      .sinf {
+        font-feature-settings: "sinf";
+      }
+
+      table.tabular-demo {
+        font-variant-numeric: tabular-nums lining-nums;
+        border-collapse: collapse;
+      }
+      table.tabular-demo td {
+        padding: 0.125rem 1rem 0.125rem 0;
+        text-align: right;
+      }
+      table.proportional-demo {
+        border-collapse: collapse;
+      }
+      table.proportional-demo td {
+        padding: 0.125rem 1rem 0.125rem 0;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="src-headline-bold-28">headline-numeric.css preview</h1>
+    <p class="lede">
+      Each row shows the default rendering (left) and the rendering with the
+      OpenType feature enabled (right), both using
+      <code>.src-headline-bold-24</code>. If the override is working,
+      &ldquo;feature on&rdquo; should visibly differ.
+    </p>
+
+    <h2 class="src-headline-medium-20">Numeric features</h2>
+
+    <div class="row">
+      <pre class="rule">font-variant-numeric:
+<strong>lining-nums;</strong></pre>
+      <div class="demo">
+        <span class="label">default</span>
+        <span class="src-headline-bold-24">0123456789</span>
+      </div>
+      <div class="demo">
+        <span class="label">lining-nums</span>
+        <span class="src-headline-bold-24 lining">0123456789</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <pre class="rule">font-variant-numeric:
+<strong>tabular-nums lining-nums;</strong></pre>
+      <div class="demo">
+        <span class="label">default (proportional)</span>
+        <table class="proportional-demo src-headline-bold-24">
+          <tr><td>1,111</td></tr>
+          <tr><td>8,888</td></tr>
+          <tr><td>10,000</td></tr>
+        </table>
+      </div>
+      <div class="demo">
+        <span class="label">tabular-nums</span>
+        <table class="tabular-demo src-headline-bold-24">
+          <tr><td>1,111</td></tr>
+          <tr><td>8,888</td></tr>
+          <tr><td>10,000</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <pre class="rule">font-variant-numeric:
+<strong>diagonal-fractions;</strong></pre>
+      <div class="demo">
+        <span class="label">default</span>
+        <span class="src-headline-bold-24">1/2 3/4 22/7</span>
+      </div>
+      <div class="demo">
+        <span class="label">diagonal-fractions</span>
+        <span class="src-headline-bold-24 fractions">1/2 3/4 22/7</span>
+      </div>
+    </div>
+
+    <h2 class="src-headline-medium-20">Position features</h2>
+
+    <div class="row">
+      <pre class="rule">font-variant-position:
+<strong>super;</strong></pre>
+      <div class="demo">
+        <span class="label">default</span>
+        <span class="src-headline-bold-24">x2 + y2 = z2</span>
+      </div>
+      <div class="demo">
+        <span class="label">super</span>
+        <span class="src-headline-bold-24">
+          x<span class="sup">2</span> + y<span class="sup">2</span> =
+          z<span class="sup">2</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <pre class="rule">font-variant-position:
+<strong>sub;</strong></pre>
+      <div class="demo">
+        <span class="label">default</span>
+        <span class="src-headline-bold-24">H2O CO2</span>
+      </div>
+      <div class="demo">
+        <span class="label">sub</span>
+        <span class="src-headline-bold-24">
+          H<span class="sub">2</span>O CO<span class="sub">2</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <pre class="rule">font-feature-settings:
+<strong>"sinf";</strong></pre>
+      <div class="demo">
+        <span class="label">default</span>
+        <span class="src-headline-bold-24">Fe2O3</span>
+      </div>
+      <div class="demo">
+        <span class="label">"sinf" on digits</span>
+        <span class="src-headline-bold-24">
+          Fe<span class="sinf">2</span>O<span class="sinf">3</span>
+        </span>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -89,6 +89,11 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 </td>
 <td>
 
+🖋️ [`headline-numeric.css`](./dist/source/headline-numeric.css)
+
+</td>
+<td>
+
 📐 [`mq.scss`](./dist/source/mq.scss)
 
 </td>

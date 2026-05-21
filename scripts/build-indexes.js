@@ -74,7 +74,11 @@ writeFileSync(
 )
 
 // mq.scss already exports the $breakpoints variable
-const sourceExcludes = ["breakpoints.scss", "font-faces.css"]
+const sourceExcludes = [
+  "breakpoints.scss",
+  "font-faces.css",
+  "headline-numeric.css",
+]
 const sourceCss = getFiles("source", ".css", sourceExcludes)
 const sourceScss = getFiles("source", ".scss", sourceExcludes)
 

@@ -57,6 +57,49 @@ to beat the article page's default styles.
 </style>
 ```
 
+## Numeric typography in headlines
+
+Import `source/headline-numeric.css` to unlock tabular figures, diagonal
+fractions, and super/subscripts on the existing `.src-headline-*` classes.
+
+```scss
+// main.scss
+@use "interactive-style-library/source/all" as *;
+@use "interactive-style-library/source/headline-numeric.css";
+```
+
+Activate features per-element with the standard CSS properties:
+
+```html
+<table class="src-headline-bold-24" style="font-variant-numeric: tabular-nums lining-nums;">
+  <tr><td>1,111</td></tr>
+  <tr><td>8,888</td></tr>
+  <tr><td>10,000</td></tr>
+</table>
+
+<p class="src-headline-bold-24" style="font-variant-numeric: diagonal-fractions;">
+  Mix 1/2 cup with 3/4 cup
+</p>
+```
+
+Or via the typography mixin in SCSS:
+
+```scss
+.results-table {
+  @include src-headline-bold-24;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+```
+
+| Feature                    | CSS                                       |
+| -------------------------- | ----------------------------------------- |
+| Lining figures             | `font-variant-numeric: lining-nums`       |
+| Tabular figures            | `font-variant-numeric: tabular-nums`      |
+| Diagonal fractions         | `font-variant-numeric: diagonal-fractions`|
+| Superscript                | `font-variant-position: super`            |
+| Subscript                  | `font-variant-position: sub`              |
+| Scientific inferiors       | `font-feature-settings: "sinf"`           |
+
 ## Standard Visuals line chart
 
 This example showcases the chart-building classes and variables from the Visuals design spec.
