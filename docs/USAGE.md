@@ -1,110 +1,88 @@
 ## Contents
 
 - [Installation](#installation)
-- [Using the package's files](#using-the-packages-files)
-  - [Quick setup](#quick-setup)
+- [Library contents](#library-contents)
+  - [Source](#source)
+  - [Visuals](#visuals)
   - [Components](#components)
-  - [JavaScript files](#javascript-files)
-  - [In Svelte projects](#in-svelte-projects)
-  - [In React/Preact projects](#in-reactpreact-projects)
+- [Vite plugin setup](#vite-plugin-setup)
+  - [Options](#options)
 - [Purging unused styles](#purging-unused-styles)
-  - [Setup](#setup)
-  - [Unwanted purging: dynamic class names and variables](#unwanted-purging-dynamic-class-names-and-variables)
+- [JavaScript exports](#javascript-exports)
+- [Direct imports (non-Vite projects)](#direct-imports-non-vite-projects)
 
 ## Installation
 
-Install `interactive-style-library` using your package manager of choice, like so.
+Install `interactive-style-library` using your package manager of choice.
 
 ```bash
-# npm
+# npm
 npm install -D git@github.com:guardian/interactive-style-library.git
 
-# pnpm
+# pnpm
 pnpm i -D 'github:guardian/interactive-style-library'
 ```
 
-The package isn't yet published to NPM. For the time being, it must be installed directly from GitHub.
-
-If these commands fail, check that you have [a valid SSH key added to your GitHub
+The package isn't yet published to NPM, so it must be installed directly from GitHub. If these
+commands fail, check that you have [a valid SSH key added to your GitHub
 account](https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). If that's not the problem, reach out to ed.gargan@guardian.co.uk for help.
 
-## Using the package's files
+## Library contents
 
-The package exports styles in CSS, SCSS, and JavaScript formats, so you can use them wherever suits your workflow: in stylesheets, component files, or programmatically in JS.
+The library is split into three categories. See [ALL-FILES.md](./ALL-FILES.md) for the full list
+of files in each.
 
-### Quick setup
+### Source
 
-Assuming your project can handle SCSS files, you can most easily access design tokens by importing
-the `all.scss` files into your main SCSS.
+Typography classes and mixins, colour variables, breakpoint utilities, and media query helpers —
+derived from the [`@guardian/source`](https://github.com/guardian/csnx/tree/main/libs/%40guardian/source)
+design system.
 
-```scss
-// main.scss
-@use "interactive-style-library/source/all.scss" as *;
-@use "interactive-style-library/visuals/all.scss" as *;
-```
+Use `src-` prefixed classes directly in your HTML, or SCSS mixins in your stylesheets.
 
-This gives you access to all CSS variables, classes, and SCSS utilities from both Source and
-Visuals (with a couple of exceptions – see [ALL-FILES.md](./ALL-FILES.md)):
-
-<table>
-<tr>
-<th>In HTML</th>
-<th>In CSS/SCSS</th>
-</tr>
-<tr>
-<td>
-
-<!-- prettier-ignore -->
 ```html
-<h2
-  class="src-headline-medium-34"
-  style="color: var(--src-brand-400)">
-  Chip wreck!
+<h2 class="src-headline-medium-34" style="color: var(--src-brand-400)">
+  Chip wreck! Thousands of chips wash ashore on beach
 </h2>
 
-<p class="src-article-17">
-  Thousands of bags of chips have
-  washed up on a beach in Sussex.
+<p class="src-article-15">
+  Thousands of bags of chips have washed up on a beach in Sussex.
 </p>
 ```
-
-</td>
-<td>
 
 ```scss
 h2 {
   @include src-headline-medium-34;
   color: var(--src-brand-400);
-}
 
-p {
-  @include src-article-17;
+  @include mq($from: desktop) {
+    @include src-headline-medium-42;
+  }
 }
 ```
 
-</td>
-</tr>
-</table>
+### Visuals
 
-Files for typography, colours, etc. tokens can be imported individually, if you don't need
-_all styles_. See [design token files reference](./ALL-FILES.md) for a list of the available files.
+Colour tokens for charts and UK political parties, from the Visuals team's design spec. Available
+as CSS custom properties with the `--vis-` prefix. `charts.scss` also provides SCSS mixins for
+common chart elements.
 
-> [!WARNING]
-> Unless you [purge unused styles](#purge-unused-styles), every CSS variable and class declaration
-> in `interactive-style-library` will end up in your final CSS file.
+```scss
+.chart-title {
+  @include vis-chart-headline;
+}
+
+path[data-team="Liverpool"] {
+  stroke: var(--vis-news-red);
+}
+```
+
+Find a more complete example in @[docs/RECIPES.md](./RECIPES.md).
 
 ### Components
 
-The package also provides CSS-only versions of Source's React components (buttons, checkboxes, text
-inputs, etc.). Simply import the CSS file for each component you need.
-
-```css
-@use "interactive-style-library/components/button.css";
-@use "interactive-style-library/components/label.css";
-@use "interactive-style-library/components/text-input.css";
-```
-
-Then use the `src-` prefixed classes in your HTML.
+CSS-only replicas of Source's UI elements — buttons, checkboxes, text inputs, and more — styled to
+match the Guardian design system. Use `src-` prefixed classes in your HTML.
 
 ```html
 <label for="email" class="src-label">
@@ -117,14 +95,130 @@ Then use the `src-` prefixed classes in your HTML.
 ```
 
 Each component supports variants via modifier classes (e.g. `src-button--small`,
-`src-button--tertiary`).
+`src-button--tertiary`). See each component's usage guide for available classes and examples —
+[docs/components](./components/).
 
-See each component's individual usage guide for available classes and usage examples
-– [docs/components](./components/).
+## Vite plugin setup
 
-### JavaScript files
+The easiest way to use the library is with the `useInteractiveStyles` plugin — it works with
+Svelte, Preact, and any other Vite-based project.
 
-Most design tokens are available in JavaScript settings too, which can be imported like so.
+Add it to your `vite.config.js` and list the files you need from each category.
+
+```js
+// vite.config.js
+import { useInteractiveStyles } from "interactive-style-library/vite"
+
+export default {
+  plugins: [
+    useInteractiveStyles({
+      source: ["mq.scss", "typography.scss", "typography.css", "colors.css"],
+      visuals: ["charts.scss", "colors.css"],
+      components: ["button.css", "label.css", "text-input.css"],
+    }),
+  ],
+}
+```
+
+The plugin handles the wiring automatically:
+
+- **SCSS files** (`.scss`) are made available in every stylesheet and component — you can use
+  mixins and variables without importing them in each file
+- **CSS files** (`.css`) are injected into your entry stylesheet (`main.scss` by default)
+- **Unused CSS** is purged from your production build automatically
+
+### Options
+
+<!-- prettier-ignore -->
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `source` | `string[]` | `[]` | Filenames from `dist/source/` to inject |
+| `visuals` | `string[]` | `[]` | Filenames from `dist/visuals/` to inject |
+| `components` | `string[]` | `[]` | Filenames from `dist/components/` to inject |
+| `purge` | `boolean \| object` | `true` | `true` purges unused styles with defaults, `false` disables, or pass an options object (see [Purging unused styles](#purging-unused-styles)) |
+| `entryScss` | `string` | `"main.scss"` | Filename of the entry stylesheet that CSS files are injected into. Change this if your entry stylesheet has a different filename. |
+
+## Purging unused styles
+
+When you import a CSS file like `source/colors.css` or `source/typography.css`, you get _all_ the
+variables and classes it defines — most of which you probably won't use. The plugin removes unused
+ones from your production build automatically (`purge: true` is the default).
+
+It works by scanning your compiled HTML, CSS, and JavaScript for references to
+`interactive-style-library` classes (`.src-*`, `.vis-*`) and CSS variables (`--src-*`, `--vis-*`),
+and strips any that aren't found. It only runs during production builds (`vite build`), not in dev
+mode.
+
+### Dynamic class names and variables
+
+If you generate class names or CSS variable references dynamically at runtime, the purger can't
+detect them, and their declarations will be stripped.
+
+```js
+// Dynamic class name: purger can't know which size will be used
+const size = window.innerWidth > 600 ? 34 : 28
+element.className = `src-headline-medium-${size}`
+
+// Dynamic CSS variable: purger can't know which party colour will be used
+const party = getChosenParty() // e.g. "con", "lab"
+element.style.color = `var(--vis-uk-${party})`
+```
+
+The simplest fix is to write class names and variable names in full somewhere in your code, so the
+purger can find them.
+
+```js
+element.className =
+  window.innerWidth > 600 ? "src-headline-medium-34" : "src-headline-medium-28"
+
+const party = getChosenParty()
+if (party === "con") {
+  element.style.color = "var(--vis-uk-con)"
+} else if (party === "lab") {
+  element.style.color = "var(--vis-uk-lab)"
+}
+```
+
+Alternatively, add them to the `safelist` option.
+
+```js
+useInteractiveStyles({
+  source: ["typography.css"],
+  visuals: ["colors.css"],
+  purge: {
+    safelist: [
+      // Keep specific classes
+      "src-headline-medium-28",
+      "src-headline-medium-34",
+
+      // Keep all UK party colour variables
+      /^--vis-uk-/,
+    ],
+  },
+})
+```
+
+### Using the purge plugin standalone
+
+If you're not using `useInteractiveStyles` but still want to purge unused styles, the
+`purgeInteractiveStylesCss` plugin is available as a separate export.
+
+```js
+import { purgeInteractiveStylesCss } from "interactive-style-library/vite"
+
+export default {
+  plugins: [
+    purgeInteractiveStylesCss(),
+    // or with options:
+    purgeInteractiveStylesCss({ safelist: [/^--vis-uk-/] }),
+  ],
+}
+```
+
+## JavaScript exports
+
+Most design tokens are also available as JavaScript objects, useful for scripts and data
+visualisation.
 
 ```js
 import { uk } from "interactive-style-library/visuals/parties.js"
@@ -135,137 +229,30 @@ const politicsScale = scaleLinear()
   .range([uk.light.lab, palette.gray["2"], uk.light.reform])
 ```
 
-### In Svelte projects
+## Direct imports (non-Vite projects)
 
-Follow the [Quick setup](#quick-setup) guide above, importing the `all.scss` files into your main SCSS file.
+If you're not using Vite, you can import the library's files directly into your stylesheets.
 
-> [!NOTE]
-> Alternatively you can import these `all.scss` files into your main Svelte component's `<script>`
-> block with `import "interactive-style-library/visuals/all.scss"`.
-
-This makes CSS classes and variables available in Svelte component's HTML and `<style>` blocks, and in CSS and SCSS files; and SCSS mixins available in any SCSS file.
-
-To make SCSS mixins available in Svelte components, add a preprocessor to `svelte.config.js` that injects the SCSS resources as follows.
-
-<blockquote>
-<details>
-<summary>Why do we need to do this?</summary>
-Blah blah blah
-</details>
-</blockquote>
-
-```js
-// svelte.config.js
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte"
-
-export default {
-  preprocess: [
-    {
-      style: ({ content }) => ({
-        code:
-          `@use "interactive-style-library/source/mq.scss" as *;\n` +
-          `@use "interactive-style-library/source/typography.scss" as *;\n` +
-          `@use "interactive-style-library/visuals/charts.scss" as *;\n` +
-          content,
-      }),
-    },
-    vitePreprocess(),
-  ],
-}
+```scss
+// main.scss
+@use "interactive-style-library/source/mq.scss" as *;
+@use "interactive-style-library/source/typography.scss" as *;
+@use "interactive-style-library/source/typography.css";
+@use "interactive-style-library/source/colors.css" as src-colors;
+@use "interactive-style-library/visuals/charts.scss" as *;
+@use "interactive-style-library/visuals/colors.css" as vis-colors;
 ```
 
-With this added, you can use mixins in Svelte `<style lang="scss">` blocks like so.
+If you `@use` both `source/colors.css` and `visuals/colors.css`, Sass will
+complain about a naming collision. Add `as src-colors` / `as vis-colors` (as
+above) to resolve it — the names themselves don't matter and aren't referenced
+anywhere, they just need to differ. The `useInteractiveStyles` plugin handles
+this for you.
 
-```svelte
-<style lang="scss">
-  h1 {
-    @include src-headline-medium-28;
-  }
+Or use the `all.scss` barrel files to get everything at once (with a couple of exceptions — see
+[ALL-FILES.md](./ALL-FILES.md)).
 
-  @include mq($from: desktop) {
-    h1 {
-      @include src-headline-medium-34;
-    }
-  }
-</style>
-```
-
-### In React/Preact projects
-
-> [!NOTE]
-> TODO: fill this in
-
-## Purging unused styles
-
-When you import a CSS file like [`source/colors.css`](/dist/source/colors.css) or [`source/typography.css`](/dist/source/typography.css), you get _all_ the variables and classes it defines — most of which you probably won't use. This bloats your final CSS bundle.
-
-To solve this, this package provides a Vite plugin that automatically removes unused `interactive-style-library`
-styles from your production build. It scans your compiled HTML, CSS and JavaScript for references to
-classes (`.src-*`, `.vis-*`) and CSS variables (`--src-*`, `--vis-*`), and strips out any that aren't used.
-
-### Setup
-
-Import the plugin and call it in your `vite.config.js`.
-
-```js
-// vite.config.js
-import { defineConfig } from "vite"
-import { purgeInteractiveStylesCss } from "interactive-style-library/vite"
-
-export default defineConfig({
-  plugins: [
-    // ... your other plugins (svelte, etc.)
-
-    // Add this plugin last, so it runs after other transforms
-    purgeInteractiveStylesCss(),
-  ],
-})
-```
-
-The plugin only runs during production builds (`vite build`), not in dev mode.
-
-### Unwanted purging: dynamic class names and variables
-
-If you generate class names or CSS variable references dynamically, this plugin can't detect them,
-and so their declarations will be purged.
-
-```js
-// Dynamic class names: plugin can't know which size will be used
-const size = window.innerWidth > 600 ? 34 : 28
-element.className = `src-headline-medium-${size}`
-
-// Dynamic CSS variable: plugin can't know which party colour variable is used
-const party = getChosenParty() // eg. "con", "lab"
-element.style.color = `var(--vis-uk-${party})`
-```
-
-To stop the plugin from removing the intended classes and variables, add them to the plugin's
-`safelist` parameter.
-
-```js
-purgeInteractiveStylesCss({
-  safelist: [
-    // Make sure src-headline-medium-28/34 aren't purged
-    "src-headline-medium-28",
-    "src-headline-medium-34",
-
-    // Make sure all UK election party CSS variable colors aren't purged
-    /^--vis-uk-/,
-  ],
-})
-```
-
-Or, more simply, just make sure class names and variables appear **in-full** in your code, so the
-plugin can detect them.
-
-```js
-element.className =
-  window.innerWidth > 600 ? `src-headline-medium-34` : `src-headline-medium-28`
-
-const party = getChosenParty() // eg. "con", "lab"
-if (party === "con") {
-  element.style.color = "--vis-uk-con"
-} else if (party === "lab") {
-  element.style.color = "--vis-uk-lab"
-}
+```scss
+@use "interactive-style-library/source/all.scss" as *;
+@use "interactive-style-library/visuals/all.scss" as *;
 ```

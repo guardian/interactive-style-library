@@ -5,8 +5,8 @@
   "type": "module",
   "exports": {
     "./vite": {
-      "types": "./dist/vite/purge-unused-css.d.ts",
-      "default": "./dist/vite/purge-unused-css.js"
+      "types": "./dist/vite/index.d.ts",
+      "default": "./dist/vite/index.js"
     },
     "./visuals/colors": {
       "types": "./dist/visuals/colors.d.ts",

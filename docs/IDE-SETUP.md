@@ -75,3 +75,8 @@ For the Some Sass extension to find the library's SCSS mixins, create a file at
 ```
 
 This file isn't used by your build—it just helps the editor discover the available mixins.
+
+> [!NOTE]
+> The editor will suggest all mixins and variables from these files regardless of what you've listed
+> in your `useInteractiveStyles` config. A suggestion appearing in the IDE doesn't mean it'll be
+> available at build time.

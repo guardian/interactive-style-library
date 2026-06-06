@@ -2,8 +2,6 @@
 
 Guardian design tokens and CSS-only components from Source and Visuals' design spec, bundled into CSS, SCSS, and JS files.
 
-Just `@use "interactive-style-library/source/all" as *` and go.
-
 Files are generated directly from [@guardian/source](https://github.com/guardian/csnx/tree/main/libs/%40guardian/source) and [Visuals](https://www.figma.com/design/lQ8KHxsb8xIJaMujuJV9dr/Colour-guide-2025?node-id=0-1&p=f&t=0ThLMx10HCgM8IMZ-0) design tokens.
 
 ## How to use
@@ -14,23 +12,28 @@ First install the package directly from GitHub (in time we'll publish it to NPM 
 npm install -D git@github.com:guardian/interactive-style-library.git
 ```
 
-To import all of the classes, variables, and SCSS utilities into your project, add the following
-imports into your main SCSS file.
+The library is split into separate stylesheets – typography, colours, breakpoints, etc.
+– letting you pick only what you need.
 
-```scss
-// main.scss
-@use "interactive-style-library/source/all" as *;
-@use "interactive-style-library/visuals/all" as *;
+In Vite projects, add the `useInteractiveStyles` plugin to your `vite.config.js` and list the
+ones you'd like to use.
+
+```js
+import { useInteractiveStyles } from "interactive-style-library/vite"
+
+export default {
+  plugins: [
+    useInteractiveStyles({
+      source: ["mq.scss", "typography.scss", "typography.css", "colors.css"],
+      components: ["label.css", "text-input.css"],
+    }),
+  ],
+}
 ```
 
-For components (buttons, inputs, icons, etc.), import the CSS files you need.
+CSS classes and variables are injected into your entry stylesheet (`main.scss` by default), and SCSS mixins and variables are available in every `.scss` file without explicit imports. Unused CSS is purged automatically.
 
-```css
-@use "@guardian/interactive-source-components/label.css";
-@use "@guardian/interactive-source-components/text-input.css";
-```
-
-Then style your content like so.
+Then, style your content like so.
 
 ```html
 <h2 class="src-headline-medium-34" style="color: var(--src-brand-400)">
@@ -41,20 +44,18 @@ Then style your content like so.
   Thousands of bags of chips have washed up on a beach in Sussex.
 </p>
 
-<p class="src-article-bold-15">
-  The chips washed up near Eastbourne after several shipping containers
-  containing "food and packaging" came ashore nearby earlier this week.
-</p>
-
 <label for="feedback" class="src-label">Have your say</label>
 <input id="feedback" class="src-text-input" />
 ```
 
-For more detailed installation and setup instructions, read [**USAGE.md**](./docs/USAGE.md).
+CSS and SCSS files can be imported directly if you'd prefer, or if you're not using Vite.
+JavaScript exports of design tokens (colours, breakpoints) are also available.
+
+Find more info in [**USAGE.md**](./docs/USAGE.md): framework setup, configuration options, and other ways to use the library
 
 ## What's in the box
 
-The interactive-style-library package provides Source and Visuals styles, and CSS-only components, in a variety of formats.
+The library provides Source and Visuals styles, and CSS-only components, in a variety of formats.
 
 ### Source (from `@guardian/source`)
 
