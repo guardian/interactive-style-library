@@ -235,7 +235,7 @@ export async function generate() {
 
   scssOutput = await tidyCss(scssOutput)
 
-  const scssDistPath = getDistPath("visuals/charts-mixins.scss")
+  const scssDistPath = getDistPath("visuals/charts.scss")
   fs.writeFileSync(scssDistPath, scssOutput)
 
   const cssDistPath = getDistPath("visuals/charts.css")

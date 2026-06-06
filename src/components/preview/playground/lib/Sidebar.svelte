@@ -62,7 +62,7 @@
 </nav>
 
 <style lang="scss">
-  @use "typography-mixins" as *;
+  @use "typography" as *;
 
   .sidebar {
     width: 260px;

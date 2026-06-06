@@ -71,7 +71,7 @@
 </div>
 
 <style lang="scss">
-  @use "typography-mixins" as *;
+  @use "typography" as *;
 
   :global(h1, h2, h3, h4, h5, h6) {
     font-family:

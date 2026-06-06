@@ -62,7 +62,7 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 <tr>
 <td>
 
-🎨 [`palette.css`](./dist/source/palette.css)
+🎨 [`colors.css`](./dist/source/colors.css)
 
 </td>
 <td>
@@ -72,14 +72,14 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 </td>
 <td>
 
-🖋️ [`typography-classes.css`](./dist/source/typography-classes.css)
+🖋️ [`typography.css`](./dist/source/typography.css)
 
 </td>
 </tr>
 <tr>
 <td>
 
-🖋️ [`typography-mixins.scss`](./dist/source/typography-mixins.scss)
+🖋️ [`typography.scss`](./dist/source/typography.scss)
 
 </td>
 <td>
@@ -157,7 +157,7 @@ The interactive-style-library package provides Source and Visuals styles, and CS
 </td>
 <td>
 
-📊 [`charts-mixins.scss`](./dist/visuals/charts-mixins.scss)
+📊 [`charts.scss`](./dist/visuals/charts.scss)
 
 </td>
 </tr>

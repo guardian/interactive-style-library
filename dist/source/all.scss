@@ -3,7 +3,7 @@
 */
 
 @forward "interactive-style-library/source/mq.scss";
-@forward "interactive-style-library/source/typography-mixins.scss";
-@use "interactive-style-library/source/palette.css";
-@use "interactive-style-library/source/typography-classes.css";
+@forward "interactive-style-library/source/typography.scss";
+@use "interactive-style-library/source/colors.css";
+@use "interactive-style-library/source/typography.css";
 

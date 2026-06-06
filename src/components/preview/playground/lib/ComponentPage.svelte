@@ -101,7 +101,7 @@
 </article>
 
 <style lang="scss">
-  @use "typography-mixins" as *;
+  @use "typography" as *;
 
   .component-page {
     max-width: 680px;

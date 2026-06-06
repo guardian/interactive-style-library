@@ -75,7 +75,7 @@
 </div>
 
 <style lang="scss">
-  @use "typography-mixins" as *;
+  @use "typography" as *;
 
   .grid {
     display: grid;

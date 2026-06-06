@@ -16,9 +16,9 @@
       "types": "./dist/visuals/charts.d.ts",
       "default": "./dist/visuals/charts.js"
     },
-    "./source/palette": {
-      "types": "./dist/source/palette.d.ts",
-      "default": "./dist/source/palette.js"
+    "./source/colors": {
+      "types": "./dist/source/colors.d.ts",
+      "default": "./dist/source/colors.js"
     },
     "./components/*": "./dist/components/*",
     "./*": "./dist/*",

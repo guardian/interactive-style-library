@@ -11,10 +11,10 @@ Source files are imported with the path `interactive-style-library/source/*`, Vi
 <!-- prettier-ignore -->
 | File | Description | Reference |
 | ---- | ----------- | --------- |
-| 🎨 [`source/palette.css`](../dist/source/palette.css) | CSS variables for Source's colour palette | [Source: Core palette](https://zeroheight.com/2a1e5182b/p/71fb50-colour/b/399c59) |
-| 🎨 [`source/palette.js`](../dist/source/palette.js) | JS object of Source's colour palette | [Source: Core palette](https://zeroheight.com/2a1e5182b/p/71fb50-colour/b/399c59) |
-| 🖋️ [`source/typography-classes.css`](../dist/source/typography-classes.css) | CSS classes for typography presets | [Source: Typography presets](https://zeroheight.com/2a1e5182b/p/01555f-typography-presets) |
-| 🖋️ [`source/typography-mixins.scss`](../dist/source/typography-mixins.scss) | SCSS mixins for typography presets | [Source: Typography presets](https://zeroheight.com/2a1e5182b/p/01555f-typography-presets) |
+| 🎨 [`source/colors.css`](../dist/source/colors.css) | CSS variables for Source's colour palette | [Source: Core palette](https://zeroheight.com/2a1e5182b/p/71fb50-colour/b/399c59) |
+| 🎨 [`source/colors.js`](../dist/source/colors.js) | JS object of Source's colour palette | [Source: Core palette](https://zeroheight.com/2a1e5182b/p/71fb50-colour/b/399c59) |
+| 🖋️ [`source/typography.css`](../dist/source/typography.css) | CSS classes for typography presets | [Source: Typography presets](https://zeroheight.com/2a1e5182b/p/01555f-typography-presets) |
+| 🖋️ [`source/typography.scss`](../dist/source/typography.scss) | SCSS mixins for typography presets | [Source: Typography presets](https://zeroheight.com/2a1e5182b/p/01555f-typography-presets) |
 | 🖋️ [`source/font-faces.scss`](../dist/source/font-faces.css) | `@font-face` decls. for typography classes, adapted from [dotcom-rendering](https://github.com/guardian/dotcom-rendering/blob/main/dotcom-rendering/src/lib/fonts-css.ts) | [Source: Typography presets](https://zeroheight.com/2a1e5182b/p/01555f-typography-presets) |
 | 🖋️ [`source/headline-numeric.css`](../dist/source/headline-numeric.css) | `@font-face` overrides for `GH Guardian Headline` with OpenType numeric features (tabular figures, fractions, super/subscripts) | |
 | 📐 [`source/mq.scss`](../dist/source/mq.scss) | [sass-mq](https://github.com/sass-mq/sass-mq) setup with Source breakpoints | [Source: Grids (web)](https://zeroheight.com/2a1e5182b/p/41be19-grids-web) |
@@ -33,7 +33,7 @@ Source files are imported with the path `interactive-style-library/source/*`, Vi
 | 🎨 [`visuals/colors-dark.css`](../dist/visuals/colors-dark.css) | CSS variables for dark theme colours only | [Visuals Color guide 2025](https://www.figma.com/design/lQ8KHxsb8xIJaMujuJV9dr/Colour-guide-2025?node-id=0-1&p=f&t=0ThLMx10HCgM8IMZ-0) |
 | 🎨 [`visuals/colors.js`](../dist/visuals/colors.js) | JS object of light and dark colours | [Visuals Color guide 2025](https://www.figma.com/design/lQ8KHxsb8xIJaMujuJV9dr/Colour-guide-2025?node-id=0-1&p=f&t=0ThLMx10HCgM8IMZ-0) |
 | 📊 [`visuals/charts.css`](../dist/visuals/charts.css) | CSS resources for chart structure and typography | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=1102-323&p=f&t=ycHjdCdLmgXxZWh7-0) |
-| 📊 [`visuals/charts-mixins.scss`](../dist/visuals/charts.css) | SCSS mixins for chart structure and typography | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=1102-323&p=f&t=ycHjdCdLmgXxZWh7-0) |
+| 📊 [`visuals/charts.scss`](../dist/visuals/charts.scss) | SCSS mixins for chart structure and typography | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=1102-323&p=f&t=ycHjdCdLmgXxZWh7-0) |
 | 🗳️ [`visuals/parties.css`](../dist/visuals/parties.css) | CSS variables for combined light and dark party colours | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=2527-2&t=RbwK8XSqGwU6nnm7-0) |
 | 🗳️ [`visuals/parties-light.css`](../dist/visuals/parties-light.css) | CSS variables for light theme party colours only | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=2527-2&t=RbwK8XSqGwU6nnm7-0) |
 | 🗳️ [`visuals/parties-dark.css`](../dist/visuals/parties-dark.css) | CSS variables for dark theme party colours only | [Style guide colour original](https://www.figma.com/design/RZHnmwc2tmB6j1k4bNtyND/Style-guide-colour-original?node-id=2527-2&t=RbwK8XSqGwU6nnm7-0) |

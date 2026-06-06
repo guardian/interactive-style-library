@@ -31,12 +31,12 @@ export async function generate() {
 
   let css = `${makeGeneratedComment(import.meta.url)}\n\n${cssClasses.join("\n\n")}\n`
   css = await tidyCss(css)
-  const cssDistPath = getDistPath("source/typography-classes.css")
+  const cssDistPath = getDistPath("source/typography.css")
   fs.writeFileSync(cssDistPath, css)
 
   let scss = `${makeGeneratedComment(import.meta.url)}\n\n${scssMixins.join("\n\n")}\n`
   scss = await tidyCss(scss)
-  const scssDistPath = getDistPath("source/typography-mixins.scss")
+  const scssDistPath = getDistPath("source/typography.scss")
   fs.writeFileSync(scssDistPath, scss)
 
   return {

@@ -164,8 +164,8 @@ export default {
       style: ({ content }) => ({
         code:
           `@use "interactive-style-library/source/mq.scss" as *;\n` +
-          `@use "interactive-style-library/source/typography-mixins.scss" as *;\n` +
-          `@use "interactive-style-library/visuals/charts-mixins.scss" as *;\n` +
+          `@use "interactive-style-library/source/typography.scss" as *;\n` +
+          `@use "interactive-style-library/visuals/charts.scss" as *;\n` +
           content,
       }),
     },
@@ -197,7 +197,7 @@ With this added, you can use mixins in Svelte `<style lang="scss">` blocks like 
 
 ## Purging unused styles
 
-When you import a CSS file like [`source/palette.css`](/dist/source/palette.css) or [`source/typography-classes.css`](/dist/source/typography-classes.css), you get _all_ the variables and classes it defines — most of which you probably won't use. This bloats your final CSS bundle.
+When you import a CSS file like [`source/colors.css`](/dist/source/colors.css) or [`source/typography.css`](/dist/source/typography.css), you get _all_ the variables and classes it defines — most of which you probably won't use. This bloats your final CSS bundle.
 
 To solve this, this package provides a Vite plugin that automatically removes unused `interactive-style-library`
 styles from your production build. It scans your compiled HTML, CSS and JavaScript for references to

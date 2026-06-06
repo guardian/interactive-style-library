@@ -70,8 +70,8 @@ For the Some Sass extension to find the library's SCSS mixins, create a file at
 
 @forward "/node_modules/interactive-style-library/dist/source/breakpoints.scss";
 @forward "/node_modules/interactive-style-library/dist/source/mq.scss";
-@forward "/node_modules/interactive-style-library/dist/source/typography-mixins.scss";
-@forward "/node_modules/interactive-style-library/dist/visuals/charts-mixins.scss";
+@forward "/node_modules/interactive-style-library/dist/source/typography.scss";
+@forward "/node_modules/interactive-style-library/dist/visuals/charts.scss";
 ```
 
 This file isn't used by your build—it just helps the editor discover the available mixins.
