@@ -21,6 +21,22 @@ Then run a full build to populate the `dist/` directory with all of the generate
 npm run build
 ```
 
+## Branching and "releasing"
+
+This package isn't published to npm yet: consumers install it directly from GitHub, so whatever
+sits on `main` is effectively "released" to every project that depends on us.
+
+To separate in-progress work from what consumers see, we use a two-branch workflow:
+- **`main`** — the release branch. Consumers pull from here. Keep it stable.
+- **`dev`** — the integration branch. Day-to-day work lands here. Consumers can try out in-progress changes
+by adding `#dev` to the `package.json`'s GitHub URL 
+
+When `dev` is in a good state and you're ready to cut a release, merge `dev` into `main`. That's the
+moment downstream projects will pick up the changes on their next install.
+
+There are no enforced rules around this (no required PRs, no protected branches) — just try to keep
+`main` in a shape you'd be happy for a consumer to install.
+
 ## How the project is organised
 
 This repo contains many _generator_ files: Node scripts that read design tokens from `@guardian/source`
