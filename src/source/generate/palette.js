@@ -24,10 +24,14 @@ export function generate() {
   const cssDistPath = getDistPath("source/colors.css")
   fs.writeFileSync(cssDistPath, css)
 
-  // Generate palette JS with const type assertion for literal types
-  const js =
-    `${makeGeneratedComment(import.meta.url)}\n\n` +
-    `export const palette = /** @type {const} */ (${JSON.stringify(palette, null, 2)})\n`
+  const exports = Object.entries(palette)
+    .map(
+      ([category, shades]) =>
+        `export const ${category} = /** @type {const} */ (${JSON.stringify(shades, null, 2)})\n`,
+    )
+    .join("\n")
+
+  const js = `${makeGeneratedComment(import.meta.url)}\n\n${exports}`
 
   const jsDistPath = getDistPath("source/colors.js")
   fs.writeFileSync(jsDistPath, js)
