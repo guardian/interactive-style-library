@@ -141,36 +141,41 @@ export class StyleWriter {
       }
     }
     lines.push(`/// \`\`\``)
+    lines.push(
+      `/// @param {String} $important [null] - Pass \`important\` to flag every declaration as \`!important\`.`,
+    )
+
+    const renderPropsBlock = (props) => [
+      `@if $important == important {`,
+      ...props.map(
+        ({ property, value }) => `${property}: ${value} !important;`,
+      ),
+      `} @else {`,
+      ...props.map(({ property, value }) => `${property}: ${value};`),
+      `}`,
+    ]
 
     // Mixin definition
-    lines.push(`@mixin ${name} {`)
-    for (const { property, value } of this.#props) {
-      lines.push(`  ${property}: ${value};`)
-    }
+    lines.push(`@mixin ${name}($important: null) {`)
+    lines.push(...renderPropsBlock(this.#props))
 
     // Breakpoint overrides (sorted by min-width, nested)
     const sortedBreakpoints = [...this.#breakpointProps.entries()].sort(
       (a, b) => a[0] - b[0],
     )
     for (const [minWidth, props] of sortedBreakpoints) {
-      lines.push(``)
-      lines.push(`  @media (min-width: ${minWidth}px) {`)
-      for (const { property, value } of props) {
-        lines.push(`    ${property}: ${value};`)
-      }
-      lines.push(`  }`)
+      lines.push(`@media (min-width: ${minWidth}px) {`)
+      lines.push(...renderPropsBlock(props))
+      lines.push(`}`)
     }
 
     // Dark mode overrides (nested with &)
     if (this.#darkModeProps.length > 0) {
-      lines.push(``)
-      lines.push(`  @media (prefers-color-scheme: dark) {`)
-      lines.push(`    ${DARK_MODE_SELECTOR} :is(&) {`)
-      for (const { property, value } of this.#darkModeProps) {
-        lines.push(`      ${property}: ${value};`)
-      }
-      lines.push(`    }`)
-      lines.push(`  }`)
+      lines.push(`@media (prefers-color-scheme: dark) {`)
+      lines.push(`${DARK_MODE_SELECTOR} :is(&) {`)
+      lines.push(...renderPropsBlock(this.#darkModeProps))
+      lines.push(`}`)
+      lines.push(`}`)
     }
 
     lines.push(`}`)

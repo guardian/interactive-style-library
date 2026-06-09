@@ -57,6 +57,14 @@ to beat the article page's default styles.
 </style>
 ```
 
+If specificity isn't enough, each typography mixin accepts an `important` argument that flags every declaration as `!important`:
+
+```scss
+.interactive-atom h2 {
+  @include src-headline-medium-28(important);
+}
+```
+
 ## Numeric typography in headlines
 
 Import `source/headline-numeric.css` to unlock tabular figures, diagonal

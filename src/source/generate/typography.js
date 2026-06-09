@@ -24,9 +24,26 @@ export async function generate() {
   const scssMixins = typographyEntries.map(([name, value]) => {
     const kebabName = typographyNameToKebab(name)
     const mixinName = `${SOURCE_PREFIX}-${kebabName}`
-    const cssContent = value.trim()
+    const declarations = value
+      .trim()
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean)
 
-    return `@mixin ${mixinName} {\n\t${cssContent}\n}`
+    const docLines = ["/// ```sass", ...declarations.map((d) => `/// ${d}`), "/// ```"]
+    const paramDoc = `/// @param {String} $important [null] - Pass \`important\` to flag every declaration as \`!important\`.`
+
+    const importantBody = declarations
+      .map((decl) => `${decl.replace(/;$/, "")} !important;`)
+      .join("\n")
+    const normalBody = declarations.join("\n")
+
+    return (
+      `${docLines.join("\n")}\n${paramDoc}\n` +
+      `@mixin ${mixinName}($important: null) {\n` +
+      `@if $important == important {\n${importantBody}\n} @else {\n${normalBody}\n}\n` +
+      `}`
+    )
   })
 
   let css = `${makeGeneratedComment(import.meta.url)}\n\n${cssClasses.join("\n\n")}\n`
