@@ -19,9 +19,14 @@ export function generate() {
   const scssDistPath = getDistPath("source/breakpoints.scss")
   fs.writeFileSync(scssDistPath, scss)
 
+  const jsEntries = sorted
+    .map(([name, value]) => `export const ${name} = ${value}`)
+    .join("\n")
+
   const js =
     `${makeGeneratedComment(import.meta.url)}\n\n` +
-    `export const palette = /** @type {const} */ (${JSON.stringify(Object.fromEntries(sorted), null, 2)})\n`
+    `${jsEntries}\n\n` +
+    `export const toEm = (px, base = 16) => px / base\n`
 
   const jsDistPath = getDistPath("source/breakpoints.js")
   fs.writeFileSync(jsDistPath, js)

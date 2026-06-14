@@ -1,10 +1,9 @@
-export namespace palette {
-    let mobile: 320;
-    let mobileMedium: 375;
-    let mobileLandscape: 480;
-    let phablet: 660;
-    let tablet: 740;
-    let desktop: 980;
-    let leftCol: 1140;
-    let wide: 1300;
-}
+export const mobile: 320;
+export const mobileMedium: 375;
+export const mobileLandscape: 480;
+export const phablet: 660;
+export const tablet: 740;
+export const desktop: 980;
+export const leftCol: 1140;
+export const wide: 1300;
+export function toEm(px: any, base?: number): number;
