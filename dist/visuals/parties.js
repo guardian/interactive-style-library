@@ -38,7 +38,9 @@ export const uk = /** @type {const} */ ({
     "workers": "#7D0068",
     "workers2": "#D8B2D1",
     "alba": "#2F3192",
-    "alba2": "#BDBEEA"
+    "alba2": "#BDBEEA",
+    "restore": "#1B365E",
+    "restore2": "#C6CDD7"
   },
   "dark": {
     "other": "#707070",
@@ -75,7 +77,9 @@ export const uk = /** @type {const} */ ({
     "uup": "#346896",
     "uup2": "#3E5670",
     "reform": "#3DBBE2",
-    "reform2": "#3E6877"
+    "reform2": "#3E6877",
+    "restore": "#5F80AF",
+    "restore2": "#364F77"
   }
 })
 

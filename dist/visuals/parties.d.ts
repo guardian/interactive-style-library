@@ -35,6 +35,8 @@ export namespace uk {
         let workers2: "#D8B2D1";
         let alba: "#2F3192";
         let alba2: "#BDBEEA";
+        let restore: "#1B365E";
+        let restore2: "#C6CDD7";
     }
     namespace dark {
         let other_1: "#707070";
@@ -107,6 +109,10 @@ export namespace uk {
         export { reform_1 as reform };
         let reform2_1: "#3E6877";
         export { reform2_1 as reform2 };
+        let restore_1: "#5F80AF";
+        export { restore_1 as restore };
+        let restore2_1: "#364F77";
+        export { restore2_1 as restore2 };
     }
 }
 export namespace us {

@@ -64,6 +64,9 @@ uk:
     alba: "#2F3192"
     alba2: "#BDBEEA"
 
+    restore: "#1B365E"
+    restore2: "#C6CDD7"
+
   dark:
     con: "#009AE1"
     con2: "#2F5C81"
@@ -112,6 +115,9 @@ uk:
 
     reform: "#3DBBE2"
     reform2: "#3E6877"
+
+    restore: "#5F80AF"
+    restore2: "#364F77"
 
 us:
   light:
