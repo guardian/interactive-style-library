@@ -16,6 +16,10 @@
       "types": "./dist/visuals/charts.d.ts",
       "default": "./dist/visuals/charts.js"
     },
+    "./visuals/parties": {
+      "types": "./dist/visuals/parties.d.ts",
+      "default": "./dist/visuals/parties.js"
+    },
     "./source/colors": {
       "types": "./dist/source/colors.d.ts",
       "default": "./dist/source/colors.js"
