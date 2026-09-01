@@ -297,7 +297,7 @@ Full usage instructions, how to import styles into your project (including Svelt
 <tr>
 <td>
 
-[**RECIPES.md**](./docs/RECIPES.md)
+[**Recipes**](./docs/recipes/)
 
 </td>
 <td>

@@ -77,7 +77,7 @@ path[data-team="Liverpool"] {
 }
 ```
 
-Find a more complete example in @[docs/RECIPES.md](./RECIPES.md).
+Find a more complete example in the [recipes](./recipes/).
 
 ### Components
 
