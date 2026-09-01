@@ -1,6 +1,6 @@
 /**
  * @typedef {Object} PurgeOptions
- * @property {string[]} [safelist] - Additional classes/variables to always keep
+ * @property {(string|RegExp)[]} [safelist] - Additional classes/variables to always keep
  */
 /**
  * Vite plugin that finds and removes any unused CSS variables and classes provided by
@@ -23,5 +23,5 @@ export type PurgeOptions = {
     /**
      * - Additional classes/variables to always keep
      */
-    safelist?: string[];
+    safelist?: (string | RegExp)[];
 };

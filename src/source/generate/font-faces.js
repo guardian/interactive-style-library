@@ -7,13 +7,17 @@
 import * as fs from "fs"
 import { getDistPath, makeGeneratedComment, tidyCss } from "../../utils.js"
 
-export async function generate() {
-  const getFontUrl = (filePath) =>
-    `https://assets.guim.co.uk/static/frontend/${filePath}`
+const getFontUrl = (filePath) =>
+  `https://assets.guim.co.uk/static/frontend/${filePath}`
 
-  const fontFaceCss = fontList
-    .map(
-      (font) => `@font-face {
+// Each key maps to a font-faces/<key>.css file, and mirrors the family segment
+// of the typography classes (`src-titlepiece`, `src-headline-*`, etc.).
+const fontKeys = ["titlepiece", "headline", "text-egyptian", "text-sans"]
+
+const HEADLINE_FAMILIES = ["GH Guardian Headline", "Guardian Egyptian Web"]
+
+function fontFaceRule(font) {
+  return `@font-face {
     font-family: "${font.family}";
     src: url(${getFontUrl(font.woff2)}) format("woff2"),
         url(${getFontUrl(font.woff)}) format("woff"),
@@ -21,24 +25,85 @@ export async function generate() {
     font-weight: ${font.weight};
     font-style: ${font.style};
     font-display: swap;
-  }`,
-    )
-    .join("\n\n")
+  }`
+}
 
-  let css = `${makeGeneratedComment(import.meta.url)}\n\n${fontFaceCss}`
-  css = await tidyCss(css)
+// The `full-not-hinted` headline build carries extra OpenType features for
+// numeric typography. Include font-faces/headline-numeric.css *after* the
+// article's (or headline.css's) rules so it overrides them.
+function numericHeadlineRule(font) {
+  const toFullPath = (filePath) =>
+    filePath
+      .replace("noalts-not-hinted", "full-not-hinted")
+      .replace("latin1-not-hinted", "full-not-hinted")
 
-  const distPath = getDistPath("source/font-faces.css")
-  fs.writeFileSync(distPath, css)
+  return fontFaceRule({
+    ...font,
+    woff2: toFullPath(font.woff2),
+    woff: toFullPath(font.woff),
+    ttf: toFullPath(font.ttf),
+  })
+}
 
-  return {
-    files: [distPath],
+async function writeFontFace(name, rules) {
+  const css = await tidyCss(
+    `${makeGeneratedComment(import.meta.url)}\n\n${rules}`,
+  )
+  const path = getDistPath(`source/font-faces/${name}.css`)
+  fs.writeFileSync(path, css)
+  return path
+}
+
+// Kept so existing imports of the old flat paths keep working. The rules are
+// inlined rather than @imported so the file works via SCSS @use too.
+async function writeDeprecatedAlias(oldName, newName, rules) {
+  const css = await tidyCss(
+    `${makeGeneratedComment(import.meta.url)}\n\n` +
+      `/* Deprecated: use "font-faces/${newName}.css" instead. */\n\n` +
+      rules,
+  )
+  const path = getDistPath(`source/${oldName}.css`)
+  fs.writeFileSync(path, css)
+  return path
+}
+
+export async function generate() {
+  const files = []
+
+  for (const key of fontKeys) {
+    const rules = fontList
+      .filter((font) => font.key === key)
+      .map(fontFaceRule)
+      .join("\n\n")
+
+    files.push(await writeFontFace(key, rules))
   }
+
+  const allRules = fontList.map(fontFaceRule).join("\n\n")
+  files.push(await writeFontFace("all", allRules))
+
+  const numericRules = fontList
+    .filter((font) => HEADLINE_FAMILIES.includes(font.family))
+    .map(numericHeadlineRule)
+    .join("\n\n")
+  files.push(await writeFontFace("headline-numeric", numericRules))
+
+  files.push(await writeDeprecatedAlias("font-faces", "all", allRules))
+  files.push(
+    await writeDeprecatedAlias(
+      "headline-numeric",
+      "headline-numeric",
+      numericRules,
+    ),
+  )
+
+  return { files }
 }
 
 export const fontList = [
   // This titlepiece font isn't available in DCR's font-faces filea, this was copied from elsewhere
   {
+    key: "titlepiece",
     family: "GT Guardian Titlepiece",
     woff2:
       "fonts/guardian-titlepiece/full-not-hinted/GTGuardianTitlepiece-Bold.woff2",
@@ -50,6 +115,7 @@ export const fontList = [
 
   // GH Guardian Headline, with legacy family name of Guardian Egyptian Web
   {
+    key: "headline",
     family: "GH Guardian Headline",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-Light.woff2",
@@ -60,6 +126,7 @@ export const fontList = [
     uniqueName: "GHGuardianHeadline-Light",
   },
   {
+    key: "headline",
     family: "Guardian Egyptian Web",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-Light.woff2",
@@ -70,6 +137,7 @@ export const fontList = [
     uniqueName: "GuardianEgyptian-Light",
   },
   {
+    key: "headline",
     family: "GH Guardian Headline",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-LightItalic.woff2",
@@ -80,6 +148,7 @@ export const fontList = [
     uniqueName: "GHGuardianHeadline-LightItalic",
   },
   {
+    key: "headline",
     family: "Guardian Egyptian Web",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-LightItalic.woff2",
@@ -90,6 +159,7 @@ export const fontList = [
     uniqueName: "GuardianEgyptian-LightItalic",
   },
   {
+    key: "headline",
     family: "GH Guardian Headline",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-Medium.woff2",
@@ -100,6 +170,7 @@ export const fontList = [
     uniqueName: "GHGuardianHeadline-Medium",
   },
   {
+    key: "headline",
     family: "Guardian Egyptian Web",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-Medium.woff2",
@@ -110,6 +181,7 @@ export const fontList = [
     uniqueName: "GuardianEgyptian-Medium",
   },
   {
+    key: "headline",
     family: "GH Guardian Headline",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-MediumItalic.woff2",
@@ -120,6 +192,7 @@ export const fontList = [
     uniqueName: "GHGuardianHeadline-MediumItalic",
   },
   {
+    key: "headline",
     family: "Guardian Egyptian Web",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-MediumItalic.woff2",
@@ -130,6 +203,7 @@ export const fontList = [
     uniqueName: "GuardianEgyptian-MediumItalic",
   },
   {
+    key: "headline",
     family: "GH Guardian Headline",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-Bold.woff2",
@@ -140,6 +214,7 @@ export const fontList = [
     uniqueName: "GHGuardianHeadline-Bold",
   },
   {
+    key: "headline",
     family: "Guardian Egyptian Web",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-Bold.woff2",
@@ -150,6 +225,7 @@ export const fontList = [
     uniqueName: "GuardianEgyptian-Bold",
   },
   {
+    key: "headline",
     family: "GH Guardian Headline",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-BoldItalic.woff2",
@@ -160,6 +236,7 @@ export const fontList = [
     uniqueName: "GHGuardianHeadline-BoldItalic",
   },
   {
+    key: "headline",
     family: "Guardian Egyptian Web",
     woff2:
       "fonts/guardian-headline/noalts-not-hinted/GHGuardianHeadline-BoldItalic.woff2",
@@ -171,6 +248,7 @@ export const fontList = [
   },
   // GuardianTextEgyptian, with legacy family name of Guardian Text Egyptian Web
   {
+    key: "text-egyptian",
     family: "GuardianTextEgyptian",
     woff2:
       "fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-Regular.woff2",
@@ -181,6 +259,7 @@ export const fontList = [
     uniqueName: "GuardianTextEgyptian-Regular",
   },
   {
+    key: "text-egyptian",
     family: "Guardian Text Egyptian Web",
     woff2:
       "fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-Regular.woff2",
@@ -191,6 +270,7 @@ export const fontList = [
     uniqueName: "GuardianTextEgyptianWeb-Regular",
   },
   {
+    key: "text-egyptian",
     family: "GuardianTextEgyptian",
     woff2:
       "fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-RegularItalic.woff2",
@@ -201,6 +281,7 @@ export const fontList = [
     uniqueName: "GuardianTextEgyptian-RegularItalic",
   },
   {
+    key: "text-egyptian",
     family: "Guardian Text Egyptian Web",
     woff2:
       "fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-RegularItalic.woff2",
@@ -211,6 +292,7 @@ export const fontList = [
     uniqueName: "GuardianTextEgyptianWeb-RegularItalic",
   },
   {
+    key: "text-egyptian",
     family: "GuardianTextEgyptian",
     woff2:
       "fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-Bold.woff2",
@@ -221,6 +303,7 @@ export const fontList = [
     uniqueName: "GuardianTextEgyptian-Bold",
   },
   {
+    key: "text-egyptian",
     family: "Guardian Text Egyptian Web",
     woff2:
       "fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-Bold.woff2",
@@ -231,6 +314,7 @@ export const fontList = [
     uniqueName: "GuardianTextEgyptianWeb-Bold",
   },
   {
+    key: "text-egyptian",
     family: "GuardianTextEgyptian",
     woff2:
       "fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-BoldItalic.woff2",
@@ -241,6 +325,7 @@ export const fontList = [
     uniqueName: "GuardianTextEgyptian-BoldItalic",
   },
   {
+    key: "text-egyptian",
     family: "Guardian Text Egyptian Web",
     woff2:
       "fonts/guardian-textegyptian/noalts-not-hinted/GuardianTextEgyptian-BoldItalic.woff2",
@@ -252,6 +337,7 @@ export const fontList = [
   },
   // GuardianTextSans, with legacy family name of Guardian Text Sans Web
   {
+    key: "text-sans",
     family: "GuardianTextSans",
     woff2:
       "fonts/guardian-textsans/noalts-not-hinted/GuardianTextSans-Regular.woff2",
@@ -262,6 +348,7 @@ export const fontList = [
     uniqueName: "GuardianTextSans-Regular",
   },
   {
+    key: "text-sans",
     family: "Guardian Text Sans Web",
     woff2:
       "fonts/guardian-textsans/noalts-not-hinted/GuardianTextSans-Regular.woff2",
@@ -272,6 +359,7 @@ export const fontList = [
     uniqueName: "GuardianTextSansWeb-Regular",
   },
   {
+    key: "text-sans",
     family: "GuardianTextSans",
     woff2:
       "fonts/guardian-textsans/noalts-not-hinted/GuardianTextSans-RegularItalic.woff2",
@@ -282,6 +370,7 @@ export const fontList = [
     uniqueName: "GuardianTextSans-RegularItalic",
   },
   {
+    key: "text-sans",
     family: "Guardian Text Sans Web",
     woff2:
       "fonts/guardian-textsans/noalts-not-hinted/GuardianTextSans-RegularItalic.woff2",
@@ -292,6 +381,7 @@ export const fontList = [
     uniqueName: "GuardianTextSansWeb-RegularItalic",
   },
   {
+    key: "text-sans",
     family: "GuardianTextSans",
     woff2:
       "fonts/guardian-textsans/noalts-not-hinted/GuardianTextSans-Bold.woff2",
@@ -302,6 +392,7 @@ export const fontList = [
     uniqueName: "GuardianTextSans-Bold",
   },
   {
+    key: "text-sans",
     family: "Guardian Text Sans Web",
     woff2:
       "fonts/guardian-textsans/noalts-not-hinted/GuardianTextSans-Bold.woff2",
@@ -312,6 +403,7 @@ export const fontList = [
     uniqueName: "GuardianTextSansWeb-Bold",
   },
   {
+    key: "text-sans",
     family: "GuardianTextSans",
     woff2:
       "fonts/guardian-textsans/noalts-not-hinted/GuardianTextSans-BoldItalic.woff2",
@@ -322,6 +414,7 @@ export const fontList = [
     uniqueName: "GuardianTextSans-BoldItalic",
   },
   {
+    key: "text-sans",
     family: "Guardian Text Sans Web",
     woff2:
       "fonts/guardian-textsans/noalts-not-hinted/GuardianTextSans-BoldItalic.woff2",

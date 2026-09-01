@@ -6,8 +6,12 @@ import { purgeInteractiveStylesCss } from "./purge-unused-css.js"
  *   | "typography.css"
  *   | "colors.css"
  *   | "breakpoints.scss"
- *   | "font-faces.css"
- *   | "headline-numeric.css"} SourceFile
+ *   | "font-faces/titlepiece.css"
+ *   | "font-faces/headline.css"
+ *   | "font-faces/text-egyptian.css"
+ *   | "font-faces/text-sans.css"
+ *   | "font-faces/all.css"
+ *   | "font-faces/headline-numeric.css"} SourceFile
  */
 
 /**
@@ -51,8 +55,12 @@ const validSourceFiles = new Set([
   "typography.css",
   "colors.css",
   "breakpoints.scss",
-  "font-faces.css",
-  "headline-numeric.css",
+  "font-faces/titlepiece.css",
+  "font-faces/headline.css",
+  "font-faces/text-egyptian.css",
+  "font-faces/text-sans.css",
+  "font-faces/all.css",
+  "font-faces/headline-numeric.css",
 ])
 
 const validVisualsFiles = new Set([

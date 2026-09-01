@@ -67,13 +67,13 @@ If specificity isn't enough, each typography mixin accepts an `important` argume
 
 ## Numeric typography in headlines
 
-Import `source/headline-numeric.css` to unlock tabular figures, diagonal
+Import `source/font-faces/headline-numeric.css` to unlock tabular figures, diagonal
 fractions, and super/subscripts on the existing `.src-headline-*` classes.
 
 ```scss
 // main.scss
 @use "interactive-style-library/source/all" as *;
-@use "interactive-style-library/source/headline-numeric.css";
+@use "interactive-style-library/source/font-faces/headline-numeric.css";
 ```
 
 This imports a CSS file with `@font-face` declarations that override the article page's

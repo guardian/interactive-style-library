@@ -85,21 +85,16 @@ The library provides Source and Visuals styles, and CSS-only components, in a va
 </td>
 <td>
 
-🖋️ [`font-faces.css`](./dist/source/font-faces.css)
+🖋️ [`font-faces/all.css`](./dist/source/font-faces/all.css) **\***
 
 </td>
-<td>
-
-🖋️ [`headline-numeric.css`](./dist/source/headline-numeric.css)
-
-</td>
-</tr>
-<tr>
 <td>
 
 📐 [`mq.scss`](./dist/source/mq.scss)
 
 </td>
+</tr>
+<tr>
 <td>
 
 📐 [`breakpoints.scss`](./dist/source/breakpoints.scss)
@@ -110,13 +105,13 @@ The library provides Source and Visuals styles, and CSS-only components, in a va
 📐 [`breakpoints.js`](./dist/source/breakpoints.js)
 
 </td>
-</tr>
-<tr>
 <td>
 
 📚 [`all.css`](./dist/source/all.css)
 
 </td>
+</tr>
+<tr>
 <td>
 
 📚 [`all.scss`](./dist/source/all.scss)
@@ -124,6 +119,10 @@ The library provides Source and Visuals styles, and CSS-only components, in a va
 </td>
 </tr>
 </table>
+
+_**\***`font-faces/all.css` includes `@font-face` declarations for the 
+main Guardian fonts (titlepiece, headline, article, sans). Font faces can be included invidually, as
+can versions with advanced numerical features: see [ALL-FILES.md](./docs/ALL-FILES.md#source)._
 
 ### Visuals
 

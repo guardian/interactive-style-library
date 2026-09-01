@@ -73,7 +73,9 @@ writeFileSync(
   `${comment}\n\n${await buildScss("visuals", visualsCss, visualsScss)}\n`,
 )
 
-// mq.scss already exports the $breakpoints variable
+// mq.scss already exports the $breakpoints variable. Font faces live in the
+// font-faces/ subdirectory, which readdirSync doesn't descend into; the two
+// top-level files below are deprecated aliases kept for back-compat.
 const sourceExcludes = [
   "breakpoints.scss",
   "font-faces.css",

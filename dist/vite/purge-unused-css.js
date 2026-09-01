@@ -6,7 +6,7 @@ const PREFIXES = [SOURCE_PREFIX, VISUALS_PREFIX]
 
 /**
  * @typedef {Object} PurgeOptions
- * @property {string[]} [safelist] - Additional classes/variables to always keep
+ * @property {(string|RegExp)[]} [safelist] - Additional classes/variables to always keep
  */
 
 /**
