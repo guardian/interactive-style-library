@@ -100,18 +100,18 @@ Each component supports variants via modifier classes (e.g. `src-button--small`,
 
 ## Vite plugin setup
 
-The easiest way to use the library is with the `useInteractiveStyles` plugin — it works with
+The easiest way to use the library is with the `interactiveStyleLibrary` plugin — it works with
 Svelte, Preact, and any other Vite-based project.
 
 Add it to your `vite.config.js` and list the files you need from each category.
 
 ```js
 // vite.config.js
-import { useInteractiveStyles } from "interactive-style-library/vite"
+import { interactiveStyleLibrary } from "interactive-style-library/vite"
 
 export default {
   plugins: [
-    useInteractiveStyles({
+    interactiveStyleLibrary({
       source: ["mq.scss", "typography.scss", "typography.css", "colors.css"],
       visuals: ["charts.scss", "colors.css"],
       components: ["button.css", "label.css", "text-input.css"],
@@ -182,7 +182,7 @@ if (party === "con") {
 Alternatively, add them to the `safelist` option.
 
 ```js
-useInteractiveStyles({
+interactiveStyleLibrary({
   source: ["typography.css"],
   visuals: ["colors.css"],
   purge: {
@@ -200,7 +200,7 @@ useInteractiveStyles({
 
 ### Using the purge plugin standalone
 
-If you're not using `useInteractiveStyles` but still want to purge unused styles, the
+If you're not using `interactiveStyleLibrary` but still want to purge unused styles, the
 `purgeInteractiveStylesCss` plugin is available as a separate export.
 
 ```js
@@ -246,7 +246,7 @@ If you're not using Vite, you can import the library's files directly into your 
 If you `@use` both `source/colors.css` and `visuals/colors.css`, Sass will
 complain about a naming collision. Add `as src-colors` / `as vis-colors` (as
 above) to resolve it — the names themselves don't matter and aren't referenced
-anywhere, they just need to differ. The `useInteractiveStyles` plugin handles
+anywhere, they just need to differ. The `interactiveStyleLibrary` plugin handles
 this for you.
 
 Or use the `all.scss` barrel files to get everything at once (with a couple of exceptions — see

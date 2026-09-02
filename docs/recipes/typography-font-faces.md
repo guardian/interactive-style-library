@@ -38,10 +38,10 @@ Font faces live under `source/font-faces/`, split by family so you can load only
 | `font-faces/text-sans.css` | `GuardianTextSans` |
 | `font-faces/all.css` | all of the above |
 
-With the `useInteractiveStyles` Vite plugin, add the files you need to `source`:
+With the `interactiveStyleLibrary` Vite plugin, add the files you need to `source`:
 
 ```js
-useInteractiveStyles({
+interactiveStyleLibrary({
   source: ["typography.css", "font-faces/titlepiece.css"],
 })
 ```

@@ -38,7 +38,7 @@ import { purgeInteractiveStylesCss } from "./purge-unused-css.js"
  */
 
 /**
- * @typedef {Object} UseInteractiveStylesOptions
+ * @typedef {Object} InteractiveStyleLibraryOptions
  * @property {SourceFile[]} [source] - Files from `dist/source/` to inject
  * @property {VisualsFile[]} [visuals] - Files from `dist/visuals/` to inject
  * @property {ComponentFile[]} [components] - Files from `dist/components/` to inject
@@ -94,10 +94,10 @@ const validComponentFiles = new Set([
  * variables don't need to be `@use`d in every file). CSS files are `@use`d
  * once from the entry SCSS file, since `@use`ing them duplicates output.
  *
- * @param {UseInteractiveStylesOptions} [options]
+ * @param {InteractiveStyleLibraryOptions} [options]
  * @returns {import("vite").Plugin[]}
  */
-export function useInteractiveStyles(options = {}) {
+export function interactiveStyleLibrary(options = {}) {
   const {
     source = [],
     visuals = [],
@@ -132,7 +132,7 @@ export function useInteractiveStyles(options = {}) {
 
   /** @type {import("vite").Plugin} */
   const injectPlugin = {
-    name: "vite-plugin-use-interactive-styles",
+    name: "vite-plugin-interactive-style-library",
 
     config(config) {
       const existing =
@@ -184,6 +184,17 @@ export function useInteractiveStyles(options = {}) {
     plugins.push(purgeInteractiveStylesCss(purge === true ? {} : purge))
   }
   return plugins
+}
+
+/**
+ * @deprecated Renamed to `interactiveStyleLibrary`. This alias will be removed
+ * in a future release.
+ *
+ * @param {InteractiveStyleLibraryOptions} [options]
+ * @returns {import("vite").Plugin[]}
+ */
+export function useInteractiveStyles(options = {}) {
+  return interactiveStyleLibrary(options)
 }
 
 function validateFiles(category, files, validSet) {

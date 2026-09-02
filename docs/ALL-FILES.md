@@ -3,7 +3,7 @@
 The following tables list every file exported by `interactive-style-library`.
 
 The filenames in the Source and Visuals tables are what you pass to `source` and `visuals` in the
-[`useInteractiveStyles` Vite plugin](./USAGE.md).
+[`interactiveStyleLibrary` Vite plugin](./USAGE.md).
 
 They can also be imported directly using the paths `interactive-style-library/source/*`,
 `interactive-style-library/visuals/*`, and `interactive-style-library/components/*`.

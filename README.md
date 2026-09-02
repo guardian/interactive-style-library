@@ -15,15 +15,15 @@ npm install -D git@github.com:guardian/interactive-style-library.git
 The library is split into separate stylesheets – typography, colours, breakpoints, etc.
 – letting you pick only what you need.
 
-In Vite projects, add the `useInteractiveStyles` plugin to your `vite.config.js` and list the
+In Vite projects, add the `interactiveStyleLibrary` plugin to your `vite.config.js` and list the
 ones you'd like to use.
 
 ```js
-import { useInteractiveStyles } from "interactive-style-library/vite"
+import { interactiveStyleLibrary } from "interactive-style-library/vite"
 
 export default {
   plugins: [
-    useInteractiveStyles({
+    interactiveStyleLibrary({
       source: ["mq.scss", "typography.scss", "typography.css", "colors.css"],
       components: ["label.css", "text-input.css"],
     }),

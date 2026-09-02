@@ -6,14 +6,22 @@
  * variables don't need to be `@use`d in every file). CSS files are `@use`d
  * once from the entry SCSS file, since `@use`ing them duplicates output.
  *
- * @param {UseInteractiveStylesOptions} [options]
+ * @param {InteractiveStyleLibraryOptions} [options]
  * @returns {import("vite").Plugin[]}
  */
-export function useInteractiveStyles(options?: UseInteractiveStylesOptions): import("vite").Plugin[];
+export function interactiveStyleLibrary(options?: InteractiveStyleLibraryOptions): import("vite").Plugin[];
+/**
+ * @deprecated Renamed to `interactiveStyleLibrary`. This alias will be removed
+ * in a future release.
+ *
+ * @param {InteractiveStyleLibraryOptions} [options]
+ * @returns {import("vite").Plugin[]}
+ */
+export function useInteractiveStyles(options?: InteractiveStyleLibraryOptions): import("vite").Plugin[];
 export type SourceFile = "mq.scss" | "typography.scss" | "typography.css" | "colors.css" | "breakpoints.scss" | "font-faces/titlepiece.css" | "font-faces/headline.css" | "font-faces/text-egyptian.css" | "font-faces/text-sans.css" | "font-faces/all.css" | "font-faces/headline-numeric.css";
 export type VisualsFile = "charts.scss" | "charts.css" | "colors.css" | "colors-light.css" | "colors-dark.css" | "parties.css" | "parties-light.css" | "parties-dark.css";
 export type ComponentFile = "button.css" | "checkbox.css" | "icons.css" | "label.css" | "radio.css" | "select.css" | "spinner.css" | "text-input.css" | "toggle.css";
-export type UseInteractiveStylesOptions = {
+export type InteractiveStyleLibraryOptions = {
     /**
      * - Files from `dist/source/` to inject
      */
