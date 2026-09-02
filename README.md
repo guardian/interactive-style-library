@@ -294,16 +294,6 @@ Find more information and instructions in this project's documentation.
 <td>
 Full usage instructions, how to import styles into your project (including Svelte and React)
 
-<tr>
-<td>
-
-[**Recipes**](./docs/recipes/)
-
-</td>
-<td>
-Ready-to-use examples of HTML, SCSS, JavaScript, Svelte, etc. that use these styles
-</td>
-</tr>
 
 <tr>
 <td>
@@ -324,6 +314,31 @@ How to set up your IDE so it auto-completes CSS classes and variables, and SCSS 
 </td>
 <td>
 A full list of all files provided by this package and what they do.
+</td>
+</tr>
+
+<tr>
+<td>
+
+[**Recipes**](./docs/recipes/)
+
+</td>
+<td>
+Guides for specific use cases with ready-to-copy code snippets.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+[**Components**](./docs/components/)
+
+</td>
+<td>
+
+Usage instructions for each CSS component: buttons, inputs, etc.
+
 </td>
 </tr>
 </table>
