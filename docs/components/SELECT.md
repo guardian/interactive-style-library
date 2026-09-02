@@ -2,8 +2,8 @@
 
 ```html
 <script>
-  import "@guardian/interactive-source-components/text-input.css";
-  import "@guardian/interactive-source-components/select.css";
+  import "interactive-source-components/components/text-input.css";
+  import "interactive-source-components/components/select.css";
 </script>
 
 ...

@@ -2,7 +2,7 @@
 
 ```html
 <script>
-  import "@guardian/interactive-style-library/button.css"
+  import "interactive-style-library/components/button.css"
 </script>
 
 <button class="src-button">Click me</button>

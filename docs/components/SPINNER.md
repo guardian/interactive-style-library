@@ -2,7 +2,7 @@
 
 ```html
 <script>
-  import "@guardian/interactive-source-components/spinner.css";
+  import "interactive-source-components/components/spinner.css";
 </script>
 
 <div

@@ -2,7 +2,7 @@
 
 ```html
 <script>
-  import "@guardian/interactive-source-components/icons.css";
+  import "interactive-source-components/components/icons.css";
 </script>
 
 <div class="src-icon--add-to-basket" style="width: 36px;"></div>

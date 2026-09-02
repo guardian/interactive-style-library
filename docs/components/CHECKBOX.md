@@ -2,7 +2,7 @@
 
 ```html
 <script>
-  import "@guardian/interactive-source-components/checkbox.css"
+  import "interactive-style-library/components/checkbox.css"
 </script>
 
 <div class="src-checkbox__container">
