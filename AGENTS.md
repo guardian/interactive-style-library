@@ -5,8 +5,8 @@
 This is a CSS style library that generates plain CSS from the Guardian's
 `@guardian/source` React/Emotion component library. The generators extract
 design tokens, theme values, and component styles from `@guardian/source` and
-output standalone `.css` and `.scss` files that can be consumed without React or
-Emotion.
+output standalone `.css` and `.scss` files (plus some `.js`/`.d.ts` token
+modules) that can be consumed without React or Emotion.
 
 The output is published as an npm package via the `dist/` directory.
 
@@ -14,95 +14,76 @@ The output is published as an npm package via the `dist/` directory.
 
 ```
 src/
-  components/
-    generate/       Component CSS generators (button, checkbox, icons, etc.)
-    common.js       Shared utilities for component generators (esbuild bundling,
-                    PostCSS pipeline, Emotion parsing)
-    preview/        Vite-based preview app for visually testing components
-      playground/   Web components for the interactive playground UI
-  visuals/
-    generate/       Visual token generators (colors, charts — CSS/SCSS/JS)
-    common.js       Shared visuals utilities
-    constants.js    Prefix constants for visuals CSS variables
-  source/
-    generate/       Source foundation generators (palette, typography, breakpoints, mq)
-    common.js       Shared source utilities
-    constants.js    Prefix constants for source CSS variables
-  utils.js          Shared build utilities (paths, CSS formatting, generated comments)
-  cli.js            CLI formatting helpers (ANSI colours, logGeneratedFiles)
+  components/       Component CSS generators (button, checkbox, icons, etc.)
+    preview/        Vite + Svelte app for visually testing components
+  visuals/          Visual token generators (colors, charts, parties)
+  source/           Source foundation generators (palette, typography,
+                    breakpoints, mq, font-faces)
   vite/             Vite plugin for purging unused CSS (exported to consumers)
 
-scripts/
-  build.sh          Full build: clean, generate, build indexes, copy JS, run tsc
-  run-generators.js Imports all generators and runs them in parallel (single process)
-  build-indexes.js  Builds all.css/all.scss barrel files by concatenating dist/ contents
-  build-watch.js    File watcher that re-runs individual generators on change
-
-dist/               Build output (components/, visuals/, source/, vite/)
+scripts/            Build orchestration (see Build system below)
+dist/               Build output — the sole published artifact
 ```
+
+Each token area (`components/`, `visuals/`, `source/`) follows the same layout:
+a `generate/` directory of generators, a `common.js` of shared helpers, and
+(for `visuals`/`source`) a `constants.js` of CSS-variable prefixes.
 
 ## Build system
 
 ### Full build (`npm run build` / `./scripts/build.sh`)
 
-1. Cleans `dist/`
-2. Runs all generators in parallel via `scripts/run-generators.js`
-3. Builds index files (`all.css`, `all.scss`) via `scripts/build-indexes.js`
-4. Copies JS files that need `.d.ts` generation into `dist/`
-5. Runs `tsc` to generate type declarations
+`build.sh` cleans `dist/`, runs all generators, builds the index barrel files,
+copies the hand-written JS that needs type declarations into `dist/`, and runs
+`tsc` to emit `.d.ts` files. Read `build.sh` for the exact sequence.
 
 ### Generators
 
-Each generator file in `src/*/generate/` exports a `generate()` function that:
-- Returns `{ files: string[] }` — the list of files it wrote to `dist/`
-- Is called by `run-generators.js`, which also handles logging via `logGeneratedFiles`
+Every generator lives in a `src/*/generate/` directory and exports a
+`generate()` function returning `{ files: string[] }` — the list of files it
+wrote to `dist/`. `scripts/run-generators.js` globs and runs them all in
+parallel in a single process (excluding `common*` helper files), handling
+logging via `logGeneratedFiles`.
 
-Files named `common.js` in generate directories are shared helpers, not generators.
+Some token sets are emitted by more than one generator (e.g. visuals colors
+have a `-css-scss` generator and a `-js` generator), and some generators emit
+outputs into a sibling area (e.g. `source/generate/palette.js` produces the
+`source/colors.*` files).
 
 ### Component generators
 
-Component generators use `loadContextFromPath` (in `src/components/common.js`)
-to bundle `@guardian/source` module files with esbuild, execute them in a Node
-VM context, and extract the style functions/theme objects. This avoids importing
-React/Emotion at the top level.
+Component generators use helpers in `src/components/common.js`
+(`loadContextFromPath` / `loadContextFromSource`) to bundle `@guardian/source`
+module files with esbuild and execute them in a Node VM context, extracting the
+style functions and theme objects. This avoids importing React/Emotion at the
+top level. The resulting CSS is processed through PostCSS (nesting,
+autoprefixer, selector deduplication) and Prettier before being written.
 
-`loadContextFromSource` is a variant that accepts source code as a string with a
-resolve directory, used by the icons generator to bundle all icons in a single
-esbuild call.
+### Watch mode (`npm run build-watch`)
 
-The CSS output is processed through PostCSS (nesting, autoprefixer, selector
-deduplication) and Prettier before being written to disk.
-
-### Watch mode (`npm run build-watch` / `node scripts/build-watch.js`)
-
-- Uses `fs.watch` on generator directories
-- Debounces rapid file system events (100ms per file)
-- On change, dynamically imports and calls the changed generator's `generate()`
-- Re-runs `build-indexes.js` only when visuals or source generators change
-  (not for component generators)
-- Uses cache-busting query strings on dynamic imports to bypass Node's module cache
+Watches the generator directories and re-runs the changed generator's
+`generate()` on change, rebuilding the index files only when visuals or source
+generators change.
 
 ## Preview app
 
-The Vite dev server (`npm run components.dev`) serves `src/components/preview/`
-with `publicDir` set to `dist/`. This means `dist/` contents are served at `/`,
-so CSS is referenced as `/components/button.css` (not `/dist/components/...`).
-
-The preview uses custom web components (`<component-playground>`,
-`<icon-playground>`) for interactive demos with live class toggling.
+`npm run components.dev` starts a Vite + Svelte dev server serving
+`src/components/preview/` with `publicDir` set to `dist/`, so generated CSS is
+referenced from the root (e.g. `/components/button.css`). The playground is a
+set of Svelte components under `preview/playground/` providing interactive demos
+with live class toggling.
 
 ## Key conventions
 
-- Generator files must export `generate()` returning `{ files: string[] }`
+- Generator files export `generate()` returning `{ files: string[] }`
 - Generated CSS files include a comment header crediting the generating script
 - CSS class names use the `src-` prefix (e.g. `.src-button`, `.src-checkbox`)
-- CSS custom properties use prefixes defined in `constants.js` files
-- The `all.css` barrel files concatenate actual CSS content (not `@import` statements),
-  with per-file generated comments stripped
-- The `all.scss` barrel files use `@use`/`@forward` with package-name paths
+- CSS custom properties use prefixes defined in the `constants.js` files
+- `all.css` barrel files concatenate actual CSS content (with per-file generated
+  comments stripped); `all.scss` barrel files use `@use`/`@forward`
 
 ## npm package exports
 
-The package exports map in `package.json` maps paths like
-`interactive-style-library/components/*` to `dist/components/*`. The `dist/`
-directory is the sole published artifact.
+The `exports` map in `package.json` maps subpaths like
+`interactive-style-library/components/*` and `.../visuals/colors` to files under
+`dist/`, which is the sole published artifact.
