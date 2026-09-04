@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "purgecss": "^7.0.2",
-    "sass-mq": "^7.0.0"
+    "sass-mq": "7.0.0"
   },
   "peerDependencies": {
     "vite": "*"
