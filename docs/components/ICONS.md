@@ -2,7 +2,7 @@
 
 ```html
 <script>
-  import "interactive-source-components/components/icons.css";
+  import "interactive-style-library/components/icons.css";
 </script>
 
 <div class="src-icon--add-to-basket" style="width: 36px;"></div>

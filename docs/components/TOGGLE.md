@@ -2,7 +2,7 @@
 
 ```html
 <script>
-  import "interactive-source-components/components/toggle.css";
+  import "interactive-style-library/components/toggle.css";
 </script>
 
 <div class="src-toggle__container">

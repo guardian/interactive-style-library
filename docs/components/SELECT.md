@@ -2,8 +2,8 @@
 
 ```html
 <script>
-  import "interactive-source-components/components/text-input.css";
-  import "interactive-source-components/components/select.css";
+  import "interactive-style-library/components/text-input.css";
+  import "interactive-style-library/components/select.css";
 </script>
 
 ...

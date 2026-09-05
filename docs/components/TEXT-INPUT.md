@@ -2,8 +2,8 @@
 
 ```html
 <script>
-  import "interactive-source-components/components/label.css";
-  import "interactive-source-components/components/text-input.css";
+  import "interactive-style-library/components/label.css";
+  import "interactive-style-library/components/text-input.css";
 </script>
 
 <label for="email" class="src-label">

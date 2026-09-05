@@ -2,7 +2,7 @@
 
 ```html
 <script>
-  import "interactive-source-components/components/spinner.css";
+  import "interactive-style-library/components/spinner.css";
 </script>
 
 <div
