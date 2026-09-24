@@ -1,11 +1,6 @@
 ## Label
 
-```html
-<script>
-  import "interactive-style-library/components/label.css";
-  import "interactive-style-library/components/text-input.css";
-</script>
-
+```svelte
 <label for="email" class="src-label src-label--small">
   Email address
   <div class="src-label__optional">Optional</div>
@@ -13,6 +8,11 @@
 </label>
 
 <input type="email" id="email" class="src-text-input" />
+
+<style lang="scss">
+  @use "interactive-style-library/components/label.css" as *;
+  @use "interactive-style-library/components/text-input.css" as *;
+</style>
 ```
 
 Use the `src-label` class on `<label>` elements (or other text elements) to style labels associated

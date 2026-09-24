@@ -1,15 +1,15 @@
 ##
 
-```html
-<script>
-  import "interactive-style-library/components/spinner.css";
-</script>
-
+```svelte
 <div
   class="src-spinner src-spinner--small"
   aria-label="Loading content"
   role="status"
 ></div>
+
+<style lang="scss">
+  @use "interactive-style-library/components/spinner.css" as *;
+</style>
 ```
 
 Use the `src-spinner` class on a `<div>` element (or other empty element) to draw a loading spinner

@@ -1,11 +1,11 @@
 ## Icons
 
-```html
-<script>
-  import "interactive-style-library/components/icons.css";
-</script>
-
+```svelte
 <div class="src-icon--add-to-basket" style="width: 36px;"></div>
+
+<style lang="scss">
+  @use "interactive-style-library/components/icons.css" as *;
+</style>
 ```
 
 Add `src-icon--add-to-basket` (changing `add-to-basket` to the name of your desired icon) to a

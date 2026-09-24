@@ -1,10 +1,6 @@
 ## Checkbox
 
-```html
-<script>
-  import "interactive-style-library/components/checkbox.css"
-</script>
-
+```svelte
 <div class="src-checkbox__container">
   <input type="checkbox" id="newsletter" class="src-checkbox" />
   <label for="newsletter" class="src-checkbox__label">
@@ -14,6 +10,10 @@
     </div>
   </label>
 </div>
+
+<style lang="scss">
+  @use "interactive-style-library/components/checkbox.css" as *;
+</style>
 ```
 
 Use the `src-checkbox` class on `<input type="checkbox">` elements to style checkboxes in the default Guardian style.

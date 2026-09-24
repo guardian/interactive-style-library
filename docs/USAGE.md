@@ -27,6 +27,95 @@ The package isn't yet published to NPM, so it must be installed directly from Gi
 commands fail, check that you have [a valid SSH key added to your GitHub
 account](https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). If that's not the problem, reach out to ed.gargan@guardian.co.uk for help.
 
+With the package installed, load the styles into your project as follows.
+
+### Vite plugin
+
+The easiest way to use the library is with the `interactiveStyleLibrary` plugin. It works with
+Svelte, Preact, and any other Vite-based project.
+
+Add it to your `vite.config.js` and list the files you need from each category.
+
+```js
+// vite.config.js
+import { interactiveStyleLibrary } from "interactive-style-library/vite"
+
+export default {
+  plugins: [
+    interactiveStyleLibrary({
+      source: ["mq.scss", "typography.scss", "typography.css", "colors.css"],
+      visuals: ["charts.scss", "colors.css"],
+      components: ["button.css", "label.css", "text-input.css"],
+    }),
+  ],
+}
+```
+
+The plugin handles the wiring automatically:
+
+- **SCSS files** (`.scss`) are made available in every stylesheet and component — you can use
+  mixins and variables without importing them in each file
+- **CSS files** (`.css`) are injected into your entry stylesheet (`main.scss` by default)
+- **Unused CSS** is purged from your production build automatically
+
+#### Options
+
+<!-- prettier-ignore -->
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `source` | `string[]` | `[]` | Filenames from `dist/source/` to inject |
+| `visuals` | `string[]` | `[]` | Filenames from `dist/visuals/` to inject |
+| `components` | `string[]` | `[]` | Filenames from `dist/components/` to inject |
+| `purge` | `boolean \| object` | `true` | `true` purges unused styles with defaults, `false` disables, or pass an options object (see [Purging unused styles](#purging-unused-styles)) |
+| `entryScss` | `string` | `"main.scss"` | Filename of the entry stylesheet that CSS files are injected into. Change this if your entry stylesheet has a different filename. |
+
+### Direct imports
+
+If you're not using the Vite plugin, you can import the library's styles directly into your stylesheets.
+
+```scss
+// main.scss
+@use "interactive-style-library/source/mq.scss" as *;
+@use "interactive-style-library/source/typography.scss" as *;
+@use "interactive-style-library/source/typography.css";
+@use "interactive-style-library/source/colors.css" as src-colors;
+
+@use "interactive-style-library/visuals/charts.scss" as *;
+@use "interactive-style-library/visuals/colors.css" as vis-colors;
+
+@use "interactive-style-library/components/button.css" as *;
+@use "interactive-style-library/components/spinner.css" as *;
+```
+
+Or use the `all.scss` barrel files to get all of the Source and Visuals styles at once.
+
+```scss
+@use "interactive-style-library/source/all.scss" as *;
+@use "interactive-style-library/visuals/all.scss" as *;
+
+// Components are not included in the above "all" files - they must be imported individually.
+@use "interactive-style-library/components/button.css" as *;
+@use "interactive-style-library/components/spinner.css" as *;
+```
+
+> [!WARNING]
+> When importing CSS and SCSS files like this, make sure to [purge unused styles](#purging-unused-styles). Your
+> project's CSS bundle will be bloated by many unused CSS declarations if you don't.
+
+### JavaScript exports
+
+Most design tokens are also available as JavaScript objects, useful when building visualisations
+with libraries like D3 or MapLibre.
+
+```js
+import { uk } from "interactive-style-library/visuals/parties.js"
+import { palette } from "interactive-style-library/visuals/colors.js"
+
+const politicsScale = scaleLinear()
+  .domain([-50, 50])
+  .range([uk.light.lab, palette.gray["2"], uk.light.reform])
+```
+
 ## Library contents
 
 The library is split into three categories. See [ALL-FILES.md](./ALL-FILES.md) for the full list
@@ -82,7 +171,9 @@ Find a more complete example in the [recipes](./recipes/).
 ### Components
 
 CSS-only replicas of Source's UI elements — buttons, checkboxes, text inputs, and more — styled to
-match the Guardian design system. Use `src-` prefixed classes in your HTML.
+match the Guardian design system.
+
+Use `src-` prefixed classes in your HTML.
 
 ```html
 <label for="email" class="src-label">
@@ -98,53 +189,18 @@ Each component supports variants via modifier classes (e.g. `src-button--small`,
 `src-button--tertiary`). See each component's usage guide for available classes and examples —
 [docs/components](./components/).
 
-## Vite plugin setup
-
-The easiest way to use the library is with the `interactiveStyleLibrary` plugin — it works with
-Svelte, Preact, and any other Vite-based project.
-
-Add it to your `vite.config.js` and list the files you need from each category.
-
-```js
-// vite.config.js
-import { interactiveStyleLibrary } from "interactive-style-library/vite"
-
-export default {
-  plugins: [
-    interactiveStyleLibrary({
-      source: ["mq.scss", "typography.scss", "typography.css", "colors.css"],
-      visuals: ["charts.scss", "colors.css"],
-      components: ["button.css", "label.css", "text-input.css"],
-    }),
-  ],
-}
-```
-
-The plugin handles the wiring automatically:
-
-- **SCSS files** (`.scss`) are made available in every stylesheet and component — you can use
-  mixins and variables without importing them in each file
-- **CSS files** (`.css`) are injected into your entry stylesheet (`main.scss` by default)
-- **Unused CSS** is purged from your production build automatically
-
-### Options
-
-<!-- prettier-ignore -->
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `source` | `string[]` | `[]` | Filenames from `dist/source/` to inject |
-| `visuals` | `string[]` | `[]` | Filenames from `dist/visuals/` to inject |
-| `components` | `string[]` | `[]` | Filenames from `dist/components/` to inject |
-| `purge` | `boolean \| object` | `true` | `true` purges unused styles with defaults, `false` disables, or pass an options object (see [Purging unused styles](#purging-unused-styles)) |
-| `entryScss` | `string` | `"main.scss"` | Filename of the entry stylesheet that CSS files are injected into. Change this if your entry stylesheet has a different filename. |
-
 ## Purging unused styles
 
 When you import a CSS file like `source/colors.css` or `source/typography.css`, you get _all_ the
-variables and classes it defines — most of which you probably won't use. The plugin removes unused
-ones from your production build automatically (`purge: true` is the default).
+variables and classes it defines — most of which you probably won't use.
 
-It works by scanning your compiled HTML, CSS, and JavaScript for references to
+The `interactiveStyleLibrary` plugin removes unused ones from your production build automatically
+(`purge: true` is the default).
+
+You can alternatively use the `purgeInteractiveStylesCss` plugin (see below) that just handles purging,
+in cases where you're importing CSS and SCSS files directly.
+
+Purging works by scanning your compiled HTML, CSS, and JavaScript for references to
 `interactive-style-library` classes (`.src-*`, `.vis-*`) and CSS variables (`--src-*`, `--vis-*`),
 and strips any that aren't found. It only runs during production builds (`vite build`), not in dev
 mode.
@@ -213,46 +269,4 @@ export default {
     purgeInteractiveStylesCss({ safelist: [/^--vis-uk-/] }),
   ],
 }
-```
-
-## JavaScript exports
-
-Most design tokens are also available as JavaScript objects, useful for scripts and data
-visualisation.
-
-```js
-import { uk } from "interactive-style-library/visuals/parties.js"
-import { palette } from "interactive-style-library/visuals/colors.js"
-
-const politicsScale = scaleLinear()
-  .domain([-50, 50])
-  .range([uk.light.lab, palette.gray["2"], uk.light.reform])
-```
-
-## Direct imports (non-Vite projects)
-
-If you're not using Vite, you can import the library's files directly into your stylesheets.
-
-```scss
-// main.scss
-@use "interactive-style-library/source/mq.scss" as *;
-@use "interactive-style-library/source/typography.scss" as *;
-@use "interactive-style-library/source/typography.css";
-@use "interactive-style-library/source/colors.css" as src-colors;
-@use "interactive-style-library/visuals/charts.scss" as *;
-@use "interactive-style-library/visuals/colors.css" as vis-colors;
-```
-
-If you `@use` both `source/colors.css` and `visuals/colors.css`, Sass will
-complain about a naming collision. Add `as src-colors` / `as vis-colors` (as
-above) to resolve it — the names themselves don't matter and aren't referenced
-anywhere, they just need to differ. The `interactiveStyleLibrary` plugin handles
-this for you.
-
-Or use the `all.scss` barrel files to get everything at once (with a couple of exceptions — see
-[ALL-FILES.md](./ALL-FILES.md)).
-
-```scss
-@use "interactive-style-library/source/all.scss" as *;
-@use "interactive-style-library/visuals/all.scss" as *;
 ```

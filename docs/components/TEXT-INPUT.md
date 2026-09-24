@@ -1,17 +1,17 @@
 ## Text input
 
-```html
-<script>
-  import "interactive-style-library/components/label.css";
-  import "interactive-style-library/components/text-input.css";
-</script>
-
+```svelte
 <label for="email" class="src-label">
   Email address
   <div class="src-label__supporting">harpreet@example.com</div>
 </label>
 
 <input type="email" id="email" class="src-text-input" />
+
+<style lang="scss">
+  @use "interactive-style-library/components/label.css" as *;
+  @use "interactive-style-library/components/text-input.css" as *;
+</style>
 ```
 
 Use the `src-text-input` class on `<input>` elements to style them in the default Guardian style.

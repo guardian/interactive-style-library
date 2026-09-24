@@ -1,16 +1,16 @@
 ## Toggle Switch
 
-```html
-<script>
-  import "interactive-style-library/components/toggle.css";
-</script>
-
+```svelte
 <div class="src-toggle__container">
   <input type="checkbox" role="switch" id="show-latest" class="src-toggle" />
   <label for="show-latest" class="src-toggle__label">
     Show latest figures
   </label>
 </div>
+
+<style lang="scss">
+  @use "interactive-style-library/components/toggle.css" as *;
+</style>
 ```
 
 Use the `src-toggle` class on `<input type="checkbox">` elements to style them as toggle switches in the default Guardian style.

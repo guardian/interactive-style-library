@@ -1,11 +1,11 @@
 ## Buttons
 
-```html
-<script>
-  import "interactive-style-library/components/button.css"
-</script>
-
+```svelte
 <button class="src-button">Click me</button>
+
+<style lang="scss">
+  @use "interactive-style-library/components/button.css" as *;
+</style>
 ```
 
 Use the `src-button` class to style your buttons in the default Guardian style. By default, buttons
